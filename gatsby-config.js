@@ -1,19 +1,24 @@
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
-    title: "ecw",
+    title: "Engineering Club Website",
   },
   plugins: [
     "gatsby-plugin-postcss",
-    "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
-    {
-      resolve: "gatsby-plugin-manifest",
-      options: {
-        icon: "src/images/icon.png",
-      },
-    },
     "gatsby-plugin-sharp",
+		{
+			resolve: "gatsby-plugin-manifest",
+			options: {
+				name: "gatsby-starter-default",
+				short_name: "starter",
+				start_url: "/",
+				background_color: "#663399",
+				theme_color: "#663399",
+				display: "minimal-ui",
+				icon: "src/images/ec.png",
+			}
+		},
     "gatsby-transformer-sharp",
     {
       resolve: "gatsby-source-filesystem",
