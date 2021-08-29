@@ -1,37 +1,55 @@
 import React from "react";
-import ec from "../images/ectrans.png";
+import ectrans from "../images/ectrans.png";
+import ec from "../images/ec.png";
+import { Link } from "gatsby";
 
-const Navbar = (): JSX.Element => {
+const Navbar = ({children}): JSX.Element => {
 
 	return (
-		<div className="pt-5 p-10">
-			<div className="navbar mb-2 shadow-lg bg-primary text-neutral-content rounded-box">
-				<div className="navbar-start flex px-2 mx-2">
-					<img
-						src={ec}
-						alt="logo"
-						width={50}
-						height={50}
-					/>
-				</div> 
-				<div className="hidden px-2 mx-2 navbar-center lg:flex">
-					<div className="flex items-stretch text-lg">
-						<a className="btn btn-ghost btn-sm rounded-btn">Home</a> 
-						<a className="btn btn-ghost btn-sm rounded-btn">Programs</a> 
-						<a className="btn btn-ghost btn-sm rounded-btn">About</a>
+		<>
+			<div className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
+				<nav className="navbar mb-2 shadow-lg bg-primary-content text-neutral-content rounded-box">
+					<div className="navbar-start flex px-2 mx-2" id="toggle">
+						<img
+							className="lighttheme"
+							src={ectrans}
+							alt="logo"
+							width={50}
+							height={50}
+						/>
+						<img
+							className="darktheme"
+							src={ec}
+							alt="logo"
+							width={50}
+							height={50}
+						/>
 					</div>
-				</div>
-				<div className="navbar-end">
-					<div className="flex-none">
-						<button className="btn btn-square btn-ghost">
-							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current">           
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>               
-							</svg>
-						</button>
+					<div className="hidden px-2 mx-2 navbar-center lg:flex">
+						<div className="flex items-stretch text-lg">
+							<Link className="btn btn-primary-content btn-sm" to="/">Home</Link> 
+							<Link className="btn btn-primary-content btn-sm" to="/programs">Programs</Link> 
+							<a className="btn btn-primary-content btn-sm" href="https://discord.gg/gXM98cUdV5">Discord</a>
+						</div>
 					</div>
-				</div>
+					<div className="navbar-end">
+						<div className="flex-none" id="toggle">
+							<button data-set-theme="dark" data-act-class="ACTIVECLASS" className="btn btn-square btn-primary-content lighttheme">
+								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+								</svg>
+							</button>
+							<button data-set-theme="light" data-act-class="ACTIVECLASS" className="btn btn-square btn-primary-content darktheme">
+								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+								</svg>
+							</button>
+						</div>
+					</div>
+				</nav>
 			</div>
-		</div>
+			{children}
+		</>
 	)
 
 }
