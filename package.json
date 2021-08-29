@@ -15,6 +15,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "daisyui": "^1.14.0",
     "gatsby": "^3.12.1",
     "gatsby-plugin-gatsby-cloud": "^3.0.0",
     "gatsby-plugin-image": "^1.12.0",
