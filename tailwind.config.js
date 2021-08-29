@@ -28,7 +28,7 @@ module.exports = {
 	daisyui: {
     themes: [
       {
-        'light': {                          /* your theme name */
+        'lighttheme': {                          /* your theme name */
            'primary' : '#ffffff',           /* Primary color */
            'primary-focus' : '#3d4451',     /* Primary color - focused */
            'primary-content' : '#000000',   /* Foreground content color to use on primary color */
@@ -55,9 +55,8 @@ module.exports = {
            'warning' : '#ff9900',           /* Warning */
            'error' : '#ff5724',             /* Error */
         },
-      },
-			{
-        'dark': {                          /* your theme name */
+      }, {
+        'darktheme': {                          /* your theme name */
            'primary' : '#000000',           /* Primary color */
            'primary-focus' : '#3d4451',     /* Primary color - focused */
            'primary-content' : '#ffffff',   /* Foreground content color to use on primary color */

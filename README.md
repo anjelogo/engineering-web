@@ -1,5 +1,4 @@
 # Engineering Club
-====
 
 The official website for Engineering Club at University Preparatory
 

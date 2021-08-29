@@ -6,12 +6,11 @@
 @tailwind utilities;
 
 
-#toggle .lighttheme,
 #toggle .darktheme {
 	display: none;
 }
 
-[data-theme="light"] #toggle .lighttheme {
+[data-theme="lighttheme"] #toggle .lighttheme {
 	display: inline;
 }
 
@@ -19,6 +18,6 @@
 	display: inline;
 }
 
-[data-theme="dark"] #toggle .darktheme {
+[data-theme="darktheme"] #toggle .darktheme {
 	display: inline;
 }

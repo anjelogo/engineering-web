@@ -18,7 +18,7 @@ const Home = (): JSX.Element => {
 							<h1>Inspire. Innovate.</h1>
 							<span className="text-secondary">
 								<Typical
-									steps={["Build.", 5000, "Design.", 5000, "Create.", 5000, "Produce.", 5000, "Engineer.", 5000, "Accomplish", 5000]}
+									steps={["Build.", 5000, "Design.", 5000, "Create.", 5000, "Produce.", 5000, "Engineer.", 5000, "Accomplish.", 5000]}
 									loop={Infinity}
 									wrapper="p"
 								/>
