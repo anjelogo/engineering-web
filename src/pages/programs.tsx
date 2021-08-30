@@ -22,25 +22,25 @@ const Programs = (): JSX.Element => {
 					</div>
 					<div className="flex justify-center items-center">
 						<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
-								<div className="card shadow-xl image-full">
-									<div className="justify-end card-body">
-										<h2 className="card-title">Robotics</h2> 
-										<p>Learn to design and build Robots and compete with other students!</p> 
-									</div>
-								</div>
-								<div className="card shadow-xl image-full">
-									<div className="justify-end card-body">
-										<h2 className="card-title">Web Development</h2> 
-										<p>Create and design websites like this for personal or other clubs!</p> 
-									</div>
-								</div>
-								<div className="card shadow-xl image-full">
-									<div className="justify-end card-body">
-										<h2 className="card-title">3D Modeling</h2> 
-										<p>Practice and create 3D models and print them out with a 3D printer!</p> 
-									</div>
+							<div className="card shadow-xl image-full">
+								<div className="justify-end card-body">
+									<h2 className="card-title">Robotics</h2> 
+									<p>Learn to design and build Robots and compete with other students!</p> 
 								</div>
 							</div>
+							<div className="card shadow-xl image-full">
+								<div className="justify-end card-body">
+									<h2 className="card-title">Web Development</h2> 
+									<p>Create and design websites like this for personal or other clubs!</p> 
+								</div>
+							</div>
+							<div className="card shadow-xl image-full">
+								<div className="justify-end card-body">
+									<h2 className="card-title">3D Modeling</h2> 
+									<p>Practice and create 3D models and print them out with a 3D printer!</p> 
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</body>

@@ -7,6 +7,7 @@ const Footer = (): JSX.Element => {
 			<div>
 				<p className="font-bold">Made by Anjelo {"❤"}</p>
 				<a href="https://up.vvuhsd.org">Visit School Website</a>
+				<button data-set-theme="cyberpunk">Cyberpunk</button>
 			</div>
 		</footer>
 	)
