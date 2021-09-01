@@ -6,8 +6,7 @@ const Footer = (): JSX.Element => {
 		<footer className="p-10 footer bg-primary-content text-primary footer-center">
 			<div>
 				<p className="font-bold">Made by Anjelo {"❤"}</p>
-				<a href="https://up.vvuhsd.org">Visit School Website</a>
-				<button data-set-theme="cyberpunk">Cyberpunk</button>
+				<a href="https://up.vvuhsd.org" className="link link-hover">Visit School Website</a>
 			</div>
 		</footer>
 	)
