@@ -55,12 +55,12 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 	render() {
 		return (
 			<>
-				<header className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
+				<header className="pt-5 md:p-10 bg-primary-content md:bg-transparent fixed left-0 right-0 z-50">
 
-					{/* Use Navbar fade-in and fade-out if mobile breakpoint*/}
-					<div className={this.state.visible ? "visible" : "invisible md:visible"}>
+					{/* Use Navbar fade-in and fade-out if mobile breakpoint */}
+					<div className={/* this.state.visible ? "visible" : "invisible md:visible" */ "visible"}>
 
-						<nav className="navbar mb-2 shadow-lg bg-primary-content text-neutral-content rounded-box">
+						<nav className="navbar mb-2 md:shadow-lg bg-primary-content text-neutral-content rounded-box">
 							
 							{/* DESKTOP LOGO */}
 

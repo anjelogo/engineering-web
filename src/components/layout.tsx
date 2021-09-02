@@ -15,15 +15,9 @@ const Layout = ({ children, title }: { children: React.ReactNode, title: string 
 		<html>
 			<head>
 				<title>{title}</title>
-				<meta name="theme-color" 
-					content="#ffffff" 
-					media="(prefers-color-scheme: light)" />
-				<meta name="theme-color" 
-					content="#000000" 
-					media="(prefers-color-scheme: dark)" />
 			</head>
 			<Navbar>
-				<body className="flex flex-col h-screen">
+				<body>
 					{children}
 					<Footer />
 				</body>
