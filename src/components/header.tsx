@@ -55,7 +55,7 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 	render() {
 		return (
 			<>
-				<header className="pt-5 p-10 bg-primary-content fixed left-0 right-0 z-50">
+				<div className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
 
 					{/* Use Navbar fade-in and fade-out if mobile breakpoint*/}
 					<div className={this.state.visible ? "visible" : "invisible md:visible"}>
@@ -123,7 +123,7 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 
 						</nav>
 					</div>
-				</header>
+				</div>
 				{this.props.children}
 			</>
 		)
