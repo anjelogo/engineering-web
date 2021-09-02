@@ -2,7 +2,14 @@ import React from "react";
 import Footer from "./footer";
 import Navbar from "./header";
 
-const Layout = ({ children }): JSX.Element => {
+import { useEffect } from "react";
+import { themeChange } from "theme-change";
+
+const Layout = ({ children }: { children: React.ReactNode }): JSX.Element => {
+
+	useEffect(() => {
+		themeChange(false)
+	}, []);
 
 	return (
 		<html>

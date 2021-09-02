@@ -19,9 +19,6 @@ module.exports = {
 			bebas: ["Bebas Neue", "cursive"]
 		},
   },
-  variants: {
-    extend: {},
-  },
   plugins: [
 		require("daisyui")
 	],
