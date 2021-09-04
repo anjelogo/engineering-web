@@ -28,7 +28,7 @@ const Home = () => {
 						/>
 					</div>
 					<div className=" text-2xl font-bebas pt-2">
-						<a href="https://discord.gg/gXM98cUdV5">Join the discord</a>
+						<a href="https://discord.gg/aE6GkPXznW">Join the discord</a>
 					</div>
 				</div>
 			</div>
