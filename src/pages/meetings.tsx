@@ -37,7 +37,7 @@ const Meetings = (): JSX.Element => {
 									<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 										<div className="justify-end card-body">
 											<h2 className="card-title text-primary-content">THURSDAYS A LUNCH</h2> 
-											<p className="text-primary-content text-md">Our A lunch meetings run during <strong>A lunch</strong> at Mr. Rocha'sRoom.</p> 
+											<p className="text-primary-content text-md">Our A lunch meetings run during <strong>A lunch</strong> at Mr. Rocha's Room.</p> 
 											<div className="card-actions">
 												<button className="btn btn-disabled">Sign In</button>
 											</div>
