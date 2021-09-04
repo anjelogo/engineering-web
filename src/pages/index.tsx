@@ -7,9 +7,9 @@ import "../styles/global.css";
 const Home = (): JSX.Element => {
 	return (
 		<Layout title="Home - Engineering Club">
-			<div className="bg-primary flex flex-col h-screen">
-				<div className="mt-28">
-					<div className="hero min-h-screen">
+			<body className="bg-primary">
+				<div className="mt-28 md:mt-0">
+					<div className="hero bg-primary min-h-screen">
 						<div className="text-center hero-content">
 							<div className="max-w-md text-primary-content">
 								<div className="inline-block mb-5 text-5xl font-abril">
@@ -26,14 +26,14 @@ const Home = (): JSX.Element => {
 									The Official Engineering Club of University Preparatory
 								</p>
 								<div className="justify-center space-y-4 lg:space-y-0 lg:flex lg:space-x-4">
-									<a className="btn btn-primary-content btn-wide" href="https://discord.gg/gXM98cUdV5">Join the Discord</a>
+									<Link className="btn btn-primary-content btn-wide" to="/meetings">View Meetings</Link>
 									<Link className="btn btn-secondary btn-wide" to="/programs">See Programs</Link>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</body>
 		</Layout>
 	)
 }

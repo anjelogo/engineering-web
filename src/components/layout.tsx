@@ -17,10 +17,10 @@ const Layout = ({ children, title }: { children: React.ReactNode, title: string 
 				<title>{title}</title>
 			</head>
 			<Navbar>
-				<body>
+				<div className="flex flex-col h-screen">
 					{children}
 					<Footer />
-				</body>
+				</div>
 			</Navbar>
 		</html>
 	)

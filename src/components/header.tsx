@@ -55,12 +55,12 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 	render() {
 		return (
 			<>
-				<header className="pt-5 md:p-10 bg-primary-content md:bg-transparent fixed left-0 right-0 z-50">
+				<header className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
 
 					{/* Use Navbar fade-in and fade-out if mobile breakpoint */}
 					<div className={/* this.state.visible ? "visible" : "invisible md:visible" */ "visible"}>
 
-						<nav className="navbar mb-2 md:shadow-lg bg-primary-content text-neutral-content rounded-box">
+						<nav className="navbar mb-2 shadow-lg bg-primary-content text-neutral-content rounded-box">
 							
 							{/* DESKTOP LOGO */}
 
@@ -86,7 +86,10 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 											<Link to="/programs">Programs</Link> 
 										</li> 
 										<li>
-											<a href="https://discord.gg/gXM98cUdV5">Discord</a>
+											<Link to="/meetings">Meetings</Link> 
+										</li> 
+										<li>
+											<Link to="/contact">Contact Us</Link> 
 										</li>
 									</ul>
 								</div>
@@ -104,8 +107,9 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 							<div className="hidden px-2 mx-2 navbar-center md:flex">
 								<div className="flex items-stretch text-lg">
 									<Link className="btn btn-primary-content btn-sm" to="/">Home</Link> 
-									<Link className="btn btn-primary-content btn-sm" to="/programs">Programs</Link> 
-									<a className="btn btn-primary-content btn-sm" href="https://discord.gg/gXM98cUdV5">Discord</a>
+									<Link className="btn btn-primary-content btn-sm" to="/programs">Programs</Link>
+									<Link className="btn btn-primary-content btn-sm" to="/meetings">Meetings</Link>
+									<Link className="btn btn-primary-content btn-sm" to="/contact">Contact Us</Link>
 								</div>
 							</div>
 
