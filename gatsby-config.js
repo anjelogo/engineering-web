@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `process.env`,
+})
+
 module.exports = {
   siteMetadata: {
     siteUrl: "https://www.yourdomain.tld",
@@ -28,5 +32,16 @@ module.exports = {
       },
       __key: "images",
     },
+		{
+			resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: true,
+        // Setting this parameter is optional
+        anonymize: true,
+      },
+		}
   ],
 };
