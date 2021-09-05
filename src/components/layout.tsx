@@ -12,9 +12,12 @@ const Layout = ({ children, title }: { children: React.ReactNode, title: string 
 	}, []);
 
 	return (
-		<html>
+		<html lang="en">
 			<head>
 				<title>{title}</title>
+				<meta name="theme-color" property="og:theme-color" content="white" />
+				<meta name="theme-color" property="og:theme-color" media="(prefers-color-scheme: light)" content="white" />
+				<meta name="theme-color" property="og:theme-color" media="(prefers-color-scheme: dark)" content="black" />
 			</head>
 			<Navbar>
 				<div className="flex flex-col h-screen">
