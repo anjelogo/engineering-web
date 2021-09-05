@@ -15,6 +15,7 @@ const Layout = ({ children, title }: { children: React.ReactNode, title: string 
 		<html>
 			<head>
 				<title>{title}</title>
+				<meta name="theme-color" content="#000000" />
 			</head>
 			<Navbar>
 				<div className="flex flex-col h-screen">
