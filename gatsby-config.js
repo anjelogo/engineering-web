@@ -14,11 +14,9 @@ module.exports = {
 		{
 			resolve: "gatsby-plugin-manifest",
 			options: {
-				name: "gatsby-starter-default",
-				short_name: "starter",
+				name: "UP Engineering Club",
+				short_name: "EC",
 				start_url: "/",
-				background_color: "#663399",
-				theme_color: "#663399",
 				display: "minimal-ui",
 				icon: "src/images/ec.png",
 			}
