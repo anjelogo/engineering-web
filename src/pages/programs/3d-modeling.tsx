@@ -30,10 +30,10 @@ const ModelingProgram = (): JSX.Element => {
 								<div className="card shadow-xl">
 									<div className="text-center md:text-left card-body">
 										<p className="text-primary-content text-md">
-										Explore engineering with Robotics. A combination of Computer Science and Engineering.
+										Manipulate polygons and create the objects of your dreams. Anime waifu? ✔ Objects of mass destruction? Maybe? 😏 Think of anything and you can make it! Nothing beats the sound of a 3D printer humming while making your dream anime figurine.
 										<br />
 										<br />
-										Students will learn to construct robots using kits provided by Engineering Club and learn essential engineering skills like designing, constructing, operating, and the usage of robots.
+										In this program, you'll learn to use various programs to design and create 3D models and eventually print them out using the various 3D printers provided by Engineering Club.
 										</p> 
 									</div>
 								</div>
