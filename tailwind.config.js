@@ -11,7 +11,9 @@ module.exports = {
   theme: {
     extend: {
 			backgroundImage: theme => ({
-				"topography": "url('/images/topography.svg')"
+				"topography": "url('../images/topography.svg')",
+				"robotics": "url('../images/roboticsbackground.jpg')",
+				"3dmodeling": "url('../images/3dbackground.jpg')"
 			})
 		},
 		fontFamily: {

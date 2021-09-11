@@ -84,10 +84,7 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 										</li> 
 										<li>
 											<Link to="/programs">Programs</Link> 
-										</li> 
-										<li>
-											<Link to="/meetings">Meetings</Link> 
-										</li> 
+										</li>
 										<li>
 											<Link to="/contact">Contact Us</Link> 
 										</li>
@@ -108,7 +105,6 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 								<div className="flex items-stretch text-lg">
 									<Link className="btn btn-primary-content btn-sm" to="/">Home</Link> 
 									<Link className="btn btn-primary-content btn-sm" to="/programs">Programs</Link>
-									<Link className="btn btn-primary-content btn-sm" to="/meetings">Meetings</Link>
 									<Link className="btn btn-primary-content btn-sm" to="/contact">Contact Us</Link>
 								</div>
 							</div>

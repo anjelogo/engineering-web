@@ -80,19 +80,6 @@ const ContactUsPage = (): JSX.Element => {
 								</div>
 							</div>
 						</div>
-						<div className="text-center text-primary-content">
-							<p className="text-2xl pb-2 font-bebas">Program Representatives</p>
-						</div>
-						<div className="flex justify-center items-center">
-							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
-									<div className="text-center card-body">
-										<h2 className="card-title text-primary-content">COMING SOON</h2> 
-										<p className="text-primary-content text-md">Program representatives are coming soon.</p> 
-									</div>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</body>

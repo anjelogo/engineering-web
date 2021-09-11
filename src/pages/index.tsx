@@ -9,7 +9,7 @@ const Home = (): JSX.Element => {
 		<Layout title="Home - Engineering Club">
 			<body className="bg-primary">
 				<div className="mt-28 md:mt-0">
-					<div className="hero bg-primary min-h-screen">
+					<div className="hero bg-topography min-h-screen">
 						<div className="text-center hero-content">
 							<div className="max-w-md text-primary-content">
 								<div className="inline-block mb-5 text-5xl font-abril">
@@ -23,11 +23,11 @@ const Home = (): JSX.Element => {
 									</span>
 								</div>
 								<p className="mb-5">
-									The Official Engineering Club of University Preparatory
+									The Official Engineering Club of University Preparatory.
 								</p>
 								<div className="justify-center space-y-4 lg:space-y-0 lg:flex lg:space-x-4">
-									<Link className="btn btn-primary-content btn-wide" to="/meetings">View Meetings</Link>
-									<Link className="btn btn-secondary btn-wide" to="/programs">See Programs</Link>
+									<Link className="btn btn-primary-content btn-wide" to="/programs">See Programs</Link>
+									<Link className="btn btn-secondary btn-wide" to="/contact">Contact Us</Link>
 								</div>
 							</div>
 						</div>
