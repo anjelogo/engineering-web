@@ -1,13 +1,13 @@
 module.exports = {
   purge: {
-		content: ["./src/**/*.{js,jsx,ts,tsx}"],
+		content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
 		options: {
 			safelist: [
 				/data-theme$/,
 			]
 		},
 	},
-  darkMode: "media", // or 'media' or 'class'
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
 			backgroundImage: theme => ({
