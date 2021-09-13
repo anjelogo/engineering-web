@@ -6,15 +6,12 @@
 @tailwind utilities;
 
 
+#toggle .lighttheme,
 #toggle .darktheme {
 	display: none;
 }
 
 [data-theme="lighttheme"] #toggle .lighttheme {
-	display: inline;
-}
-
-[data-theme="cyberpunk"] #toggle .lighttheme {
 	display: inline;
 }
 
