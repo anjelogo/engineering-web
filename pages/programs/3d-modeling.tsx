@@ -21,15 +21,15 @@ const ModelingProgram = (): JSX.Element => {
 					</div>
 				</div>
 				<div className="bg-primary min-h-screen mt-10">
-					<div className="flex md:grid grid-cols-6 gap-10 md:flex-none flex-wrap m-5 md:m-0">
+					<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">
 						<div className="col-start-2 col-span-3">
-							<div className="text-center md:text-left text-primary-content">
+							<div className="text-center 2xl:text-left text-primary-content">
 								<p className="text-3xl pb-2 font-abril">Program Description</p>
 							</div>
 							<div className="divider" />
 							<div className="pt-5">
 								<div className="card shadow-xl">
-									<div className="text-center md:text-left card-body">
+									<div className="text-center 2xl:text-left card-body">
 										<p className="text-primary-content text-md">
 										Manipulate polygons and create the objects of your dreams. Anime waifu? ✔ Objects of mass destruction? Maybe? 😏 Think of anything and you can make it! Nothing beats the sound of a 3D printer humming while making your dream anime figurine.
 										<br />
@@ -51,8 +51,9 @@ const ModelingProgram = (): JSX.Element => {
 										<Image
 											src={Alex}
 											alt="Alex"
-											height={30}
-											width={30}
+											height={100}
+											width={100}
+											layout="responsive"
 											className="mask mask-circle"
 										/>
 									</figure>

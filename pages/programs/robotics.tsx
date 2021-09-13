@@ -21,15 +21,15 @@ const RoboticsProgram = (): JSX.Element => {
 					</div>
 				</div>
 				<div className="bg-primary min-h-screen mt-10">
-					<div className="flex md:grid grid-cols-6 gap-10 md:flex-none flex-wrap m-5 md:m-0">
-						<div className="col-start-2 col-span-3">
-							<div className="text-center md:text-left text-primary-content">
-								<p className="text-3xl pb-2 font-abril">Program Description</p>
-							</div>
-							<div className="divider" />
-							<div className="pt-5">
+				<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">
+					<div className="col-start-2 col-span-3">
+						<div className="text-center 2xl:text-left text-primary-content">
+							<p className="text-3xl pb-2 font-abril">Program Description</p>
+						</div>
+						<div className="divider" />
+						<div className="pt-5">
 								<div className="card shadow-xl">
-									<div className="text-center md:text-left card-body">
+									<div className="text-center 2xl:text-left card-body">
 										<p className="text-primary-content text-md">
 										Explore engineering with Robotics. A combination of Computer Science and Engineering.
 										<br />
@@ -66,8 +66,9 @@ const RoboticsProgram = (): JSX.Element => {
 										<Image
 											src={Orlando}
 											alt="Orlando"
-											height={30}
-											width={30}
+											height={100}
+											width={100}
+											layout="responsive"
 											className="mask mask-circle"
 										/>
 									</figure>
