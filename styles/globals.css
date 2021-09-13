@@ -1,16 +1,23 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#toggle .darktheme {
+	display: none;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+[data-theme="lighttheme"] #toggle .lighttheme {
+	display: inline;
 }
 
-* {
-  box-sizing: border-box;
+[data-theme="cyberpunk"] #toggle .lighttheme {
+	display: inline;
+}
+
+[data-theme="darktheme"] #toggle .darktheme {
+	display: inline;
 }
