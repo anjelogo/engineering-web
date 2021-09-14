@@ -1,4 +1,4 @@
-Sitemap: https://anjelo.tech/api/sitemap
+Sitemap: https://www.anjelo.tech/api/sitemap
 
 User-agent: *
 Allow: /*
