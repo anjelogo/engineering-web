@@ -21,6 +21,17 @@ class MyDocument extends Document {
 					<link rel="shortcut icon" href="/favicon.ico" />
 					<meta name="msapplication-TileColor" content="#da532c" />
 					<meta name="msapplication-config" content="/browserconfig.xml" />
+					<script async src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`} />
+					<script dangerouslySetInnerHTML={{
+						__html: `
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+
+						gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}', {
+              page_path: window.location.pathname,
+            });`
+					}}/>
 				</Head>
         <body>
           <Main />
