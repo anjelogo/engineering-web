@@ -22,15 +22,15 @@ const Programs = (): JSX.Element => {
 					</div>
 					<div className="bg-primary min-h-screen">
 						<div className="text-center text-primary-content">
-							<p className="text-5xl pb-2 font-abril">Engineering Programs</p>
-							<p className="text-2xl pb-2 font-bebas">General Programs</p>
+							<h1 className="text-5xl pb-2 font-abril">Engineering Programs</h1>
+							<h2 className="text-2xl pb-2 font-bebas">General Programs</h2>
 						</div>
 						<div className="flex justify-center items-center">
 							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="justify-end card-body">
-										<h2 className="card-title text-primary-content">Robotics</h2> 
-										<p className="text-primary-content text-md">Learn to design and build Robots and compete with other students!</p> 
+										<h3 className="card-title text-primary-content">Robotics</h3> 
+										<h4 className="text-primary-content text-md">Learn to design and build Robots and compete with other students!</h4> 
 										<div className="card-actions">
 											<Link href="/programs/robotics" passHref>
 												<button className="btn btn-secondary">
@@ -42,8 +42,8 @@ const Programs = (): JSX.Element => {
 								</div>
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="justify-end card-body">
-										<h2 className="card-title text-primary-content">3D Modeling</h2> 
-										<p className="text-primary-content text-md">Practice and create 3D models and print them out with a 3D printer!</p>
+										<h3 className="card-title text-primary-content">3D Modeling</h3> 
+										<h4 className="text-primary-content text-md">Practice and create 3D models and print them out with a 3D printer!</h4>
 										<div className="card-actions">
 										<Link href="/programs/3d-modeling" passHref>
 												<button className="btn btn-secondary">
@@ -56,13 +56,13 @@ const Programs = (): JSX.Element => {
 							</div>
 						</div>
 						<div className="text-center text-primary-content">
-							<p className="text-2xl pb-2 font-bebas">Programs Coming Soon</p>
+							<h2 className="text-2xl pb-2 font-bebas">Programs Coming Soon</h2>
 						</div>
 						<div className="flex justify-center items-center">
 							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="justify-end card-body">
-										<h2 className="card-title text-primary-content">Web Development</h2> 
+										<h3 className="card-title text-primary-content">Web Development</h3> 
 										<p className="text-primary-content text-md">
 										Learn to design and create websites for other clubs!
 										<br />
@@ -72,7 +72,7 @@ const Programs = (): JSX.Element => {
 								</div>
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="justify-end card-body">
-										<h2 className="card-title text-primary-content">Rube Goldberg</h2> 
+										<h3 className="card-title text-primary-content">Rube Goldberg</h3> 
 										<p className="text-primary-content text-md">
 										Create eccentric machines and compete against other schools in-state!
 										<br />
@@ -83,7 +83,7 @@ const Programs = (): JSX.Element => {
 								<div className="transform duration-200 hover:-translate-y-2">
 									<div className="ease-in-out card shadow-xl">
 										<div className="justify-end card-body">
-											<h2 className="card-title text-primary-content">SeaPerch</h2> 
+											<h3 className="card-title text-primary-content">SeaPerch</h3> 
 											<p className="text-primary-content text-md">
 											Build underwater machines and compete with other schools in our state!
 											<br />
@@ -95,7 +95,7 @@ const Programs = (): JSX.Element => {
 								<div className="transform duration-200 hover:-translate-y-2">
 									<div className="ease-in-out card shadow-xl">
 										<div className="justify-end card-body">
-											<h2 className="card-title text-primary-content">RC Cars</h2> 
+											<h3 className="card-title text-primary-content">RC Cars</h3> 
 											<p className="text-primary-content text-md">
 											Learn how to build and configure RC Cars with fellow students!
 											<br />

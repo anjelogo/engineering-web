@@ -24,9 +24,9 @@ const Home = (): JSX.Element => {
 										/>
 									</span>
 								</div>
-								<p className="mb-5">
+								<h2 className="mb-5">
 									The Official Engineering Club of University Preparatory.
-								</p>
+								</h2>
 								<div className="justify-center space-y-4 lg:space-y-0 lg:flex lg:space-x-4">
 									<Link href="/programs" passHref>
 										<button className="btn btn-primary-content btn-wide">

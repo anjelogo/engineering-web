@@ -27,40 +27,40 @@ const RoboticsProgram = (): JSX.Element => {
 				<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">
 					<div className="col-start-2 col-span-3">
 						<div className="text-center 2xl:text-left text-primary-content">
-							<p className="text-3xl pb-2 font-abril">Program Description</p>
+							<h3 className="text-3xl pb-2 font-abril">Program Description</h3>
 						</div>
 						<div className="divider" />
 						<div className="pt-5">
 								<div className="card shadow-xl">
 									<div className="text-center 2xl:text-left card-body">
-										<p className="text-primary-content text-md">
+										<h4 className="text-primary-content text-md">
 										Explore engineering with Robotics. A combination of Computer Science and Engineering.
 										<br />
 										<br />
 										Students will learn to construct robots using kits provided by Engineering Club and learn essential engineering skills like designing, constructing, operating, and the usage of robots.
-										</p> 
+										</h4> 
 									</div>
 								</div>
 							</div>
 							<div className="text-center text-primary-content pt-7">
-								<p className="text-3xl pb-2 font-abril">Competition Details
+								<h3 className="text-3xl pb-2 font-abril">Competition Details
 									<div className="badge badge-error mx-2">WIP</div>
-								</p>
+								</h3>
 							</div>
 							<div className="divider" />
 							<div className="pt-5">
 								<div className="card shadow-xl">
 									<div className="text-left card-body">
-										<p className="text-primary-content text-md">
+										<h4 className="text-primary-content text-md">
 										Check back later for more information.
-										</p> 
+										</h4> 
 									</div>
 								</div>
 							</div>
 						</div>
 						<div className="col-start-5 col-span-1">
 							<div className="text-center text-primary-content">
-								<p className="text-3xl pb-2 font-abril">Program Details</p>
+								<h3 className="text-3xl pb-2 font-abril">Program Details</h3>
 							</div>
 							<div className="divider" />
 							<div className="pt-5 space-y-10">
@@ -76,13 +76,13 @@ const RoboticsProgram = (): JSX.Element => {
 										/>
 									</figure>
 									<div className="text-center card-body">
-										<h2 className="card-title text-primary-content font-bebas text-2xl">Program Representative</h2> 
+										<h4 className="card-title text-primary-content font-bebas text-2xl">Program Representative</h4> 
 										<p className="text-primary-content font-bebas text-xl">Orlando Pereira</p> 
 									</div>
 								</div>
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="text-center card-body">
-										<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
+										<h4 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h4>
 										<p className="text-primary-content text-md">Thursdays A Lunch
 											<div className="badge mx-2">401</div>
 										</p>
