@@ -84,7 +84,7 @@ const RoboticsProgram = (): JSX.Element => {
 									<div className="text-center card-body">
 										<h4 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h4>
 										<p className="text-primary-content text-md">Thursdays A Lunch
-											<div className="badge mx-2">401</div>
+											<div className="badge mx-2">705</div>
 										</p>
 										<p className="text-primary-content text-md">Thursdays B Lunch
 											<div className="badge mx-2">802</div>
