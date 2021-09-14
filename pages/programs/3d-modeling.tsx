@@ -6,7 +6,10 @@ import Image from "next/image"
 const ModelingProgram = (): JSX.Element => {
 
 	return (
-		<Layout title="3D Modeling - Engineering Club">
+		<Layout
+			title="3D Modeling - Engineering Club"
+			description="The official 3D Modeling program of Univeristy Preparatory's Engineering Club"
+		>
 			<div className="bg-primary">
 				<div className="mt-0">
 					<div className="hero bg-3dmodeling min-h-screen">

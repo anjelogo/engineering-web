@@ -4,7 +4,10 @@ import Layout from "../components/layout";
 const ContactUsPage = (): JSX.Element => {
 
 	return (
-		<Layout title="Contact Us - Engineering Club">
+		<Layout
+			title="Contact Us - Engineering Club"
+			description="Contact the officers and important people of University Preparatory's Engineering Club"
+		>
 			<body className="bg-primary">
 				<div className="mt-28 m-10">
 					<div className="bg-primary min-h-screen">

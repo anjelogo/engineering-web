@@ -4,7 +4,10 @@ import Layout from "../../components/layout";
 
 const Programs = (): JSX.Element => {
 	return (
-		<Layout title="Programs - Engineering Club">
+		<Layout
+			title="3D Modeling - Engineering Club"
+			description="The official programs of Univeristy Preparatory's Engineering Club"
+		>
 			<div className="bg-primary">
 				<div className="mt-28 m-10">
 					<div>

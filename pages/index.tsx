@@ -5,7 +5,10 @@ import Layout from "../components/layout";
 
 const Home = (): JSX.Element => {
 	return (
-		<Layout title="Home - Engineering Club">
+		<Layout
+			title="Home - Engineering Club"
+			description="The official website of the Engineering Club of University Preparatory."
+		>
 			<body className="bg-primary">
 				<div className="mt-28 md:mt-0">
 					<div className="hero bg-primary min-h-screen">

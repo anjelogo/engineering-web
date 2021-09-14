@@ -6,7 +6,10 @@ import Image from "next/image"
 const RoboticsProgram = (): JSX.Element => {
 
 	return (
-		<Layout title="Robotics - Engineering Club">
+		<Layout
+			title="Robotics - Engineering Club"
+			description="The offical Robotics program of University Preparatory's Engineering Club"
+		>
 			<div className="bg-primary">
 				<div className="mt-0">
 					<div className="hero bg-robotics min-h-screen">
