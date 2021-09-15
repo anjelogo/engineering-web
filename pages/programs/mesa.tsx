@@ -50,6 +50,44 @@ const NESAProgram = (): JSX.Element => {
 									</div>
 								</div>
 							</div>
+							<div className="text-center 2xl:text-left text-primary-content pt-7">
+								<h3 className="text-3xl pb-2 font-abril">Frequently Asked Questions</h3>
+							</div>
+							<div className="divider" />
+							<div className="pt-5 text-primary space-y-5">
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: Do I need experience?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> For this particular program, we do advise you have experience in what ever you want to compete in.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: Are these competitons out-of-school?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> Yes. In previous years, competitons are usually hosted in various Universities of California.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: Will transportation be provided?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> Depends on the size of teams and how many people are going. Usually we fit in cars, but in the rare occurance we need a bus, we get a bus.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: Will we need to spend our own money?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> Most, if not all, competitons will be covered by MESA.</p>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div className="col-start-5 col-span-1">
 							<div className="text-center text-primary-content">

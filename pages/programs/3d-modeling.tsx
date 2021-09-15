@@ -42,6 +42,28 @@ const ModelingProgram = (): JSX.Element => {
 									</div>
 								</div>
 							</div>
+							<div className="text-center 2xl:text-left text-primary-content pt-7">
+								<h3 className="text-3xl pb-2 font-abril">Frequently Asked Questions</h3>
+							</div>
+							<div className="divider" />
+							<div className="pt-5 text-primary space-y-5">
+								<div tabIndex={0} className="collapse w-full bg-accent rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: Do I need experience?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> No! This program invites people who aren{"'"}t experienced in 3D Modeling to learn with each other and teach each other new things!</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: What are 3D printers?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> 3D Printers are literally printers that print 3D Models.</p>
+									</div>
+								</div>
+							</div>
 						</div>
 						<div className="col-start-5 col-span-1">
 							<div className="text-center text-primary-content">

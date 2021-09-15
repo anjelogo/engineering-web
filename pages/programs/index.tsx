@@ -53,7 +53,7 @@ const Programs = (): JSX.Element => {
 										</div> 
 									</div>
 								</div>
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<div className="hidden transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="justify-end card-body">
 										<h3 className="card-title text-primary-content">MESA Competitons</h3> 
 										<h4 className="text-primary-content text-md">Compete in competitions by University of California-backed organization MESA!</h4>

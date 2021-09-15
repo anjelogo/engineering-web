@@ -9,6 +9,7 @@ const Sitemap = async (req: any, res: any) => {
     { url: "/programs", changefreq: "daily", priority: 0.3 },
 		{ url: "/programs/robotics", changefreq: "daily", priority: 0.3 },
 		{ url: "/programs/3d-modeling", changefreq: "daily", priority: 0.3 },
+		{ url: "/programs/mesa", changefreq: "daily", priority: 0.3 },
 		{ url: "/404", changefreq: "daily", priority: 0.3 },
   ];
 
