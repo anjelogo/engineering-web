@@ -23,7 +23,7 @@ const RoboticsProgram = (): JSX.Element => {
 						</div>
 					</div>
 				</div>
-				<div className="bg-primary min-h-screen mt-10">
+				<div className="bg-primary min-h-screen mt-10 lg:mb-10">
 				<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">
 					<div className="col-start-2 col-span-3">
 						<div className="text-center 2xl:text-left text-primary-content">
@@ -42,17 +42,31 @@ const RoboticsProgram = (): JSX.Element => {
 									</div>
 								</div>
 							</div>
-							<div className="text-center text-primary-content pt-7">
-								<h3 className="text-3xl pb-2 font-abril">Competition Details
-									<div className="badge badge-error mx-2">WIP</div>
-								</h3>
+							<div className="text-center 2xl:text-left text-primary-content pt-7">
+								<h3 className="text-3xl pb-2 font-abril">Competition Details</h3>
 							</div>
 							<div className="divider" />
 							<div className="pt-5">
 								<div className="card shadow-xl">
 									<div className="text-left card-body">
 										<h4 className="text-primary-content text-md">
-										Check back later for more information.
+										<strong>LEGO Mindstorms</strong>
+										<br />
+										Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
+										<br />
+										<br />
+										Obstacle Course/Maze - Students will build a robot which can traverse a maze/obstacle course. This section will be fully coded, which means that students will have no control over their robots once they enter the course.
+										<br />
+										<br />
+										“Rocket League” - Students will team up with other groups and participate in a game of soccer using their robots. Like the game “Rocket League”, students will use their robots in order to score as many goals as possible in a set amount of time. The team with the most goals wins.
+										<br />
+										<br />
+										<strong>VEX</strong>
+										<br />
+										Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
+										<br />
+										<br />
+										Obstacle Course - Students will build a robot that can traverse an obstacle course which will have included tasks such as retrieval of an object, pressing a button, and/or completing a puzzle. Students will be graded on time and accuracy.
 										</h4> 
 									</div>
 								</div>
@@ -84,7 +98,7 @@ const RoboticsProgram = (): JSX.Element => {
 									<div className="text-center card-body">
 										<h4 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h4>
 										<p className="text-primary-content text-md">Thursdays A Lunch
-											<div className="badge mx-2">401</div>
+											<div className="badge mx-2">705</div>
 										</p>
 										<p className="text-primary-content text-md">Thursdays B Lunch
 											<div className="badge mx-2">802</div>
