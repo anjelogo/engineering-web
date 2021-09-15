@@ -30,7 +30,7 @@ const Programs = (): JSX.Element => {
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="justify-end card-body">
 										<h3 className="card-title text-primary-content">Robotics</h3> 
-										<h4 className="text-primary-content text-md">Learn to design and build Robots and compete with other students!</h4> 
+										<h4 className="text-primary-content text-md">Learn to design and build robots and compete with other students!</h4> 
 										<div className="card-actions">
 											<Link href="/programs/robotics" passHref>
 												<button className="btn btn-secondary">
@@ -43,11 +43,29 @@ const Programs = (): JSX.Element => {
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
 									<div className="justify-end card-body">
 										<h3 className="card-title text-primary-content">3D Modeling</h3> 
-										<h4 className="text-primary-content text-md">Practice and create 3D models and print them out with a 3D printer!</h4>
+										<h4 className="text-primary-content text-md">Learn to design and create 3D models and print them out with 3D printers!</h4>
 										<div className="card-actions">
-										<Link href="/programs/3d-modeling" passHref>
+											<Link href="/programs/3d-modeling" passHref>
 												<button className="btn btn-secondary">
 													Learn More
+												</button>
+											</Link>
+										</div> 
+									</div>
+								</div>
+								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+									<div className="justify-end card-body">
+										<h3 className="card-title text-primary-content">MESA Competitons</h3> 
+										<h4 className="text-primary-content text-md">Compete in competitions by University of California-backed organization MESA!</h4>
+										<div className="card-actions">
+											<Link href="/programs/mesa" passHref>
+												<button className="btn btn-secondary">
+													Learn More
+												</button>
+											</Link>
+											<Link href="https://mesa.ucop.edu/our-partners/" passHref>
+												<button className="btn btn-primary">
+													Visit Website
 												</button>
 											</Link>
 										</div> 
