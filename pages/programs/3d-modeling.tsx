@@ -23,7 +23,7 @@ const ModelingProgram = (): JSX.Element => {
 						</div>
 					</div>
 				</div>
-				<div className="bg-primary min-h-screen mt-10">
+				<div className="bg-primary min-h-screen mt-10 lg:mb-10">
 					<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">
 						<div className="col-start-2 col-span-3">
 							<div className="text-center 2xl:text-left text-primary-content">
@@ -61,6 +61,54 @@ const ModelingProgram = (): JSX.Element => {
 									</div> 
 									<div className="collapse-content"> 
 										<p><strong>A:</strong> 3D Printers are literally printers that print 3D Models.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: What am I allowed to model/print?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> You can model anything you want outside of meetings but models you want to print, or show during school, will have to be school appropriate.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: Do I have to know how to 3D model to 3D print?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> No, if you are just interested in printing you can find models online and get them printed.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: Are the 3D modeling programs paid?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> The programs we teach in the 3D modeling program are free.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: How many 3D printers are available to print?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> We have 3 3D printers to print out models with.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: What are 3D prints made out of?
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> The materials we use are PLA and ABS, which are plastics that are used to create strong builds.</p>
+									</div>
+								</div>
+								<div tabIndex={0} className="collapse w-full bg-primary-content rounded-box collapse-plus"> 
+									<div className="collapse-title text-xl font-medium">
+										Q: How long do 3D models take to print? 
+									</div> 
+									<div className="collapse-content"> 
+										<p><strong>A:</strong> Print times are dependent on the size of the model, smaller models will take about an hour or two and larger models can take up to four or six hours.</p>
 									</div>
 								</div>
 							</div>
