@@ -135,14 +135,11 @@ const ModelingProgram = (): JSX.Element => {
 										<p className="text-primary-content font-bebas text-xl">Alexander Medina</p> 
 									</div>
 								</div>
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<div className="transform duration-200 ease-in-out card hover:bg-accent shadow-xl hover:-translate-y-2">
 									<div className="text-center card-body">
 										<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
-										<p className="text-primary-content text-md">Thursdays B Lunch
-											<div className="badge mx-2">802</div>
-										</p>
-										<p className="text-primary-content text-md">Thursdays Afterschool
-											<div className="badge mx-2">802</div>
+										<p className="text-primary-content text-md">
+											<div className="badge badge-error mx-2">TO BE DETERMINED</div>
 										</p>
 										<button className="mt-4 btn btn-disabled">Sign In</button>
 									</div>
