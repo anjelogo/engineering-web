@@ -9,7 +9,7 @@ class MyDocument extends Document {
 					<meta name="theme-color" property="og:theme-color" content="white" />
 					<meta name="theme-color" property="og:theme-color" media="(prefers-color-scheme: light)" content="white" />
 					<meta name="theme-color" property="og:theme-color" media="(prefers-color-scheme: dark)" content="black" />
-					<meta name="keywords" content="University Preparatory, School Club, VVUHSD, VVSTU, Student Club, Club, Engineering, Engineering Club, Afterschool Club, Lunch Club" />
+					<meta name="keywords" content="University Preparatory, School Club, VVUHSD, VVSTU, Student Club, Club, Engineering, Engineering Club, Afterschool Club, Lunch Club, UP Engineering Club, UP Engineering, UP Clubs, UP Club, University Prep Engineering Club, University Preparatory Engineering Club" />
 					<meta name="robots" content="index, follow" />
 					<meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
 					<meta name="language" content="English" />
