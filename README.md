@@ -9,6 +9,6 @@ The official website for Engineering Club at University Preparatory
 - [ ] More heros with information in home page
 - [x] Programs Page redesign
 - [x] 404 Page redesign
-- [ ] Add more programs
+- [x] Add more programs
 - [ ] Add Online Sign In
 - [ ] Add About us
