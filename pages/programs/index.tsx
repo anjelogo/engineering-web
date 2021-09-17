@@ -91,22 +91,36 @@ const Programs = (): JSX.Element => {
 								</div>
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2 lg:w-1/4">
 									<div className="card-body">
-											<h3 className="card-title text-primary-content">SeaPerch</h3> 
-											<p className="text-primary-content text-md">
-											Build underwater machines and compete with other schools in our state!
-											<br />
-											<strong>Program Starting Late September</strong>
-											</p>
+										<h3 className="card-title text-primary-content">SeaPerch</h3> 
+										<p className="text-primary-content text-md">
+										Build underwater machines and compete with other schools in our state!
+										<br />
+										<strong>Program Starting Late September</strong>
+										</p>
 									</div>
 								</div>
 								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2 lg:w-1/4">
 									<div className="card-body">
-											<h3 className="card-title text-primary-content">RC Cars</h3> 
-											<p className="text-primary-content text-md">
-											Learn how to build and configure RC Cars with fellow students!
-											<br />
-											<strong>Program Coming Soon</strong>
-											</p> 
+										<h3 className="card-title text-primary-content">RC Cars</h3> 
+										<p className="text-primary-content text-md">
+										Learn how to build and configure RC Cars with fellow students!
+										<br />
+										<strong>Program Coming Soon</strong>
+										</p> 
+									</div>
+								</div>
+							</div>
+						</div>
+						<div className="flex justify-center items-center">
+							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
+								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+									<div className="card-body">
+										<h3 className="card-title text-primary-content">Carpentry</h3> 
+										<p className="text-primary-content text-md">
+										Learn to cut, work, and install materials for the construction of various projects!
+										<br />
+										<strong>Program Starting Next Semester</strong>
+										</p>
 									</div>
 								</div>
 							</div>

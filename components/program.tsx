@@ -77,7 +77,7 @@ export const ProgramBodyElement = (
 ): JSX.Element => {
 	return (
 		<>
-			<div className={`text-center ${!left ?? "2xl:text-left"} text-primary-content ${top ?? "pt-7"}`}>
+			<div className={`text-center ${left ?? "2xl:text-left"} text-primary-content ${top ?? "pt-7"}`}>
 				<h3 className="text-3xl pb-2 font-abril">{title}</h3>
 			</div>
 			<div className="divider" />
