@@ -11,3 +11,4 @@ The official website for Engineering Club at University Preparatory
 - [x] 404 Page redesign
 - [ ] Add more programs
 - [ ] Add Online Sign In
+- [ ] Add About us
