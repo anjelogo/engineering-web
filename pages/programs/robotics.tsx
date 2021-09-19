@@ -3,9 +3,9 @@ import Layout from "../../components/layout";
 import Orlando from "../../public/orlando.jpg";
 import Anjelo from "../../public/anjelo.jpg";
 import Image from "next/image"
-import Link from "next/link"
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor } from "../../components/utilities";
+import SignInModalProvider from "../../components/SignInModalProvider";
 
 const RoboticsProgram = (): JSX.Element => {
 
@@ -183,21 +183,23 @@ const RoboticsProgram = (): JSX.Element => {
 									</div>
 								</div>
 						), (
-							<div className="transform duration-200 ease-in-out card bg-secondary shadow-xl hover:-translate-y-2">
-									<div className="text-center card-body">
-										<h4 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h4>
-										<p className="text-primary-content text-md">Thursdays A Lunch
-											<div className="badge mx-2">705</div>
-										</p>
-										<p className="text-primary-content text-md">Thursdays B Lunch
-											<div className="badge mx-2">802</div>
-										</p>
-										<p className="text-primary-content text-md">Thursdays Afterschool
-											<div className="badge mx-2">802</div>
-										</p>
-										<button className="mt-4 btn btn-disabled">Sign In</button>
+							<div className="card bg-secondary shadow-xl">
+								<div className="text-center items-center card-body">
+									<h4 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h4>
+									<p className="text-primary-content text-md">Thursdays A Lunch
+										<div className="badge mx-2">705</div>
+									</p>
+									<p className="text-primary-content text-md">Thursdays B Lunch
+										<div className="badge mx-2">802</div>
+									</p>
+									<p className="text-primary-content text-md">Thursdays Afterschool
+										<div className="badge mx-2">802</div>
+									</p>
+									<div className="card-actions">
+										<SignInModalProvider />
 									</div>
 								</div>
+							</div>
 						)
 					]}
 				/>}
