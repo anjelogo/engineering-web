@@ -81,6 +81,9 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 											<Link href="/programs">Programs</Link> 
 										</li>
 										<li>
+											<Link href="/about">About Us</Link> 
+										</li>
+										<li>
 											<Link href="/contact">Contact Us</Link> 
 										</li>
 									</ul>
@@ -89,7 +92,9 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 
 							{/* MOBILE LOGO */}
 
-							<p className="md:hidden navbar-center px-2 mx-2 font-abril text-2xl text-primary">EC</p>
+							<Link href="/" passHref>
+								<a className="md:hidden navbar-center px-2 mx-2 font-abril text-2xl text-primary">EC</a>
+							</Link>
 
 							{/* DESKTOP LINKS */}
 
@@ -104,6 +109,11 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 										<button className="btn btn-primary-content btn-sm">
 											Programs
 										</button></Link>
+									<Link href="/about" passHref>
+										<button className="btn btn-primary-content btn-sm">
+											About Us
+										</button>
+									</Link>
 									<Link href="/contact" passHref>
 										<button className="btn btn-primary-content btn-sm">
 											Contact Us
