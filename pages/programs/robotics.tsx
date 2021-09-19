@@ -5,7 +5,7 @@ import Anjelo from "../../public/anjelo.jpg";
 import Image from "next/image"
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor } from "../../components/utilities";
-import SignInModalProvider from "../../components/SignInModalProvider";
+import SignInProvider from "../../components/SignInProvider";
 
 const RoboticsProgram = (): JSX.Element => {
 
@@ -196,7 +196,7 @@ const RoboticsProgram = (): JSX.Element => {
 										<div className="badge mx-2">802</div>
 									</p>
 									<div className="card-actions">
-										<SignInModalProvider />
+										<SignInProvider program="robotics"/>
 									</div>
 								</div>
 							</div>

@@ -56,7 +56,7 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 				<header className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
 
 					{/* Use Navbar fade-in and fade-out if mobile breakpoint */}
-					<div className={/* this.state.visible ? "visible" : "invisible md:visible" */ "visible"}>
+					<div className={this.state.visible ? "visible" : "invisible md:visible"}>
 
 						<nav className="navbar mb-2 shadow-lg bg-primary-content text-neutral-content rounded-box">
 							
