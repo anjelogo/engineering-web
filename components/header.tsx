@@ -8,6 +8,12 @@ interface NavbarProps {
 interface NavbarStates {
 	prevScrollpos: number;
 	visible: boolean;
+	focused: boolean;
+}
+
+const styles = {
+	focused: "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300",
+	unfocused: "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-600"
 }
 
 export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
@@ -17,7 +23,8 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 
 		this.state = {
 			prevScrollpos: 0,
-			visible: true
+			visible: true,
+			focused: true
 		};
   }
 
@@ -56,24 +63,24 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 				<header className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
 
 					{/* Use Navbar fade-in and fade-out if mobile breakpoint */}
-					<div className={this.state.visible ? "visible" : "invisible md:visible"}>
+					<div className={/* this.state.visible ? "visible" : "invisible md:visible" */ "visible"}>
 
-						<nav className="navbar mb-2 shadow-lg bg-primary-content text-neutral-content rounded-box">
+						<nav className={`${this.state.focused ? styles.focused : styles.unfocused} navbar mb-2 rounded-box text-primary-content`}>
 							
 							{/* DESKTOP LOGO */}
 
-							<p className="hidden navbar-start md:flex px-2 mx-2 font-abril text-2xl text-primary">EC</p>
+							<p className="hidden navbar-start md:flex px-2 mx-2 font-abril text-2xl">EC</p>
 
 							{/* MOBILE MENU */}
 
 							<div className="md:hidden navbar-start flex" id="toggle">
 								<div className="dropdown dropdown-hover">
-									<div tabIndex={0} className="btn btn-square btn-primary-content">
+									<div tabIndex={0} className="btn btn-ghost btn-square">
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
 										</svg>
 									</div>
-									<ul tabIndex={0} className="p-2 shadow menu dropdown-content bg-primary rounded-box w-52 text-primary-content">
+									<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
 										<li>
 											<Link href="/">Home</Link>
 										</li> 
@@ -93,7 +100,7 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 							{/* MOBILE LOGO */}
 
 							<Link href="/" passHref>
-								<a className="md:hidden navbar-center px-2 mx-2 font-abril text-2xl text-primary">EC</a>
+								<a className="md:hidden navbar-center px-2 mx-2 font-abril text-2xl">EC</a>
 							</Link>
 
 							{/* DESKTOP LINKS */}
@@ -101,21 +108,21 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 							<div className="hidden px-2 mx-2 navbar-center md:flex">
 								<div className="flex items-stretch text-lg">
 									<Link href="/" passHref>
-										<button className="btn btn-primary-content btn-sm">
+										<button className="btn btn-ghost btn-sm">
 											Home
 										</button>
 									</Link> 
 									<Link href="/programs" passHref>
-										<button className="btn btn-primary-content btn-sm">
+										<button className="btn btn-ghost btn-sm">
 											Programs
 										</button></Link>
 									<Link href="/about" passHref>
-										<button className="btn btn-primary-content btn-sm">
+										<button className="btn btn-ghost btn-sm">
 											About Us
 										</button>
 									</Link>
 									<Link href="/contact" passHref>
-										<button className="btn btn-primary-content btn-sm">
+										<button className="btn btn-ghost btn-sm">
 											Contact Us
 										</button>
 									</Link>
@@ -126,7 +133,7 @@ export default class Navbar extends React.Component<NavbarProps, NavbarStates> {
 
 							<div className="navbar-end">
 								<div className="flex-none" id="toggle">
-									<button aria-label="Theme Changer" data-toggle-theme="darktheme,lighttheme" data-act-class="ACTIVECLASS" className="btn btn-square btn-primary-content">
+									<button aria-label="Theme Changer" data-toggle-theme="darktheme,lighttheme" data-act-class="ACTIVECLASS" className="btn btn-ghost btn-square">
 										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 darktheme" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 											<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
 										</svg>
