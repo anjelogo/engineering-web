@@ -32,9 +32,9 @@ export const ProgramWrapper = (
 									<h1>{title}</h1>
 								</div>
 								<h2 className="text-2xl bg-primary p-2 font-bebas">{subtitle ?? "..."}</h2>
-								</div>
 							</div>
 						</div>
+					</div>
 					{alerts}
 					<div className="bg-primary min-h-screen mt-10 lg:mb-10">
 						{

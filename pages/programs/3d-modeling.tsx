@@ -3,6 +3,7 @@ import Layout from "../../components/layout";
 import Alex from "../../public/alex.jpg"
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor, RepresentativeCard } from "../../components/utilities";
+import SignInProvider from "../../components/SignInProvider";
 
 const ModelingProgram = (): JSX.Element => {
 
@@ -89,13 +90,15 @@ const ModelingProgram = (): JSX.Element => {
 								name="Alexander Medina"
 							/>
 						), (
-							<div className="transform duration-200 ease-in-out card hover:bg-accent shadow-xl hover:-translate-y-2">
-								<div className="text-center card-body">
+							<div className="card bg-secondary shadow-xl">
+								<div className="text-center items-center card-body">
 									<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
-										<p className="text-primary-content text-md">
-											<div className="badge badge-error mx-2">TO BE DETERMINED</div>
-										</p>
-									<button className="mt-4 btn btn-disabled">Sign In</button>
+									<p className="text-primary-content text-md">Thursdays Afterschool
+										<div className="badge mx-2">705	</div>
+									</p>
+									<div className="card-actions">
+										<SignInProvider program="robotics"/>
+									</div>
 								</div>
 							</div>
 						)
