@@ -94,7 +94,7 @@ const ModelingProgram = (): JSX.Element => {
 								<div className="text-center items-center card-body">
 									<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
 									<p className="text-primary-content text-md">Thursdays Afterschool
-										<div className="badge mx-2">705	</div>
+										<div className="badge mx-2">705</div>
 									</p>
 									<div className="card-actions">
 										<SignInProvider program="robotics"/>
