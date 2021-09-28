@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-key */
 import React from "react";
 import Layout from "../../components/layout";
-import Anjelo from "../../public/anjelo.jpg"
+import Anjelo from "../../public/anjelo.jpg";
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor, RepresentativeCard } from "../../components/utilities";
 
@@ -21,7 +22,7 @@ const NESAProgram = (): JSX.Element => {
 			q: "Will we need to spend our own money?",
 			a: "Most, if not all, competitons will be covered by MESA."
 		}
-	]
+	];
 
 	return (
 		<Layout
@@ -49,9 +50,9 @@ const NESAProgram = (): JSX.Element => {
 									<div className="card shadow-xl">
 										<div className="text-center card-body">
 											<h4 className="text-primary-content text-md">
-											<strong>{'"'}MESA is a college and career prep engine that propels student diversity and achievement in science, technology, engineering and math.{'"'}</strong>
-											<br />
-											<br />
+												<strong>{"\""}MESA is a college and career prep engine that propels student diversity and achievement in science, technology, engineering and math.{"\""}</strong>
+												<br />
+												<br />
 											Engineering Club{"'"}s MESA Program allows students to compete in MESA{"'"}s competitons.
 											</h4>
 										</div>
@@ -75,9 +76,9 @@ const NESAProgram = (): JSX.Element => {
 							<div className="transform duration-200 ease-in-out card hover:bg-accent shadow-xl hover:-translate-y-2">
 								<div className="text-center card-body">
 									<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
-										<p className="text-primary-content text-md">
-											<div className="badge badge-error mx-2">NOT AVAILABLE</div>
-										</p>
+									<p className="text-primary-content text-md">
+										<div className="badge badge-error mx-2">NOT AVAILABLE</div>
+									</p>
 								</div>
 							</div>
 						)
@@ -85,8 +86,8 @@ const NESAProgram = (): JSX.Element => {
 				/>}
 			/>
 		</Layout>
-	)
+	);
 
-}
+};
 
 export default NESAProgram;

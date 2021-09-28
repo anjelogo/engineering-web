@@ -1,11 +1,12 @@
-// eslint-disable-next-line @next/next/no-document-import-in-page
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 class MyDocument extends Document {
-  render() {
-    return (
-      <Html lang="en" data-theme="lighttheme">
-        <Head>
+	render() {
+		return (
+			<Html lang="en" data-theme="lighttheme">
+				<Head>
 					<meta name="site-name" property="og:site-name" content="University Preparatory Engineering Club" />
 					<meta name="theme-color" property="og:theme-color" content="white" />
 					<meta name="theme-color" property="og:theme-color" media="(prefers-color-scheme: light)" content="white" />
@@ -31,17 +32,17 @@ class MyDocument extends Document {
 						gtag('js', new Date());
 
 						gtag('config', '${process.env.GOOGLE_ANALYTICS_ID}', {
-              page_path: window.location.pathname,
-            });`
+						page_path: window.location.pathname,
+						});`
 					}}/>
 				</Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
-  }
+				<body>
+					<Main />
+					<NextScript />
+				</body>
+			</Html>
+		);
+	}
 }
 
-export default MyDocument
+export default MyDocument;

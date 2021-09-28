@@ -20,7 +20,7 @@ const ContactUsPage = (): JSX.Element => {
 				</div>
 			</body>
 		</Layout>
-	)
+	);
 
 };
 

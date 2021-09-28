@@ -15,7 +15,7 @@ interface LayoutProps {
 const Layout = ({ children, title, description }: LayoutProps): JSX.Element => {
 
 	useEffect(() => {
-		themeChange(false)
+		themeChange(false);
 	}, []);
 
 	return (
@@ -31,8 +31,8 @@ const Layout = ({ children, title, description }: LayoutProps): JSX.Element => {
 				</div>
 			</Navbar>
 		</>
-	)
+	);
 
-}
+};
 
 export default Layout;

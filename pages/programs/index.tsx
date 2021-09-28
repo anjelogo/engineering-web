@@ -2,6 +2,8 @@ import Link from "next/link";
 import React from "react";
 import Layout from "../../components/layout";
 
+const btnStyles = "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2";
+
 const Programs = (): JSX.Element => {
 	return (
 		<Layout
@@ -17,34 +19,33 @@ const Programs = (): JSX.Element => {
 						</div>
 						<div className="flex justify-center">
 							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<div className={btnStyles}>
 									<div className="card-body">
 										<h3 className="card-title text-primary-content">Robotics</h3> 
 										<h4 className="text-primary-content text-md">Learn to design and build robots and compete in-school with other students!</h4> 
 										<div className="card-actions">
 											<Link href="/programs/robotics" passHref>
-												<button className="btn btn-secondary">
+												<button className="btn btn-ghost text-primary-content">
 													Learn More
 												</button>
 											</Link>
 										</div>
 									</div>
 								</div>
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<div className={btnStyles}>
 									<div className="card-body">
-										<h3 className="card-title text-primary-content">3D Modeling
-										<div className="badge mx-2 badge-error">MEETINGS UPDATED</div></h3> 
+										<h3 className="card-title text-primary-content">3D Modeling</h3> 
 										<h4 className="text-primary-content text-md">Learn to design and create 3D models and print them out with 3D printers!</h4>
 										<div className="card-actions">
 											<Link href="/programs/3d-modeling" passHref>
-												<button className="btn btn-secondary">
+												<button className="btn btn-ghost text-primary-content">
 													Learn More
 												</button>
 											</Link>
 										</div> 
 									</div>
 								</div>
-								<div className="hidden transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<div className={`hidden ${btnStyles}`}>
 									<div className="card-body">
 										<h3 className="card-title text-primary-content">MESA Competitons</h3> 
 										<h4 className="text-primary-content text-md">Compete in competitions by University of California-backed organization MESA!</h4>
@@ -69,43 +70,43 @@ const Programs = (): JSX.Element => {
 						</div>
 						<div className="flex justify-center items-center">
 							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2 lg:w-1/4">
+								<div className={btnStyles}>
 									<div className="card-body">
 										<h3 className="card-title text-primary-content">Web Development</h3> 
 										<p className="text-primary-content text-md">
 										Learn to design and create websites for other clubs!
-										<br />
-										<strong>Applications Coming Soon</strong>
+											<br />
+											<strong>Applications Coming Soon</strong>
 										</p>
 									</div>
 								</div>
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2 lg:w-1/4">
+								<div className={btnStyles}>
 									<div className="card-body">
 										<h3 className="card-title text-primary-content">Rube Goldberg</h3> 
 										<p className="text-primary-content text-md">
 										Create eccentric machines and compete against other schools in-state!
-										<br />
-										<strong>Program Starting Early October</strong>
+											<br />
+											<strong>Program Starting Early October</strong>
 										</p> 
 									</div>
 								</div>
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2 lg:w-1/4">
+								<div className={btnStyles}>
 									<div className="card-body">
 										<h3 className="card-title text-primary-content">SeaPerch</h3> 
 										<p className="text-primary-content text-md">
 										Build underwater machines and compete with other schools in our state!
-										<br />
-										<strong>Program Starting Late September</strong>
+											<br />
+											<strong>Program Starting Late September</strong>
 										</p>
 									</div>
 								</div>
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2 lg:w-1/4">
+								<div className={btnStyles}>
 									<div className="card-body">
 										<h3 className="card-title text-primary-content">RC Cars</h3> 
 										<p className="text-primary-content text-md">
 										Learn how to build and configure RC Cars with fellow students!
-										<br />
-										<strong>Program Coming Soon</strong>
+											<br />
+											<strong>Program Coming Soon</strong>
 										</p> 
 									</div>
 								</div>
@@ -113,13 +114,13 @@ const Programs = (): JSX.Element => {
 						</div>
 						<div className="flex justify-center items-center">
 							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<div className={btnStyles}>
 									<div className="card-body">
 										<h3 className="card-title text-primary-content">Carpentry</h3> 
 										<p className="text-primary-content text-md">
 										Learn to cut, work, and install materials for the construction of various projects!
-										<br />
-										<strong>Program Starting Next Semester</strong>
+											<br />
+											<strong>Program Starting Next Semester</strong>
 										</p>
 									</div>
 								</div>
@@ -129,7 +130,7 @@ const Programs = (): JSX.Element => {
 				</div>
 			</div>
 		</Layout>
-	)
-}
+	);
+};
 
 export default Programs;

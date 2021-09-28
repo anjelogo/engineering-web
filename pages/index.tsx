@@ -45,7 +45,7 @@ const Home = (): JSX.Element => {
 				</div>
 			</body>
 		</Layout>
-	)
-}
+	);
+};
 
 export default Home;

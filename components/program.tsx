@@ -41,10 +41,10 @@ export const ProgramWrapper = (
 							sidebar ? (
 								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">
 									<div className="col-start-2 col-span-3">
-									{body}
+										{body}
 									</div>
 									<div className="col-start-5 col-span-1">
-									{sidebar}
+										{sidebar}
 									</div>
 								</div>
 							) : (
@@ -58,9 +58,9 @@ export const ProgramWrapper = (
 				</div>
 			</div>
 		</>
-	)
+	);
 
-}
+};
 
 export const ProgramBodyElement = (
 	{
@@ -85,8 +85,8 @@ export const ProgramBodyElement = (
 				{content}
 			</div>
 		</>
-	)
-}
+	);
+};
 
 export const ProgramSidebarWrapper = (
 	{
@@ -107,5 +107,5 @@ export const ProgramSidebarWrapper = (
 				{content}
 			</div>
 		</>
-	)
-}
+	);
+};

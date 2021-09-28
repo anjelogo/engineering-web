@@ -1,11 +1,12 @@
+/* eslint-disable react/jsx-key */
 import React from "react";
 import Layout from "../../components/layout";
 import Orlando from "../../public/orlando.jpg";
 import Anjelo from "../../public/anjelo.jpg";
-import Image from "next/image"
+import Image from "next/image";
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor } from "../../components/utilities";
-import SignInProvider from "../../components/SignInProvider";
+import MeetingCard from "../../components/MeetingCard";
 
 const RoboticsProgram = (): JSX.Element => {
 
@@ -67,7 +68,7 @@ const RoboticsProgram = (): JSX.Element => {
 			q: "How much time will we be able to have?",
 			a: "The amount of time you have will depend on the meetings you attend. The more meetings you go to, the more time you have and vice versa."
 		}
-	]
+	];
 
 	return (
 		<Layout
@@ -88,12 +89,12 @@ const RoboticsProgram = (): JSX.Element => {
 									(
 										<div className="card shadow-xl">
 											<div className="text-center 2xl:text-left card-body">
-											<h4 className="text-primary-content text-md">
+												<h4 className="text-primary-content text-md">
 											Explore engineering with Robotics. A combination of Computer Science and Engineering.
-											<br />
-											<br />
+													<br />
+													<br />
 											Students will learn to construct robots using kits provided by Engineering Club and learn essential engineering skills like designing, constructing, operating, and the usage of robots.
-											</h4> 
+												</h4> 
 											</div>
 										</div>
 									)
@@ -107,22 +108,22 @@ const RoboticsProgram = (): JSX.Element => {
 										<div className="card shadow-xl">
 											<div className="text-center 2xl:text-left card-body">
 												<h4 className="text-primary-content text-md">
-												<strong>LEGO Mindstorms</strong>
-												<br />
+													<strong>LEGO Mindstorms</strong>
+													<br />
 												Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
-												<br />
-												<br />
+													<br />
+													<br />
 												Obstacle Course/Maze - Students will build a robot which can traverse a maze/obstacle course. This section will be fully coded, which means that students will have no control over their robots once they enter the course.
-												<br />
-												<br />
+													<br />
+													<br />
 												“Rocket League” - Students will team up with other groups and participate in a game of soccer using their robots. Like the game “Rocket League”, students will use their robots in order to score as many goals as possible in a set amount of time. The team with the most goals wins.
-												<br />
-												<br />
-												<strong>VEX</strong>
-												<br />
+													<br />
+													<br />
+													<strong>VEX</strong>
+													<br />
 												Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
-												<br />
-												<br />
+													<br />
+													<br />
 												Obstacle Course - Students will build a robot that can traverse an obstacle course which will have included tasks such as retrieval of an object, pressing a button, and/or completing a puzzle. Students will be graded on time and accuracy.
 												</h4>
 											</div>
@@ -143,70 +144,72 @@ const RoboticsProgram = (): JSX.Element => {
 									<Image
 										src={Orlando}
 										alt="Orlando"
-											height={100}
-											width={100}
-											layout="responsive"
-											className="mask mask-circle"
-										/>
-									</figure>
-									<div className="text-center card-body items-center">
-										<p className="card-title text-primary-content font-bebas text-xl mb-0">Program Representative</p>
-										<div className="divider mb-0 mt-0 w-5" />
-										<p className="card-title text-primary-content font-bebas text-2xl">Competiton Organizer</p>
-										<p className="text-primary-content font-bebas text-xl">Orlando Pereira</p> 
-									</div>
-								</div>
-						), (
-								<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
-									<figure className="px-20">
-										<Image
-											src={Anjelo}
-											alt="Alex"
-											height={100}
-											width={100}
-											layout="responsive"
-											className="mask mask-circle"
-										/>
-									</figure>
-									<div className="text-center card-body items-center">
-									<p className="card-title text-primary-content font-bebas text-xl mb-0">Program Co-Representative</p>
-										<div className="divider mb-0 mt-0 w-5" />
-										<p className="card-title text-primary-content font-bebas text-2xl">Technical Lead</p>
-										<p className="text-primary-content font-bebas text-xl">Anjelo Go</p> 
-									</div>
-								</div>
-						), (
-							<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
-									<div className="text-center card-body items-center">
-										<h4 className="card-title text-primary-content font-bebas text-2xl">Competiton Documents</h4>
-										<div className="badge mx-2 badge-error">Coming Soon</div>
-									</div>
-								</div>
-						), (
-							<div className="card bg-secondary shadow-xl">
-								<div className="text-center items-center card-body">
-									<h4 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h4>
-									<p className="text-primary-content text-md">Thursdays A Lunch
-										<div className="badge mx-2">705</div>
-									</p>
-									<p className="text-primary-content text-md">Thursdays B Lunch
-										<div className="badge mx-2">802</div>
-									</p>
-									<p className="text-primary-content text-md">Thursdays Afterschool
-										<div className="badge mx-2">802</div>
-									</p>
-									<div className="card-actions">
-										<SignInProvider program="robotics"/>
-									</div>
+										height={100}
+										width={100}
+										layout="responsive"
+										className="mask mask-circle"
+									/>
+								</figure>
+								<div className="text-center card-body items-center">
+									<p className="card-title text-primary-content font-bebas text-xl mb-0">Program Representative</p>
+									<div className="divider mb-0 mt-0 w-5" />
+									<p className="card-title text-primary-content font-bebas text-2xl">Competiton Organizer</p>
+									<p className="text-primary-content font-bebas text-xl">Orlando Pereira</p> 
 								</div>
 							</div>
+						), (
+							<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<figure className="px-20">
+									<Image
+										src={Anjelo}
+										alt="Alex"
+										height={100}
+										width={100}
+										layout="responsive"
+										className="mask mask-circle"
+									/>
+								</figure>
+								<div className="text-center card-body items-center">
+									<p className="card-title text-primary-content font-bebas text-xl mb-0">Program Co-Representative</p>
+									<div className="divider mb-0 mt-0 w-5" />
+									<p className="card-title text-primary-content font-bebas text-2xl">Technical Lead</p>
+									<p className="text-primary-content font-bebas text-xl">Anjelo Go</p> 
+								</div>
+							</div>
+						), (
+							<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
+								<div className="text-center card-body items-center">
+									<h4 className="card-title text-primary-content font-bebas text-2xl">Competiton Documents</h4>
+									<div className="badge mx-2 badge-error">Coming Soon</div>
+								</div>
+							</div>
+						), (
+							<MeetingCard
+								program="Robotics"
+								meetings={
+									[
+										{
+											day: "Thursdays Afterschool",
+											room: "802"
+										},
+										{
+											day: "Thursdays A Lunch",
+											room: "705"
+										},
+										{
+											day: "Thursdays B Lunch",
+											room: "802"
+										}
+									]
+								}
+							/>
 						)
 					]}
 				/>}
 			/>
 		</Layout>
-	)
+	);
 
-}
+};
 
 export default RoboticsProgram;

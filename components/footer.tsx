@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link"
+import Link from "next/link";
 
 const Footer = (): JSX.Element => {
 
@@ -12,7 +12,7 @@ const Footer = (): JSX.Element => {
 				</div>
 			</footer>
 		</div>
-	)
+	);
 
 };
 

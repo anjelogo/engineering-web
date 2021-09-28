@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from "react";
 import Image from "next/image";
 import { ProgramBodyElement } from "./program";
@@ -30,8 +32,8 @@ export const RepresentativeCard = (
 				<p className="text-primary-content font-bebas text-xl">{name}</p> 
 			</div>
 		</div>
-	)
-}
+	);
+};
 
 export const faqConstructor = (
 	faq: {
@@ -66,17 +68,17 @@ export const faqConstructor = (
 					</div>
 				</div>
 			</div>
-		)
-	}
+		);
+	};
 
 	return (
 		<ProgramBodyElement
 			title="Frequently Asked Questions"
 			content={
 				faq.map((e, i) => {
-					return <Elem key={i} q={e.q} a={e.a} styles={e.styles} body={e.body} />
+					return <Elem key={i} q={e.q} a={e.a} styles={e.styles} body={e.body} />;
 				})
 			}
 		/>
-	)
-}
+	);
+};

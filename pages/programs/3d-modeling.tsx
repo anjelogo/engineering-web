@@ -1,9 +1,10 @@
+/* eslint-disable react/jsx-key */
 import React from "react";
 import Layout from "../../components/layout";
-import Alex from "../../public/alex.jpg"
+import Alex from "../../public/alex.jpg";
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor, RepresentativeCard } from "../../components/utilities";
-import SignInProvider from "../../components/SignInProvider";
+import MeetingCard from "../../components/MeetingCard";
 
 const ModelingProgram = (): JSX.Element => {
 
@@ -34,7 +35,7 @@ const ModelingProgram = (): JSX.Element => {
 			q: "How long do 3D models take to print?",
 			a: "Print times are dependent on the size of the model, smaller models will take about an hour or two and larger models can take up to four or six hours."
 		}
-	]
+	];
 
 	return (
 		<Layout
@@ -67,8 +68,8 @@ const ModelingProgram = (): JSX.Element => {
 											<div className="text-center 2xl:text-left card-body">
 												<h4 className="text-primary-content text-md">
 												Explore engineering with 3D Modeling. Manipulate polygons and shapes to create a 3D Model and print them out using a 3D printer.
-												<br />
-												<br />
+													<br />
+													<br />
 												Students will learn to use various programs to construct 3D Models and print them out using 3D Models.
 												</h4> 
 											</div>
@@ -90,24 +91,24 @@ const ModelingProgram = (): JSX.Element => {
 								name="Alexander Medina"
 							/>
 						), (
-							<div className="card bg-secondary shadow-xl">
-								<div className="text-center items-center card-body">
-									<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
-									<p className="text-primary-content text-md">Thursdays Afterschool
-										<div className="badge mx-2">705</div>
-									</p>
-									<div className="card-actions">
-										<SignInProvider program="robotics"/>
-									</div>
-								</div>
-							</div>
+							<MeetingCard
+								program="3D-Modeling"
+								meetings={
+									[
+										{
+											day: "Thursdays Afterschool",
+											room: "705"
+										},
+									]
+								}
+							/>
 						)
 					]}
 				/>}
 			/>
 		</Layout>
-	)
+	);
 
-}
+};
 
 export default ModelingProgram;
