@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-document-import-in-page */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from "react";
 import Document, { Html, Head, Main, NextScript } from "next/document";
