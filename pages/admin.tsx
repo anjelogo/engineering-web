@@ -59,7 +59,7 @@ class Admin extends React.Component<Props, States> {
 						:
 						(this.state.session?.id && ids.includes(this.state.session.id))
 							? (
-								<Dashboard />
+								<Dashboard session={this.state.session}/>
 							)
 							: (
 								<NotFoundPage />
