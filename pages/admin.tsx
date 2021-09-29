@@ -2,7 +2,6 @@
 import { getSession } from "next-auth/client";
 import React from "react";
 import Dashboard from "../components/dashboard/dashboard";
-import Layout from "../components/layout";
 import getIDs from "../lib/getIds";
 import { wrapSession } from "../lib/wrapSession";
 import NotFoundPage from "./404";
@@ -55,16 +54,12 @@ class Admin extends React.Component<Props, States> {
 				{
 					this.state.loading
 						? (
-							<Layout
-								title="Loading - Engineering Club"
-								description="Loading"
-							>
-							</Layout>
+							<NotFoundPage />
 						)
 						:
 						(this.state.session?.id && ids.includes(this.state.session.id))
 							? (
-								<Dashboard />
+								<Dashboard session={this.state.session}/>
 							)
 							: (
 								<NotFoundPage />

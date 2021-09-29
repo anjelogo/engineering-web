@@ -2,7 +2,6 @@
 /* eslint-disable for-direction */
 import React from "react";
 import { getSession } from "next-auth/client";
-import { wrapSession } from "../../lib/wrapSession";
 import Layout from "../layout";
 import { Meeting } from "../../lib/interfaces";
 
@@ -297,4 +296,4 @@ class Dashboard extends React.Component<Props, States> {
 
 }
 
-export default wrapSession(Dashboard);
+export default Dashboard;
