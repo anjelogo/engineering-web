@@ -94,8 +94,10 @@ class MeetingCard extends React.Component<Props, States> {
 													</div>
 												)
 												: (
-													<div className={`btn btn-wide ${this.state.disabled ? "btn-disabled" : "btn-primary-content"}`}>
+													<div data-tip={this.state.disabled ? "Meeting not available" : undefined} className={this.state.disabled ? "tooltip" : undefined}>
+														<div className={`btn btn-wide ${this.state.disabled ? "btn-disabled" : "btn-primary-content"}`}>
 														Sign In to {this.props.program}
+														</div>
 													</div>
 												)
 										}
