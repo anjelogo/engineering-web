@@ -109,6 +109,8 @@ export default function Discover({ meeting }: Props): JSX.Element {
 								<th />
 								<th>Email</th> 
 								<th />
+								<th>Date {"&"} Time</th> 
+								<th />
 							</tr>
 						</tfoot>
 					</table>
