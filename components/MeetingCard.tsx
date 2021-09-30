@@ -32,7 +32,7 @@ class MeetingCard extends React.Component<Props, States> {
 		this.state = {
 			session: this.props.session,
 			loading: true,
-			disabled: true,
+			disabled: false,
 			meeting: null,
 			signedin: false
 		};
