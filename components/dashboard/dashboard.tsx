@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable for-direction */
-import React from "react";
+import React, { useState } from "react";
 import { getSession } from "next-auth/client";
 import Layout from "../layout";
 import { Meeting } from "../../lib/interfaces";
+import dateFormat from "dateformat";
+import Link from "next/link";
 
 interface Props {
 	session: any;
@@ -23,13 +25,13 @@ const MeetingCard = ({ meeting, buttons }: { meeting: Meeting; buttons: JSX.Elem
 	return (
 		<div className="card bg-gray-400 bg-opacity-50 w-full md:w-auto">
 			<div className="card-body items-center text-center">
-				<p className="font-bebas card-title mb-0">{meeting.name}</p>
+				<p className="font-bebas card-title mb-0">{meeting.program}</p>
 				<p className="text-xs">ID: {meeting.id}</p>
 				<div className="divider mb-0 mt-0 w-5" />
 				{
 					meeting.dates.map((date, i) => {
 						return (
-							<p key={i} className="text-primary-content text-md">{date.day}
+							<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
 								<div className="badge mx-2">{date.room}</div>
 							</p>
 						);
@@ -71,6 +73,23 @@ const LoadingCards = (n: number) => {
 	);
 };
 
+const CreateModel = () => {
+	return (
+		<>
+			<input type="checkbox" id="createModal" className="modal-toggle" /> 
+			<div className="modal">
+				<div className="modal-box">
+					<p className="text-lg">Start A Meeting</p>
+					<div className="modal-action">
+						<label htmlFor="createModal" className="btn btn-primary">Accept</label> 
+						<label htmlFor="createModal" className="btn">Close</label>
+					</div>
+				</div>
+			</div>
+		</>
+	);
+};
+
 class Dashboard extends React.Component<Props, States> {
 
 	constructor(props: Props) {
@@ -87,7 +106,7 @@ class Dashboard extends React.Component<Props, States> {
 		};
 	}
 
-	async refreshSession() {
+	async refreshSession(): Promise<void> {
 		this.setState({
 			session: this.props.session,
 			meetings: {
@@ -100,14 +119,23 @@ class Dashboard extends React.Component<Props, States> {
 
 		const session = await getSession();
 
-		//useSWR to fetch meetings
+		const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
 		//filter meetings and set them to states
-		const meetings ={
-			active: [],
-			upcoming: [],
-			past: []
-		};
+		let meetings: { active: Meeting[], upcoming: Meeting[], past: Meeting[] };
+
+		if (data)
+			meetings = {
+				active: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start <= Date.now()).length),
+				upcoming: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start >= Date.now()).length),
+				past: data.filter((m) => m.dates.filter((d) => d.time.end <= Date.now() && d.time.start <= Date.now()).length)
+			};
+		else 
+			meetings = {
+				active: [],
+				upcoming: [],
+				past: []
+			};
 
 		if (!this.props.session.loading && session?.user)
 			this.setState({
@@ -124,11 +152,45 @@ class Dashboard extends React.Component<Props, States> {
 		}
 	}
 
-	async componentDidMount() {
+	async componentDidMount(): Promise<void> {
 		await this.refreshSession();
 	}
 
-	async handleCreateMeeting() {
+	async handleCreateMeeting(meeting: Meeting): Promise<void> {
+
+		await fetch(`/api/meetings/${meeting.id}`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(meeting)
+		});
+
+		await this.refreshSession();
+	}
+
+	async handleDeleteMeeting(meeting: Meeting): Promise<void> {
+
+		await fetch(`/api/meetings/${meeting.id}`, { method: "DELETE" });
+
+		await this.refreshSession();
+	}
+
+	async handleEndMeeting(meeting: Meeting): Promise<void> {
+		const newMeeting = meeting,
+			dates = newMeeting.dates;
+
+		const needToUpdate = dates.filter(d => d.time.end > Date.now());
+
+		for (const d of needToUpdate) {
+			const i = dates.indexOf(d);
+			dates[i].time.end = Date.now();
+		}
+
+		await fetch(`/api/meetings/${meeting.id}`, {
+			method: "POST",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(newMeeting)
+		});
+
 		await this.refreshSession();
 	}
 
@@ -148,9 +210,15 @@ class Dashboard extends React.Component<Props, States> {
 							<p className="text-5xl font-bebas">Admin Dashboard</p>
 						</div>
 						<div className="divider mb-0 mt-0 w-56" />
-						<button className=" mt-5 btn btn-success">
-							Start A Meeting
-						</button>
+						<div>
+							{/* <label htmlFor="createModal" className=" mt-5 btn btn-success">
+								Start A Meeting
+							</label>
+							<CreateModel /> */}
+							<button className="btn btn-success btn-disabled">
+								Schedule New Meeting
+							</button>
+						</div>
 						<div className="mt-5 text-primary-content">
 							<p className="text-3xl font-bebas">Active Meetings</p>
 						</div>
@@ -170,10 +238,12 @@ class Dashboard extends React.Component<Props, States> {
 																meeting={meeting}
 																buttons={
 																	<div className="btn-group">
-																		<button className="btn btn-primary-content">
+																		<Link href={`/meetings/${meeting.id}`} passHref>
+																			<button className="btn btn-primary-content">
 																			View
-																		</button>
-																		<button className="btn btn-accent">
+																			</button>
+																		</Link>
+																		<button className="btn btn-accent" onClick={() => this.handleEndMeeting(meeting)}>
 																			End
 																		</button>
 																	</div>
@@ -215,7 +285,7 @@ class Dashboard extends React.Component<Props, States> {
 																			key={i}
 																			meeting={meeting}
 																			buttons={
-																				<button className="btn btn-primary-content">
+																				<button className="btn btn-primary-content" onClick={() => this.handleDeleteMeeting(meeting)}>
 																					Cancel Meeting
 																				</button>
 																			}
@@ -229,11 +299,11 @@ class Dashboard extends React.Component<Props, States> {
 																<p className="font-bebas card-title mb-0">Schedule New Meeting</p>
 																<div className="divider mb-0 mt-0 w-5" />
 																<div className="card-actions">
-																	<button className="btn btn-circle btn-primary-content btn-xl">
+																	<label htmlFor="createModal" className="btn btn-circle btn-primary-content btn-xl btn-disabled">
 																		<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
 																		</svg>
-																	</button>
+																	</label>
 																</div>
 															</div>
 														</div>
@@ -263,10 +333,12 @@ class Dashboard extends React.Component<Props, States> {
 																meeting={meeting}
 																buttons={
 																	<div className="btn-group">
-																		<button className="btn btn-primary-content">
+																		<Link href={`/meetings/${meeting.id}`} passHref>
+																			<button className="btn btn-primary-content">
 																			View
-																		</button>
-																		<button className="btn btn-accent">
+																			</button>
+																		</Link>
+																		<button className="btn btn-accent" onClick={() => this.handleDeleteMeeting(meeting)}>
 																			Delete
 																		</button>
 																	</div>

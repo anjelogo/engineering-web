@@ -91,17 +91,7 @@ const ModelingProgram = (): JSX.Element => {
 								name="Alexander Medina"
 							/>
 						), (
-							<MeetingCard
-								program="3D-Modeling"
-								meetings={
-									[
-										{
-											day: "Thursdays Afterschool",
-											room: "705"
-										},
-									]
-								}
-							/>
+							<MeetingCard program="3D-Modeling" />
 						)
 					]}
 				/>}

@@ -1,14 +1,35 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Meeting } from "./interfaces";
+import monk, { id as objID } from "monk";
 
-export async function addUserToMeeting(program: string, session: any): Promise<void> {
-	//Find program
+const db = monk(process.env.DB ?? "");
 
-	//Find Meeting from program
+export async function getMeetings(): Promise<Meeting[] | undefined> {
 
-	//Add user to meeting
+	const meetings = await db.get("meetings").aggregate([]);
+
+	return meetings;
+}
+
+export async function addUserToMeeting(meetingID: string, session: any): Promise<void> {
+
+	if (!meetingID || !session)
+		return;
+
+	const meeting = await findMeetingByID(meetingID);
+
+	if (!meeting)
+		return;
+
+	if (meeting.users && meeting.users.map((u) => u.id).includes(session.id))
+		return;
+
+	const users = meeting.users
+		? meeting.users.push({ image: session.user.image, name: session.name, id: session.id, email: session.user.email, timestamp: Date.now() })
+		: [{ image: session.user.image, name: session.name, id: session.id, email: session.user.email, timestamp: Date.now() }];
+
+	await db.get("meetings").findOneAndUpdate({ id: meetingID }, { $set: { users } });
 
 	return;
 }
@@ -19,6 +40,56 @@ export async function findMeetingByID(id: string): Promise<Meeting | undefined> 
 		return undefined;
 
 	//Find ID
+	const meeting = await db.get("meetings").findOne({ id });
+
+	return meeting;
+}
+
+export async function findUserByID(id: string): Promise<Meeting | undefined> {
+
+	if (!id)
+		return undefined;
+
+	//Find ID
+	const meeting = await db.get("meetings").findOne({ _id: objID(id) });
+
+	return meeting;
+}
+
+export async function createMeeting(meeting: Meeting): Promise<void> {
+	if (!meeting)
+		return;
+
+	if (await findMeetingByID(meeting.id))
+		return;
+
+	await db.get("meetings").insert(meeting);
+
+	return;
+}
+
+export async function removeMeeting(meeting: Meeting): Promise<void> {
+	if (!meeting)
+		return;
+
+	const meetingData = await findMeetingByID(meeting.id);
+	if (!meetingData)
+		return;
+	
+	await db.get("meetings").findOneAndDelete({ id: meeting.id });
+	
+	return;
+}
+
+export async function updateMeeting(meeting: Meeting, newMeeting: Meeting): Promise<void> {
+	if (!meeting)
+		return;
+
+	const meetingData = await findMeetingByID(meeting.id);
+	if (!meetingData)
+		return;
+
+	await db.get("meetings").findOneAndUpdate({ id: meeting.id }, { $set: newMeeting });
 
 	return;
 }

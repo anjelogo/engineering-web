@@ -184,25 +184,7 @@ const RoboticsProgram = (): JSX.Element => {
 								</div>
 							</div>
 						), (
-							<MeetingCard
-								program="Robotics"
-								meetings={
-									[
-										{
-											day: "Thursdays Afterschool",
-											room: "802"
-										},
-										{
-											day: "Thursdays A Lunch",
-											room: "705"
-										},
-										{
-											day: "Thursdays B Lunch",
-											room: "802"
-										}
-									]
-								}
-							/>
+							<MeetingCard program="Robotics" />
 						)
 					]}
 				/>}

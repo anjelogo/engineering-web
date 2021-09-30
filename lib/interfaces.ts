@@ -1,8 +1,18 @@
 export interface Meeting {
-	name: string;
+	program: string;
 	id: string;
 	dates: {
-		day: string;
+		time: {
+			start: number;
+			end: number;
+		};
 		room: string;
+	}[]
+	users?: {
+		image: string;
+		name: string;
+		email: string;
+		id: string;
+		timestamp: number;
 	}[]
 }
