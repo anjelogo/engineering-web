@@ -12,8 +12,8 @@ handler
 
 		if (!session) 
 			res.status(401).send("Unauthorized: Not Logged In");
-		else if (session && !["6153aa2b6e211f0008453dfa"].includes(session.id))
-			res.status(401).send("Unauthorized: Missing Permissions");
+		/* else if (session && !["6153aa2b6e211f0008453dfa"].includes(session.id))
+			res.status(401).send("Unauthorized: Missing Permissions"); */
 		else
 			next();
 	})
