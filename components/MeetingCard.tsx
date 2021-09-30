@@ -61,7 +61,7 @@ class MeetingCard extends React.Component<Props, States> {
 				session,
 				meeting,
 				loading: false,
-				signedin: meeting?.users?.map((u: any) => u.id).includes(session.id) as boolean
+				signedin: false
 			});
 		} else {
 			this.setState({
@@ -146,7 +146,7 @@ class MeetingCard extends React.Component<Props, States> {
 																? "tooltip"
 																: undefined
 													}>
-														<div className={`btn btn-wide ${this.state.disabled || this.state.signedin ? "btn-disabled" : "btn-primary-content"}`} onClick={() => this.handleSignIn(this.state.meeting)}>
+														<div className={`btn btn-wide ${this.state.disabled ? "btn-disabled" : "btn-primary-content"}`} onClick={() => this.handleSignIn(this.state.meeting)}>
 															{
 																this.state.signedin
 																	? "Already Signed In"
