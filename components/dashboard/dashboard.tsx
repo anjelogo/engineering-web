@@ -6,6 +6,7 @@ import Layout from "../layout";
 import { Meeting } from "../../lib/interfaces";
 import dateFormat from "dateformat";
 import Link from "next/link";
+import CreateModal from "./createModal";
 
 interface Props {
 	session: any;
@@ -69,23 +70,6 @@ const LoadingCards = (n: number) => {
 					return <Elem key={i} />;
 				})
 			}
-		</>
-	);
-};
-
-const CreateModel = () => {
-	return (
-		<>
-			<input type="checkbox" id="createModal" className="modal-toggle" /> 
-			<div className="modal">
-				<div className="modal-box">
-					<p className="text-lg">Start A Meeting</p>
-					<div className="modal-action">
-						<label htmlFor="createModal" className="btn btn-primary">Accept</label> 
-						<label htmlFor="createModal" className="btn">Close</label>
-					</div>
-				</div>
-			</div>
 		</>
 	);
 };
@@ -211,13 +195,10 @@ class Dashboard extends React.Component<Props, States> {
 						</div>
 						<div className="divider mb-0 mt-0 w-56" />
 						<div>
-							{/* <label htmlFor="createModal" className=" mt-5 btn btn-success">
+							<label htmlFor="createModal" className=" mt-5 btn btn-success">
 								Start A Meeting
 							</label>
-							<CreateModel /> */}
-							<button className="btn btn-success btn-disabled">
-								Schedule New Meeting
-							</button>
+							<CreateModal />
 						</div>
 						<div className="mt-5 text-primary-content">
 							<p className="text-3xl font-bebas">Active Meetings</p>
@@ -238,7 +219,7 @@ class Dashboard extends React.Component<Props, States> {
 																meeting={meeting}
 																buttons={
 																	<div className="btn-group">
-																		<Link href={`/meetings/${meeting.id}`} passHref>
+																		<Link href={`/meetings?id=${meeting.id}`} passHref>
 																			<button className="btn btn-primary-content">
 																			View
 																			</button>
@@ -333,7 +314,7 @@ class Dashboard extends React.Component<Props, States> {
 																meeting={meeting}
 																buttons={
 																	<div className="btn-group">
-																		<Link href={`/meetings/${meeting.id}`} passHref>
+																		<Link href={`/meetings?id=${meeting.id}`} passHref>
 																			<button className="btn btn-primary-content">
 																			View
 																			</button>

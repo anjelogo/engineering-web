@@ -22,14 +22,23 @@ export async function addUserToMeeting(meetingID: string, session: any): Promise
 	if (!meeting)
 		return;
 
-	if (meeting.users && meeting.users.map((u) => u.id).includes(session.id))
+	if ((meeting.users && meeting.users.length && meeting.users.map((u) => u.id).includes(session.id)))
 		return;
 
-	const users = meeting.users
-		? meeting.users.push({ image: session.user.image, name: session.name, id: session.id, email: session.user.email, timestamp: Date.now() })
-		: [{ image: session.user.image, name: session.name, id: session.id, email: session.user.email, timestamp: Date.now() }];
+	const obj = {
+			image: session.user.image,
+			name: session.name,
+			id: session.id,
+			email: session.user.email,
+			timestamp: Date.now()
+		},
+		users = (meeting.users && meeting.users.length)
+			? [...meeting.users, obj]
+			: [obj];
 
-	await db.get("meetings").findOneAndUpdate({ id: meetingID }, { $set: { users } });
+	console.log(users);
+
+	await db.get("meetings").findOneAndUpdate({ id: meeting.id }, { $set: { users } });
 
 	return;
 }

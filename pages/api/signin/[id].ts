@@ -20,11 +20,16 @@ handler
 			return res.status(404).send("ID not provided");
 
 		const meeting = await findMeetingByID(typeof id !== "string" ? id[0] : id);
-	
+
 		if (!meeting)
 			return res.status(404).send("Meeting Not Found");
 
-		await addUserToMeeting(meeting.id, session);
+		try {
+			await addUserToMeeting(meeting.id, session);
+			res.status(202).end();
+		} catch (e) {
+			res.status(404).send({ e });
+		}
 	});
 
 export default handler;

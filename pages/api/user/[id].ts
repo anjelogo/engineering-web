@@ -23,8 +23,12 @@ handler
 		if (!id)
 			return res.status(404).send("ID not provided");
 
-		const meeting = await findUserByID(typeof id !== "string" ? id[0] : id);
-		res.status(202).send(JSON.stringify(meeting));
+		try {
+			const meeting = await findUserByID(typeof id !== "string" ? id[0] : id);
+			res.status(202).send(JSON.stringify(meeting));
+		} catch (e) {
+			res.status(404).send({ e });
+		}
 	});
 
 export default handler;

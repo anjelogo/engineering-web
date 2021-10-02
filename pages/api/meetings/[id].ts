@@ -23,8 +23,12 @@ handler
 		if (!id)
 			return res.status(404).send("ID not provided");
 
-		const meeting = await findMeetingByID(typeof id !== "string" ? id[0] : id);
-		res.status(202).send(JSON.stringify(meeting));
+		try {
+			const meeting = await findMeetingByID(typeof id !== "string" ? id[0] : id);
+			res.status(202).send(JSON.stringify(meeting));
+		} catch (e) {
+			res.status(404).send({ e });
+		}
 	})
 	.post(async (req: NextApiRequest, res: NextApiResponse) => {
 		const body = req.body;
@@ -39,14 +43,14 @@ handler
 				await createMeeting(body);
 				res.status(202).end();
 			} catch (e) {
-				throw new Error(e as string);
+				res.status(404).send({ e });
 			}
 		else
 			try {
 				await updateMeeting(meeting, body);
 				res.status(202).end();
 			} catch (e) {
-				throw new Error(e as string);
+				res.status(404).send({ e });
 			}
 	})
 	.delete(async (req: NextApiRequest, res: NextApiResponse) => {
@@ -60,8 +64,12 @@ handler
 		if (!meeting)
 			return res.status(404).send("Meeting not found");
 		else {
-			await removeMeeting(meeting);
-			res.status(202).end();
+			try {
+				await removeMeeting(meeting);
+				res.status(202).end();
+			} catch (e) {
+				res.status(404).send({ e });
+			}
 		}
 	});
 

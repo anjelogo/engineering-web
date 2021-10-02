@@ -45,16 +45,15 @@ class MeetingCard extends React.Component<Props, States> {
 	async handleRefresh() {
 		const session: any = await getSession();
 
-		let programMeetings = null;
+		let programMeetings: (Meeting[] | null) = null;
 
 		if (session) {
 			programMeetings = await fetch("/api/meetings").then((r) => { return r.json(); }).catch((e) => { throw e; });
-
-			programMeetings.filter((m: Meeting) => m.program === this.props.program);
-			programMeetings.filter((m: Meeting) => m.dates.filter((d) => d.time.end >= Date.now() && (d.time.start <= Date.now() || d.time.start >= Date.now())).length);
 		}
 
-		const meeting = (programMeetings && programMeetings.length) ? programMeetings[0] : null;
+		const meeting = (programMeetings && programMeetings.length) ? programMeetings.filter((m) => m.program === this.props.program)[0] : null;
+
+		console.log(meeting);
 
 		if (!this.props.session.loading && session?.name) {
 			this.setState({

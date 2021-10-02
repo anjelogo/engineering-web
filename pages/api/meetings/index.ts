@@ -18,9 +18,12 @@ handler
 			next();
 	})
 	.get(async (req: NextApiRequest, res: NextApiResponse) => {
-		const meetings = await getMeetings();
-
-		res.status(202).send(meetings);
+		try {
+			const meetings = await getMeetings();
+			res.status(202).send(meetings);
+		} catch (e) {
+			res.status(404).send({ e });
+		}
 	});
 
 export default handler;
