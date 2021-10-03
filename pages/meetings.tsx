@@ -129,6 +129,9 @@ class MeetingPage extends React.Component<Props, State> {
 												</tr>
 											</tfoot>
 										</table>
+										<div className="mt-5 mb-5">
+											<button className="btn btn-primary-content" onClick={() => this.state.meeting && this.state.meeting.users ? navigator.clipboard.writeText(this.state.meeting?.users?.map((u) => u.name).join("\n")) : ""}>Copy Names</button>
+										</div>
 									</div>
 								</div>
 							</Layout>
