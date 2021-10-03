@@ -15,12 +15,12 @@ export async function getMeetings(): Promise<Meeting[] | undefined> {
 export async function addUserToMeeting(meetingID: string, session: any): Promise<void> {
 
 	if (!meetingID || !session)
-		return;
+		throw new Error("No Meeting ID!");
 
 	const meeting = await findMeetingByID(meetingID);
 
 	if (!meeting)
-		return;
+		throw new Error("Could not find meeting!");
 
 	if ((meeting.users && meeting.users.length && meeting.users.map((u) => u.id).includes(session.id)))
 		return;

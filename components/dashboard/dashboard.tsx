@@ -194,12 +194,6 @@ class Dashboard extends React.Component<Props, States> {
 							<p className="text-5xl font-bebas">Admin Dashboard</p>
 						</div>
 						<div className="divider mb-0 mt-0 w-56" />
-						<div>
-							<label htmlFor="createModal" className=" mt-5 btn btn-success">
-								Start A Meeting
-							</label>
-							<CreateModal />
-						</div>
 						<div className="mt-5 text-primary-content">
 							<p className="text-3xl font-bebas">Active Meetings</p>
 						</div>
@@ -280,11 +274,12 @@ class Dashboard extends React.Component<Props, States> {
 																<p className="font-bebas card-title mb-0">Schedule New Meeting</p>
 																<div className="divider mb-0 mt-0 w-5" />
 																<div className="card-actions">
-																	<label htmlFor="createModal" className="btn btn-circle btn-primary-content btn-xl btn-disabled">
+																	<label htmlFor="createModal" className="btn btn-circle btn-primary-content btn-xl">
 																		<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
 																		</svg>
 																	</label>
+																	<CreateModal />
 																</div>
 															</div>
 														</div>

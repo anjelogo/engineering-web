@@ -10,18 +10,12 @@ interface Props {
 	children?: React.ReactNode;
 	program: string;
 	session: any;
-	meetings: {
-		day: string;
-		room: string;
-	}[];
 }
 
 interface States {
 	session: any;
+	meetings: Meeting[];
 	loading: boolean;
-	disabled: boolean;
-	meeting: (Meeting | null);
-	signedin: boolean;
 }
 
 class MeetingCard extends React.Component<Props, States> {
@@ -32,9 +26,7 @@ class MeetingCard extends React.Component<Props, States> {
 		this.state = {
 			session: this.props.session,
 			loading: true,
-			disabled: false,
-			meeting: null,
-			signedin: false
+			meetings: []
 		};
 	}
 
@@ -43,34 +35,34 @@ class MeetingCard extends React.Component<Props, States> {
 	}
 
 	async handleRefresh() {
-		const session: any = await getSession();
+		this.setState({
+			session: this.props.session,
+			meetings: [],
+			loading: true
+		});
 
-		let programMeetings: (Meeting[] | null) = null;
+		const session = await getSession();
 
 		if (session) {
-			programMeetings = await fetch("/api/meetings").then((r) => { return r.json(); }).catch((e) => { throw e; });
-		}
+			const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
-		const meeting = (programMeetings && programMeetings.length) ? programMeetings.filter((m) => m.program === this.props.program)[0] : null;
+			let meetings: Meeting[] = [];
 
-		console.log(meeting);
-
-		if (!this.props.session.loading && session?.name) {
+			if (data)
+				meetings = data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now()).length && m.program === this.props.program);
+			
 			this.setState({
 				session,
-				meeting,
-				loading: false,
-				signedin: false
-			});
-		} else {
-			this.setState({
-				session,
-				meeting,
-				loading: false,
-				disabled: false,
-				signedin: false
+				meetings,
+				loading: false
 			});
 		}
+		else
+			this.setState({
+				session: this.props.session,
+				meetings: [],
+				loading: false
+			});
 	}
 
 	async handleSignIn(meeting: Meeting | null) {
@@ -87,7 +79,7 @@ class MeetingCard extends React.Component<Props, States> {
 				{
 					this.state.loading
 						? (
-							<div className="card bg-secondary animate-pulse h-64 shadow-lg">
+							<div className="card bg-secondary animate-pulse h-64">
 								<div className="text-center items-center card-body space-y-3">
 									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-56"/>
 									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-40"/>
@@ -99,66 +91,106 @@ class MeetingCard extends React.Component<Props, States> {
 								</div>
 							</div>
 						)
-						: (
-							<div className="card bg-secondary shadow-xl">
-								<div className="text-center items-center card-body">
-									<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
-									{
-										this.state.meeting
-											? this.state.meeting.dates.map((date, i) => {
-												return (
-													<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
-														<div className="badge mx-2">{date.room}</div>
-													</p>
-												);
-											})
-											: <p className="text-primary-content text-md">
+						: this.state.meetings.length
+							? this.state.meetings[0].dates.filter((d) => d.time.start <= Date.now()).length
+								? (
+									<div className="card bg-secondary">
+										<div className="text-center items-center card-body">
+											<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
+											{
+												this.state.meetings[0].dates.map((date, i) => {
+													return (
+														<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
+															<div className="badge mx-2">{date.room}</div>
+														</p>
+													);
+												})
+											}
+											<div className="card-actions">
 												{
-													!this.state.session?.id
-														? "Log in to see content"
-														: "No scheduled meetings"
+													this.state.session
+														? !this.state.meetings[0].users?.filter((u) => u.id === this.state.session.id).length
+															? (
+																<button className="btn btn-wide" onClick={() => this.handleSignIn(this.state.meetings[0])}>
+																	Sign in to {this.props.program}
+																</button>
+															)
+															: (
+																<button className="btn btn-wide btn-disabled">
+																	<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																		<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+																	</svg>
+																	{" "}Signed In
+																</button>
+															)
+														: (
+															<button className="btn btn-wide btn-primary-content" onClick={() => signIn("google", { callbackUrl: process.env.WEB_URI + "/programs/" + this.props.program })}>
+																Log in with Google
+															</button>
+														)
 												}
-											</p>
-									}
-									<div className="card-actions">
+											</div>
+										</div>
+									</div>
+								)
+								: (
+									<div className="card bg-secondary">
+										<div className="text-center items-center card-body">
+											<h2 className="card-title text-primary-content font-bebas text-2xl">Upcoming Meetings</h2>
+											{
+												this.state.meetings[0].dates.map((date, i) => {
+													return (
+														<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
+															<div className="badge mx-2">{date.room}</div>
+														</p>
+													);
+												})
+											}
+											<div className="card-actions">
+												{
+													this.state.session
+														? (
+															<button className="btn btn-wide btn-primary-content" onClick={() => signIn("google", { callbackUrl: process.env.WEB_URI + "/programs/" + this.props.program })}>
+																Log in with Google
+															</button>
+														)
+														: (
+															<button className="btn btn-wide btn-disabled">
+																Sign in to {this.props.program}
+															</button>
+														)
+												}
+											</div>
+										</div>
+									</div>
+								)
+							: (
+								<div className="card bg-secondary">
+									<div className="text-center items-center card-body">
+										<h2 className="card-title text-primary-content font-bebas text-2xl">Upcoming Meetings</h2>
 										{
-											!this.state.session?.id
-												? (
-													<div className="btn btn-wide btn-primary-content" onClick={() => signIn("google", { callbackUrl: process.env.WEB_URI })}>
-														Log in with Google
-													</div>
-												)
-												: (
-													<div data-tip={
-														this.state.disabled
-															? "Unavailable"
-															: 
-															this.state.signedin
-																? "Already Signed In"
-																: undefined
-													}
-													className={
-														this.state.disabled
-															? "tooltip"
-															:
-															this.state.signedin
-																? "tooltip"
-																: undefined
-													}>
-														<div className={`btn btn-wide ${this.state.disabled ? "btn-disabled" : "btn-primary-content"}`} onClick={() => this.handleSignIn(this.state.meeting)}>
-															{
-																this.state.signedin
-																	? "Already Signed In"
-																	: `Sign in to ${this.props.program}`
-															}
-														</div>
-													</div>
-												)
+											this.state.session
+												? <p className="text-primary-content text-md"><div className="badge badge-error mx-2">No Meetings Scheduled</div></p>
+												: <p className="text-primary-content text-md">Log In to see Meetings</p> 
 										}
+										<div className="card-actions">
+											{
+												this.state.session
+													? (
+														<button className="btn btn-wide btn-disabled">
+															Sign in to {this.props.program}
+														</button>
+													)
+													: (
+														<button className="btn btn-wide btn-primary-content" onClick={() => signIn("google", { callbackUrl: process.env.WEB_URI + "/programs/" + this.props.program })}>
+															Log in with Google
+														</button>
+													)
+											}
+										</div>
 									</div>
 								</div>
-							</div>
-						)
+							)
 				}
 			</>
 		);
