@@ -4,6 +4,7 @@ import dateFormat from "dateformat";
 import React from "react";
 import { Meeting } from "../../lib/interfaces";
 import uniqid from "uniqid";
+import router from "next/router";
 
 interface State {
 	id: string,
@@ -128,7 +129,7 @@ export default class CreateModal extends React.Component<any, State> {
 		);
 		
 		this.clearSelections();
-		window.location.reload();
+		router.reload();
 	}
 
 	changeSelectedDay(day: number) {
