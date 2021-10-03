@@ -150,13 +150,13 @@ class MeetingCard extends React.Component<Props, States> {
 												{
 													this.state.session
 														? (
-															<button className="btn btn-wide btn-primary-content" onClick={() => signIn("google", { callbackUrl: process.env.WEB_URI + "/programs/" + this.props.program })}>
-																Log in with Google
+															<button className="btn btn-wide btn-disabled">
+																Sign in to {this.props.program}
 															</button>
 														)
 														: (
-															<button className="btn btn-wide btn-disabled">
-																Sign in to {this.props.program}
+															<button className="btn btn-wide btn-primary-content" onClick={() => signIn("google", { callbackUrl: process.env.WEB_URI + "/programs/" + this.props.program })}>
+																Log in with Google
 															</button>
 														)
 												}
