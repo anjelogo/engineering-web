@@ -110,7 +110,7 @@ export default class CreateModal extends React.Component<any, State> {
 					{
 						time: {
 							start: this.calculateTime(),
-							end: this.calculateTime()
+							end: this.calculateEndTime()
 						},
 						room: this.state.selected.room.toString()
 					}
@@ -184,6 +184,20 @@ export default class CreateModal extends React.Component<any, State> {
 				date = new Date(date.getTime());
 				date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
 				date.setHours(time.hour ?? 14, time.minute ?? 0, 0);
+				return Date.parse(date as unknown as string);
+			},
+			timestamp = this.state.selected.day
+				? getNextDayOf(new Date(Date.now()), this.state.selected.day, this.state.selected.time)
+				: 0;
+		
+		return timestamp;
+	}
+
+	calculateEndTime() {
+		const getNextDayOf = (date: Date, dayOfWeek: number, time: { hour: number | null, minute: number | null}) => {
+				date = new Date(date.getTime());
+				date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
+				date.setHours((time.hour ?? 14) + 1, time.minute ?? 0, 0);
 				return Date.parse(date as unknown as string);
 			},
 			timestamp = this.state.selected.day

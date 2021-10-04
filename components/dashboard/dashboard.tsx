@@ -110,9 +110,12 @@ class Dashboard extends React.Component<Props, States> {
 
 		if (data)
 			meetings = {
-				active: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start <= Date.now()).length),
-				upcoming: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start >= Date.now()).length),
+				active: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start <= Date.now()).length)
+					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]),
+				upcoming: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start >= Date.now()).length)
+					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]),
 				past: data.filter((m) => m.dates.filter((d) => d.time.end <= Date.now() && d.time.start <= Date.now()).length)
+					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0])
 			};
 		else 
 			meetings = {

@@ -48,8 +48,10 @@ class MeetingCard extends React.Component<Props, States> {
 
 			let meetings: Meeting[] = [];
 
-			if (data)
-				meetings = data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now()).length && m.program === this.props.program);
+			if (data) {
+				meetings = data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now()).length && m.program === this.props.program)
+					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]); //Sort Earliest meeting
+			}
 			
 			this.setState({
 				session,
