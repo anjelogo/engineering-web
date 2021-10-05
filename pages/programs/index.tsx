@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Layout from "../../components/layout";
 
-const btnStyles = "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2";
+const btnStyles = "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2";
 
 const Programs = (): JSX.Element => {
 	return (
@@ -38,6 +38,22 @@ const Programs = (): JSX.Element => {
 										<h4 className="text-primary-content text-md">Learn to design and create 3D models and print them out with 3D printers!</h4>
 										<div className="card-actions">
 											<Link href="/programs/3d-modeling" passHref>
+												<button className="btn btn-ghost text-primary-content">
+													Learn More
+												</button>
+											</Link>
+										</div> 
+									</div>
+								</div>
+								<div className={btnStyles}>
+									<div className="card-body">
+										<h3 className="card-title text-primary-content">SeaPerch</h3> 
+										<p className="text-primary-content text-md">
+												Build underwater machines and compete with other schools in our state!
+											<br />
+										</p>
+										<div className="card-actions">
+											<Link href="/programs/seaperch" passHref>
 												<button className="btn btn-ghost text-primary-content">
 													Learn More
 												</button>
@@ -88,16 +104,6 @@ const Programs = (): JSX.Element => {
 											<br />
 											<strong>Program Starting Early October</strong>
 										</p> 
-									</div>
-								</div>
-								<div className={btnStyles}>
-									<div className="card-body">
-										<h3 className="card-title text-primary-content">SeaPerch</h3> 
-										<p className="text-primary-content text-md">
-										Build underwater machines and compete with other schools in our state!
-											<br />
-											<strong>Program Starting Late September</strong>
-										</p>
 									</div>
 								</div>
 								<div className={btnStyles}>

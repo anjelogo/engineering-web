@@ -110,7 +110,7 @@ class MeetingCard extends React.Component<Props, States> {
 											}
 											<div className="card-actions">
 												{
-													this.state.session
+													this.state.session?.id
 														? !this.state.meetings[0].users?.filter((u) => u.id === this.state.session.id).length
 															? (
 																<button className="btn btn-wide" onClick={() => this.handleSignIn(this.state.meetings[0])}>
@@ -150,7 +150,7 @@ class MeetingCard extends React.Component<Props, States> {
 											}
 											<div className="card-actions">
 												{
-													this.state.session
+													this.state.session?.id
 														? (
 															<button className="btn btn-wide btn-disabled">
 																Sign in to {this.props.program}
@@ -171,13 +171,13 @@ class MeetingCard extends React.Component<Props, States> {
 									<div className="text-center items-center card-body">
 										<h2 className="card-title text-primary-content font-bebas text-2xl">Upcoming Meetings</h2>
 										{
-											this.state.session
+											this.state.session?.id
 												? <p className="text-primary-content text-md"><div className="badge badge-error mx-2">No Meetings Scheduled</div></p>
-												: <p className="text-primary-content text-md">Log In to see Meetings</p> 
+												: <p className="text-primary-content text-md"><strong>Log In to view meetings</strong></p> 
 										}
 										<div className="card-actions">
 											{
-												this.state.session
+												this.state.session?.id
 													? (
 														<button className="btn btn-wide btn-disabled">
 															Sign in to {this.props.program}

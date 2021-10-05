@@ -219,6 +219,7 @@ export default class CreateModal extends React.Component<any, State> {
 						<div className="mt-5 btn-group">
 							<button onClick={() => this.changeSelectedProgram("Robotics")} className={`btn ${this.state.selected.program === "Robotics" ? "btn-secondary" : "btn-primary-content"}`}>Robotics</button>
 							<button onClick={() => this.changeSelectedProgram("3D-Modeling")} className={`btn ${this.state.selected.program === "3D-Modeling" ? "btn-secondary" : "btn-primary-content"}`}>3D Modeling</button>
+							<button onClick={() => this.changeSelectedProgram("SeaPerch")} className={`btn ${this.state.selected.program === "SeaPerch" ? "btn-secondary" : "btn-primary-content"}`}>SeaPerch</button>
 						</div>
 						<p className="mt-5 text-lg font-bebas">Day</p>
 						<div className="mt-5 btn-group">

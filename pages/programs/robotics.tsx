@@ -90,10 +90,10 @@ const RoboticsProgram = (): JSX.Element => {
 										<div className="card shadow-xl">
 											<div className="text-center 2xl:text-left card-body">
 												<h4 className="text-primary-content text-md">
-											Explore engineering with Robotics. A combination of Computer Science and Engineering.
+														Explore engineering with Robotics. A combination of Computer Science and Engineering.
 													<br />
 													<br />
-											Students will learn to construct robots using kits provided by Engineering Club and learn essential engineering skills like designing, constructing, operating, and the usage of robots.
+														Students will learn to construct robots using kits provided by Engineering Club and learn essential engineering skills like designing, constructing, operating, and the usage of robots.
 												</h4> 
 											</div>
 										</div>
@@ -110,21 +110,21 @@ const RoboticsProgram = (): JSX.Element => {
 												<h4 className="text-primary-content text-md">
 													<strong>LEGO Mindstorms</strong>
 													<br />
-												Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
+														Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
 													<br />
 													<br />
-												Obstacle Course/Maze - Students will build a robot which can traverse a maze/obstacle course. This section will be fully coded, which means that students will have no control over their robots once they enter the course.
+														Obstacle Course/Maze - Students will build a robot which can traverse a maze/obstacle course. This section will be fully coded, which means that students will have no control over their robots once they enter the course.
 													<br />
 													<br />
-												“Rocket League” - Students will team up with other groups and participate in a game of soccer using their robots. Like the game “Rocket League”, students will use their robots in order to score as many goals as possible in a set amount of time. The team with the most goals wins.
+														“Rocket League” - Students will team up with other groups and participate in a game of soccer using their robots. Like the game “Rocket League”, students will use their robots in order to score as many goals as possible in a set amount of time. The team with the most goals wins.
 													<br />
 													<br />
 													<strong>VEX</strong>
 													<br />
-												Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
+														Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
 													<br />
 													<br />
-												Obstacle Course - Students will build a robot that can traverse an obstacle course which will have included tasks such as retrieval of an object, pressing a button, and/or completing a puzzle. Students will be graded on time and accuracy.
+														Obstacle Course - Students will build a robot that can traverse an obstacle course which will have included tasks such as retrieval of an object, pressing a button, and/or completing a puzzle. Students will be graded on time and accuracy.
 												</h4>
 											</div>
 										</div>

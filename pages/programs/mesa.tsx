@@ -53,7 +53,7 @@ const NESAProgram = (): JSX.Element => {
 												<strong>{"\""}MESA is a college and career prep engine that propels student diversity and achievement in science, technology, engineering and math.{"\""}</strong>
 												<br />
 												<br />
-											Engineering Club{"'"}s MESA Program allows students to compete in MESA{"'"}s competitons.
+													Engineering Club{"'"}s MESA Program allows students to compete in MESA{"'"}s competitons.
 											</h4>
 										</div>
 									</div>
