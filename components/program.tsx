@@ -1,4 +1,5 @@
 import React from "react";
+import AlertConstructor from "./AlertConstructor";
 
 interface ProgramWrapperProps {
 	title: string;
@@ -37,6 +38,7 @@ export const ProgramWrapper = (
 					</div>
 					{alerts}
 					<div className="bg-primary min-h-screen mt-10 lg:mb-10">
+						<AlertConstructor />
 						{
 							sidebar ? (
 								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">

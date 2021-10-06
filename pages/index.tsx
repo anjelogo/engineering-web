@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 import Typical from "react-typical";
 import Layout from "../components/layout";
-import AlertConstructor from "../components/alertConstructor";
+import AlertConstructor from "../components/AlertConstructor";
 
 const Home = (): JSX.Element => {
 	return (
@@ -10,16 +10,16 @@ const Home = (): JSX.Element => {
 			title="Home - Engineering Club"
 			description="The official website of the Engineering Club of University Preparatory."
 		>
-			<div className="mt-28">
-				<AlertConstructor />
-			</div>
-			<div className="bg-primary flex flex-col h-screen">
+			<div className="bg-primary flex flex-col">
+				<div className="mt-20">
+					<AlertConstructor />
+				</div>
 				<div className="hero min-h-screen">
 					<div className="flex text-center">
 						<div className="inline-block mb-5">
 							<h1>
 								<span className="text-5xl font-abril">
-								Inspire. Innovate.
+									<span className="text-primary-content">Inspire. Innovate.</span>
 									<br />
 									<span className="text-secondary">
 										<Typical
@@ -29,7 +29,7 @@ const Home = (): JSX.Element => {
 										/>
 									</span>
 								</span>
-								<span className="mb-5 text-md">
+								<span className="text-primary-content mb-5 text-md">
 									The Official Engineering Club of University Preparatory.
 								</span>
 							</h1>

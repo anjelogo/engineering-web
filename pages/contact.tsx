@@ -1,4 +1,5 @@
 import React from "react";
+import AlertConstructor from "../components/AlertConstructor";
 import Layout from "../components/layout";
 
 const ContactUsPage = (): JSX.Element => {
@@ -9,6 +10,9 @@ const ContactUsPage = (): JSX.Element => {
 			description="Contact the officers and important people of University Preparatory's Engineering Club"
 		>
 			<body className="bg-primary">
+				<div className="mt-24">
+					<AlertConstructor />
+				</div>
 				<div className="mt-28 m-10">
 					<div className="bg-primary min-h-screen">
 						<div>

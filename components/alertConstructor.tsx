@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getSession, signIn } from "next-auth/client";
 import React from "react";
 import { Meeting } from "../lib/interfaces";
