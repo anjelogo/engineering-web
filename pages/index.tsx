@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import Typical from "react-typical";
 import Layout from "../components/layout";
-import AlertConstructor from "../components/AlertConstructor";
 
 const Home = (): JSX.Element => {
 	return (
@@ -11,9 +10,6 @@ const Home = (): JSX.Element => {
 			description="The official website of the Engineering Club of University Preparatory."
 		>
 			<div className="bg-primary flex flex-col">
-				<div className="mt-20">
-					<AlertConstructor />
-				</div>
 				<div className="hero min-h-screen">
 					<div className="flex text-center">
 						<div className="inline-block mb-5">
