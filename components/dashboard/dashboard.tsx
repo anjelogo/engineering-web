@@ -24,7 +24,7 @@ interface States {
 
 const MeetingCard = ({ meeting, buttons }: { meeting: Meeting; buttons: JSX.Element }) => {
 	return (
-		<div className="card bg-gray-400 bg-opacity-50 w-full md:w-auto">
+		<div className="card bg-gray-400 bg-opacity-50 w-full md:w-64">
 			<div className="card-body items-center text-center">
 				<p className="font-bebas card-title mb-0">{meeting.program}</p>
 				<p className="text-xs">ID: {meeting.id}</p>
@@ -32,7 +32,7 @@ const MeetingCard = ({ meeting, buttons }: { meeting: Meeting; buttons: JSX.Elem
 				{
 					meeting.dates.map((date, i) => {
 						return (
-							<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
+							<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "mm/dd, h:MM TT")}
 								<div className="badge mx-2">{date.room}</div>
 							</p>
 						);
@@ -203,7 +203,7 @@ class Dashboard extends React.Component<Props, States> {
 						<div className="mt-10 w-full">
 							<div className="card bg-opacity-30 bg-gray-300">
 								<div className="card-body">
-									<div className="flex flex-wrap space-y-5 md:items-left md:space-y-0 md:space-x-5">
+									<div className="flex flex-wrap space-y-5 md:space-x-5">
 										{
 											this.state.loading
 												? LoadingCards(5)
@@ -218,7 +218,7 @@ class Dashboard extends React.Component<Props, States> {
 																	<div className="btn-group">
 																		<Link href={`/meetings?id=${meeting.id}`} passHref>
 																			<button className="btn btn-primary-content">
-																			View
+																				View
 																			</button>
 																		</Link>
 																		<button className="btn btn-accent" onClick={() => this.handleEndMeeting(meeting)}>
@@ -248,7 +248,7 @@ class Dashboard extends React.Component<Props, States> {
 						<div className="mt-10 w-full">
 							<div className="card bg-opacity-30 bg-gray-300">
 								<div className="card-body">
-									<div className="flex flex-wrap space-y-5 md:items-left md:space-y-0 md:space-x-5">
+									<div className="flex flex-wrap space-y-5 md:space-x-5">
 										{
 											this.state.loading
 												?	LoadingCards(5)
@@ -299,7 +299,7 @@ class Dashboard extends React.Component<Props, States> {
 						<div className="mt-10 w-full">
 							<div className="card bg-opacity-30 bg-gray-300">
 								<div className="card-body">
-									<div className="flex flex-wrap space-y-5 md:items-left md:space-y-0 md:space-x-5">
+									<div className="flex flex-wrap space-y-5 md:space-x-5">
 										{
 											this.state.loading
 												? LoadingCards(5)
@@ -307,22 +307,23 @@ class Dashboard extends React.Component<Props, States> {
 													?
 													this.state.meetings.past.map((meeting, i) => {
 														return (
-															<MeetingCard
-																key={i}
-																meeting={meeting}
-																buttons={
-																	<div className="btn-group">
-																		<Link href={`/meetings?id=${meeting.id}`} passHref>
-																			<button className="btn btn-primary-content">
+															<div key={i}>
+																<MeetingCard
+																	meeting={meeting}
+																	buttons={
+																		<div className="btn-group">
+																			<Link href={`/meetings?id=${meeting.id}`} passHref>
+																				<button className="btn btn-primary-content">
 																			View
-																			</button>
-																		</Link>
-																		<button className="btn btn-accent" onClick={() => this.handleDeleteMeeting(meeting)}>
+																				</button>
+																			</Link>
+																			<button className="btn btn-accent" onClick={() => this.handleDeleteMeeting(meeting)}>
 																			Delete
-																		</button>
-																	</div>
-																}
-															/>
+																			</button>
+																		</div>
+																	}
+																/>
+															</div>
 														);
 													})
 													: (

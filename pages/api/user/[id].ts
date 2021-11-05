@@ -3,6 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import nextConnect from "next-connect";
 import { findUserByID } from "../../../lib/db";
+import getIDs from "../../../lib/getIds";
 
 const handler = nextConnect();
 
@@ -12,7 +13,7 @@ handler
 
 		if (!session)
 			res.status(401).send("Unauthorized: Not Logged In");
-		else if (session && !["6153aa2b6e211f0008453dfa"].includes(session.id))
+		else if (session && !getIDs().includes(session.id))
 			res.status(401).send("Unauthorized: Missing Permissions");
 		else
 			next();
