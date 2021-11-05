@@ -4,6 +4,7 @@ import Layout from "../../components/layout";
 import Orlando from "../../public/orlando.jpg";
 import Anjelo from "../../public/anjelo.jpg";
 import Image from "next/image";
+import Link from "next/link";
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor } from "../../components/utilities";
 import MeetingCard from "../../components/MeetingCard";
@@ -177,10 +178,25 @@ const RoboticsProgram = (): JSX.Element => {
 								</div>
 							</div>
 						), (
-							<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
-								<div className="text-center card-body items-center">
+							<div className="card shadow-xl">
+								<div className="text-center card-body items-center space-y-5">
 									<h4 className="card-title text-primary-content font-bebas text-2xl">Competiton Documents</h4>
-									<div className="badge mx-2 badge-error">Coming Soon</div>
+									<Link href="https://docs.google.com/document/d/1-yfMk7GijWDBEMRiHen6EshK4HI7kO0d5s9VhDX1rGY/edit?usp=sharing" passHref>
+										<button className="btn btn-primary-content btn-wide text-2xs">
+											<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+											</svg>
+											VEX Competition Details
+										</button>
+									</Link>
+									<Link href="https://docs.google.com/document/d/1ZQFmOvwCBiFBfVjKjqWRtPACClSY9Yj9hmSFvnYFSuM/edit?usp=sharing" passHref>
+										<button className="btn btn-primary-content btn-wide text-2xs">
+											<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+											</svg>
+											LEGO Competition Details
+										</button>
+									</Link>
 								</div>
 							</div>
 						), (
