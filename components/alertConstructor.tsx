@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getSession, signIn } from "next-auth/client";
 import React from "react";
@@ -137,4 +136,4 @@ class AlertConstructor extends React.Component<Props, State> {
 
 }
 
-export default AlertConstructor;
+export default wrapSession(AlertConstructor);

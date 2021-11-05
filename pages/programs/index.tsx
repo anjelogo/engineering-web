@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import AlertConstructor from "../../components/AlertConstructor";
 import Layout from "../../components/layout";
 
 const btnStyles = "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2";
@@ -12,9 +11,6 @@ const Programs = (): JSX.Element => {
 			description="The official programs of Univeristy Preparatory's Engineering Club"
 		>
 			<div className="bg-primary">
-				<div className="mt-24">
-					<AlertConstructor />
-				</div>
 				<div className="mt-28 m-10">
 					<div className="bg-primary min-h-screen">
 						<div className="text-center text-primary-content">
