@@ -93,64 +93,66 @@ class MeetingPage extends React.Component<Props, State> {
 											<div className="mt-5 text-primary-content">
 												<p className="text-3xl font-bebas">Members Signed In</p>
 											</div>
-											<table className="mt-5 table w-full">
-												<thead>
-													<tr>
-														<th />
-														<th>Name</th> 
-														<th />
-														<th>Email</th> 
-														<th />
-														<th>Date {"&"} Time</th> 
-														<th />
-													</tr>
-												</thead> 
-												<tbody>
-													{
-														this.state.meeting.users
-															? this.state.meeting.users.map((e, i) => (
-																<tr key={i}>
-																	<th>{i + 1}</th> 
-																	<td>
-																		<div className="flex items-center space-x-3">
-																			<div className="avatar">
-																				<Image
-																					src={e.image}
-																					alt={e.name}
-																					height={36}
-																					width={36}
-																					layout="intrinsic"
-																					className="w-12 h-12 mask mask-circle"
-																				/>
-																			</div> 
-																			<div>
-																				<div className="font-bold">
-																					{e.name}
+											<div className="mt-5 overflow-x-auto">
+												<table className="table w-full">
+													<thead>
+														<tr>
+															<th />
+															<th>Name</th> 
+															<th />
+															<th>Email</th> 
+															<th />
+															<th>Date {"&"} Time</th> 
+															<th />
+														</tr>
+													</thead> 
+													<tbody>
+														{
+															this.state.meeting.users
+																? this.state.meeting.users.map((e, i) => (
+																	<tr key={i}>
+																		<th>{i + 1}</th> 
+																		<td>
+																			<div className="flex items-center space-x-3">
+																				<div className="avatar">
+																					<Image
+																						src={e.image}
+																						alt={e.name}
+																						height={36}
+																						width={36}
+																						layout="intrinsic"
+																						className="w-12 h-12 mask mask-circle"
+																					/>
 																				</div> 
+																				<div>
+																					<div className="font-bold">
+																						{e.name}
+																					</div> 
+																				</div>
 																			</div>
-																		</div>
-																	</td>
-																	<td />
-																	<td>{e.email}</td>
-																	<td />
-																	<td>{dateFormat(e.timestamp, "dddd, h:MM TT")}</td>
-																</tr>
-															))
-															: <></>
-													}
-												</tbody> 
-												<tfoot>
-													<tr>
-														<th /> 
-														<th>Name</th> 
-														<th />
-														<th>Email</th> 
-														<th />
-														<th>Date {"&"} Time</th> 
-														<th />
-													</tr>
-												</tfoot>
-											</table>
+																		</td>
+																		<td />
+																		<td>{e.email}</td>
+																		<td />
+																		<td>{dateFormat(e.timestamp, "dddd, h:MM TT")}</td>
+																	</tr>
+																))
+																: <></>
+														}
+													</tbody> 
+													<tfoot>
+														<tr>
+															<th /> 
+															<th>Name</th> 
+															<th />
+															<th>Email</th> 
+															<th />
+															<th>Date {"&"} Time</th> 
+															<th />
+														</tr>
+													</tfoot>
+												</table>
+											</div>
 											<div className="mt-5 mb-5">
 												<button className="btn btn-primary-content" onClick={() => this.state.meeting && this.state.meeting.users ? navigator.clipboard.writeText(this.state.meeting?.users?.map((u) => u.name).join("\n")) : ""}>Copy Names</button>
 											</div>

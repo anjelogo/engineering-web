@@ -11,7 +11,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.31.1",
     "autoprefixer": "^10.3.4",
-    "daisyui": "^1.14.0",
+    "daisyui": "^1.25.4",
     "dateformat": "^5.0.1",
     "fetch": "^1.1.0",
     "mongodb": "^3.5.9",
@@ -43,5 +43,21 @@
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "typescript": "4.4.3"
-  }
+  },
+  "types": "./index.d.ts",
+  "description": "The official website for Engineering Club at University Preparatory",
+  "main": "next.config.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anjelogo/engineering-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anjelogo/engineering-web/issues"
+  },
+  "homepage": "https://github.com/anjelogo/engineering-web#readme"
 }
