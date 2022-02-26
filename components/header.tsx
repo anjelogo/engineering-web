@@ -82,7 +82,7 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 										<Link href="/programs">Programs</Link> 
 									</li>
 									<li>
-										<Link href="/about">About Us</Link> 
+										<Link href="/elections">Elections</Link> 
 									</li>
 									<li>
 										<Link href="/contact">Contact Us</Link> 
@@ -113,21 +113,24 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 							<div className="flex items-stretch text-lg">
 								<Link href="/" passHref>
 									<button className="btn btn-ghost btn-sm">
-											Home
+										Home
 									</button>
 								</Link> 
 								<Link href="/programs" passHref>
 									<button className="btn btn-ghost btn-sm">
-											Programs
+										Programs
 									</button></Link>
-								<Link href="/about" passHref>
-									<button className="btn btn-ghost btn-sm">
-											About Us
-									</button>
+								<Link href="/elections" passHref>
+									<div className="indicator">
+										<span className="indicator-item badge badge-error">NEW</span>
+										<button className="btn btn-ghost btn-sm">
+											Elections
+										</button>
+									</div>
 								</Link>
 								<Link href="/contact" passHref>
 									<button className="btn btn-ghost btn-sm">
-											Contact Us
+										Contact Us
 									</button>
 								</Link>
 							</div>

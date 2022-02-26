@@ -14,65 +14,9 @@ interface Props {
 
 interface States {
 	session: any;
-	meetings: {
-		active: Meeting[]
-		upcoming: Meeting[];
-		past: Meeting[];
-	}
+	meetings: Meeting[];
 	loading: boolean;
 }
-
-const MeetingCard = ({ meeting, buttons }: { meeting: Meeting; buttons: JSX.Element }) => {
-	return (
-		<div className="card bg-gray-400 bg-opacity-50 w-full md:w-64">
-			<div className="card-body items-center text-center">
-				<p className="font-bebas card-title mb-0">{meeting.program}</p>
-				<p className="text-xs">ID: {meeting.id}</p>
-				<div className="divider mb-0 mt-0 w-5" />
-				{
-					meeting.dates.map((date, i) => {
-						return (
-							<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "mm/dd, h:MM TT")}
-								<div className="badge mx-2">{date.room}</div>
-							</p>
-						);
-					})
-				}
-				<div className="card-actions">
-					{buttons}
-				</div>
-			</div>
-		</div>
-	);
-};
-
-const LoadingCards = (n: number) => {
-	const Elem = (): JSX.Element => (
-			<div className="card bg-gray-400 bg-opacity-50 animate-pulse h-56">
-				<div className="text-center items-center card-body space-y-3">
-					<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-36"/>
-					<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-52"/>
-					<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-20"/>
-					<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-20"/>
-				</div>
-			</div>
-		),
-		arr = [];
-
-	for (let i = 0; i < n; i++) {
-		arr.push(i);
-	}
-
-	return (
-		<>
-			{
-				arr.map((e, i) => {
-					return <Elem key={i} />;
-				})
-			}
-		</>
-	);
-};
 
 class Dashboard extends React.Component<Props, States> {
 
@@ -81,11 +25,7 @@ class Dashboard extends React.Component<Props, States> {
 
 		this.state = {
 			session: this.props.session,
-			meetings: {
-				active: [],
-				upcoming: [],
-				past: []
-			},
+			meetings: [],
 			loading: true
 		};
 	}
@@ -93,11 +33,7 @@ class Dashboard extends React.Component<Props, States> {
 	async refreshSession(): Promise<void> {
 		this.setState({
 			session: this.props.session,
-			meetings: {
-				active: [],
-				upcoming: [],
-				past: []
-			},
+			meetings: [],
 			loading: true
 		});
 
@@ -105,35 +41,16 @@ class Dashboard extends React.Component<Props, States> {
 
 		const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
-		//filter meetings and set them to states
-		let meetings: { active: Meeting[], upcoming: Meeting[], past: Meeting[] };
-
-		if (data)
-			meetings = {
-				active: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start <= Date.now()).length)
-					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]),
-				upcoming: data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now() && d.time.start >= Date.now()).length)
-					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]),
-				past: data.filter((m) => m.dates.filter((d) => d.time.end <= Date.now() && d.time.start <= Date.now()).length)
-					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0])
-			};
-		else 
-			meetings = {
-				active: [],
-				upcoming: [],
-				past: []
-			};
-
 		if (!this.props.session.loading && session?.user)
 			this.setState({
 				session,
-				meetings,
+				meetings: data,
 				loading: false
 			});
 		else {
 			this.setState({
 				session: this.props.session,
-				meetings,
+				meetings: data,
 				loading: false
 			});
 		}
@@ -198,146 +115,132 @@ class Dashboard extends React.Component<Props, States> {
 						</div>
 						<div className="divider mb-0 mt-0 w-56" />
 						<div className="mt-5 text-primary-content">
-							<p className="text-3xl font-bebas">Active Meetings</p>
+							<p className="text-3xl font-bebas">Meetings</p>
 						</div>
-						<div className="mt-10 w-full">
-							<div className="card bg-opacity-30 bg-gray-300">
-								<div className="card-body">
-									<div className="flex flex-wrap space-y-5 md:space-x-5">
-										{
-											this.state.loading
-												? LoadingCards(5)
-												: this.state.meetings.active.length
-													?
-													this.state.meetings.active.map((meeting, i) => {
-														return (
-															<MeetingCard
-																key={i}
-																meeting={meeting}
-																buttons={
-																	<div className="btn-group">
-																		<Link href={`/meetings?id=${meeting.id}`} passHref>
-																			<button className="btn btn-primary-content">
-																				View
-																			</button>
-																		</Link>
-																		<button className="btn btn-accent" onClick={() => this.handleEndMeeting(meeting)}>
-																			End
-																		</button>
-																	</div>
-																}
-															/>
-														);
-													})
-													: (
-														<div className="card bg-gray-400 bg-opacity-50">
-															<div className="card-body items-center text-center w-full md:w-auto h-56">
-																<p className="font-bebas card-title mb-0">No Meetings Available</p>
-																<div className="divider mb-0 mt-0 w-5" />
-															</div>
-														</div>
-													)
-										}
-									</div>
-								</div>
-							</div>
+						<div className="mt-5">
+							<label htmlFor="createModal" className="btn btn-primary-content">Create Meeting</label>
+							<CreateModal />
 						</div>
-						<div className="mt-5 text-primary-content text-3xl font-bebas">
-							<p className="">Upcoming Meetings</p>
-						</div>
-						<div className="mt-10 w-full">
-							<div className="card bg-opacity-30 bg-gray-300">
-								<div className="card-body">
-									<div className="flex flex-wrap space-y-5 md:space-x-5">
-										{
-											this.state.loading
-												?	LoadingCards(5)
-												: (
+						<div className="mt-10 overflow-x-auto">
+							<table className="table w-full">
+								<thead>
+									<tr>
+										<th />
+										<th>Program</th> 
+										<th>Meeting ID</th>
+										<th>Room</th>
+										<th />
+										<th>Status</th> 
+										<th />
+										<th>Date {"&"} Time</th> 
+										<th />
+									</tr>
+								</thead>
+								<tbody>
+									{
+										this.state.loading ?
+											<tr>
+												<td />
+												<td />
+												<td />
+												<td />
+												<td>Loading</td>
+												<td />
+											</tr>
+											:
+											this.state.meetings.length
+												?
+												this.state.meetings.sort((a, b) => b.dates[0].time.start - a.dates[0].time.start).map((e, i) => (
 													<>
-														{
-															this.state.meetings.upcoming.length
-																?
-																this.state.meetings.upcoming.map((meeting, i) => {
-																	return (
-																		<MeetingCard
-																			key={i}
-																			meeting={meeting}
-																			buttons={
-																				<button className="btn btn-primary-content" onClick={() => this.handleDeleteMeeting(meeting)}>
-																					Cancel Meeting
-																				</button>
-																			}
-																		/>
-																	);
-																})
-																: <></>
-														}
-														<div className="card bg-gray-400 bg-opacity-50">
-															<div className="card-body items-center text-center w-full md:w-auto">
-																<p className="font-bebas card-title mb-0">Schedule New Meeting</p>
-																<div className="divider mb-0 mt-0 w-5" />
-																<div className="card-actions">
-																	<label htmlFor="createModal" className="btn btn-circle btn-primary-content btn-xl">
-																		<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-																		</svg>
-																	</label>
-																	<CreateModal />
+														<tr key={i}>
+															<td></td>
+															<td><strong>{e.program}</strong></td>
+															<td>{e.id}</td>
+															<td>
+																<div className="indicator">
+																	<span className="badge badge-info">{e.dates[0].room}</span>
 																</div>
-															</div>
-														</div>
-													</>
-												)
-										}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div className="mt-5 text-primary-content text-3xl font-bebas">
-							<p className="">Past Meetings</p>
-						</div>
-						<div className="mt-10 w-full">
-							<div className="card bg-opacity-30 bg-gray-300">
-								<div className="card-body">
-									<div className="flex flex-wrap space-y-5 md:space-x-5">
-										{
-											this.state.loading
-												? LoadingCards(5)
-												: this.state.meetings.past.length
-													?
-													this.state.meetings.past.map((meeting, i) => {
-														return (
-															<div key={i}>
-																<MeetingCard
-																	meeting={meeting}
-																	buttons={
-																		<div className="btn-group">
-																			<Link href={`/meetings?id=${meeting.id}`} passHref>
-																				<button className="btn btn-primary-content">
-																			View
-																				</button>
-																			</Link>
-																			<button className="btn btn-accent" onClick={() => this.handleDeleteMeeting(meeting)}>
-																			Delete
-																			</button>
+															</td>
+															<td />
+															<td>
+																{
+																	e.dates.filter((d) => d.time.end >= Date.now() && d.time.start <= Date.now()).length ?
+																		<div className="indicator">
+																			<span className="badge badge-success">ACTIVE</span>
 																		</div>
-																	}
-																/>
-															</div>
-														);
-													})
-													: (
-														<div className="card bg-gray-400 bg-opacity-50">
-															<div className="card-body items-center text-center w-full md:w-auto h-56">
-																<p className="font-bebas card-title mb-0">No Meetings Available</p>
-																<div className="divider mb-0 mt-0 w-5" />
-															</div>
-														</div>
-													)
-										}
-									</div>
-								</div>
-							</div>
+																		:
+																		e.dates.filter((d) => d.time.end <= Date.now() && d.time.start <= Date.now()).length ?
+																			<div className="indicator">
+																				<span className="badge badge-error">ENDED</span>
+																			</div>
+																			:
+																			e.dates.filter((d) => d.time.end >= Date.now() && d.time.start >= Date.now()).length ?
+																				<div className="indicator">
+																					<span className="badge badge-warning">UPCOMING</span>
+																				</div>
+																				:
+																				<div className="indicator">
+																					<span className="badge badge-secondary">UNKNOWN</span>
+																				</div>
+																}
+															</td>
+															<td />
+															<td>{dateFormat(e.dates[0].time.start, "mm/dd, h:MM TT")}</td>
+															<th>
+																<div className="dropdown dropdown-hover dropdown-end">
+																	<button aria-label={`${e.id} Menu Actions`} className="btn btn-ghost">
+																		<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+																		</svg>
+																	</button>
+																	<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
+																		<li>
+																			<Link href={`/meetings?id=${e.id}`} passHref>
+																				<a><span>View Meeting</span></a>
+																			</Link>
+																		</li>
+																		<li>
+																			{
+																				e.dates.filter((d) => d.time.end >= Date.now() && d.time.start <= Date.now()).length ?
+																					(
+																						<a onClick={() => this.handleEndMeeting(e)}><span className="text-error">End Meeting</span></a>
+																					)
+																					:
+																					(
+																						<a onClick={() => this.handleDeleteMeeting(e)}><span className="text-error">Delete Meeting</span></a>
+																					)
+																			}
+																		</li>
+																	</ul>
+																</div>
+															</th>
+														</tr>
+													</>
+												))
+												:
+												<tr>
+													<td />
+													<td />
+													<td />
+													<td>No Meetings</td>
+													<td />
+												</tr>
+									}
+								</tbody>
+								<tfoot>
+									<tr>
+										<th />
+										<th>Program</th> 
+										<th>Meeting ID</th>
+										<th>Room</th>
+										<th />
+										<th>Status</th> 
+										<th />
+										<th>Date {"&"} Time</th> 
+										<th />
+									</tr>
+								</tfoot>
+							</table>
 						</div>
 					</div>
 				</div>
