@@ -136,7 +136,7 @@ class Dashboard extends React.Component<Props, States> {
 										<th />
 									</tr>
 								</thead>
-								<tbody>
+								<tbody className="text-primary-content">
 									{
 										this.state.loading ?
 											<tr>
@@ -152,7 +152,7 @@ class Dashboard extends React.Component<Props, States> {
 												?
 												this.state.meetings.sort((a, b) => b.dates[0].time.start - a.dates[0].time.start).map((e, i) => (
 													<>
-														<tr key={i}>
+														<tr key={i} className="hover">
 															<td></td>
 															<td><strong>{e.program}</strong></td>
 															<td>{e.id}</td>
@@ -243,6 +243,15 @@ class Dashboard extends React.Component<Props, States> {
 							</table>
 						</div>
 					</div>
+				</div>
+				<div>
+					<footer className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-10 footer text-primary-content footer-center">
+						<div>
+							<Link href="/admin/classic" passHref>
+								<a className="link link-hover"><strong>View Dashboard in Classic View?</strong></a>
+							</Link>
+						</div>
+					</footer>
 				</div>
 			</Layout>
 		);

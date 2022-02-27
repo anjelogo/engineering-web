@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getSession } from "next-auth/client";
 import React from "react";
-import Dashboard from "../components/dashboard/dashboard";
-import Layout from "../components/layout";
-import getIDs from "../lib/getIds";
-import { wrapSession } from "../lib/wrapSession";
-import NotFoundPage from "./404";
+import ClassicDashboard from "../../components/dashboard/classicDashboard";
+import Layout from "../../components/layout";
+import getIDs from "../../lib/getIds";
+import { wrapSession } from "../../lib/wrapSession";
+import NotFoundPage from "../404";
 
 interface Props {
 	children?: React.ReactNode;
@@ -71,7 +71,7 @@ class Admin extends React.Component<Props, States> {
 						:
 						(this.state.session?.id && getIDs().includes(this.state.session.id))
 							? (
-								<Dashboard session={this.state.session}/>
+								<ClassicDashboard session={this.state.session}/>
 							)
 							: (
 								<NotFoundPage />
