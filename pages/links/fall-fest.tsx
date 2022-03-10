@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as React from "react";
-import Layout from "../components/layout";
+import Layout from "../../components/layout";
 import router from "next/router";
 
 export default class FallFest extends React.Component {
