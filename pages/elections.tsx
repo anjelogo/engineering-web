@@ -142,7 +142,7 @@ class ContactUsPage extends React.Component<Props, States> {
 								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-2 2xl:flex-none 2xl:m-0">
 									<div className="col-start-1 col-span-1">
 										<div className={
-											this.state.voted && this.state.voted == 0 
+											typeof this.state.voted !== "undefined" && this.state.voted == 0 
 												? votedCard
 												: this.state.voted == 1
 													? disabledCard
@@ -291,7 +291,7 @@ class ContactUsPage extends React.Component<Props, States> {
 										? <button className="btn btn-disabled text-primary-content">Loading...</button>
 										: this.state.disabled
 											? <button className="btn btn-disabled text-primary-content">You are not a member.</button>
-											: this.state.voted
+											: typeof this.state.voted == "number"
 												? <button className="btn btn-disabled text-primary-content">You already voted!</button>
 												: ![0, 1].includes(this.state.selectedVote as number)
 													? <button className="btn btn-disabled text-primary-content">Select Your Candidates!</button>
