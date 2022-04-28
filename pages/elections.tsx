@@ -43,7 +43,6 @@ class ContactUsPage extends React.Component<Props, States> {
 	}
 
 	async handleRefresh() {
-		console.log(this.state);
 		this.setState({
 			session: this.props.session,
 			loading: true
@@ -65,6 +64,8 @@ class ContactUsPage extends React.Component<Props, States> {
 					});
 				}
 			}
+
+			console.log(this.session.email);
 
 			if (session.user.email && emails.includes(session.user.email))
 				this.setState({
