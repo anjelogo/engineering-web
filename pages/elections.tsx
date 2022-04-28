@@ -71,6 +71,11 @@ class ContactUsPage extends React.Component<Props, States> {
 					disabled: false
 				});
 
+			if (Date.now() >= 1651179600000)
+				this.setState({
+					disabled: true
+				});
+
 			this.setState({
 				session,
 				loading: false
@@ -326,7 +331,7 @@ class ContactUsPage extends React.Component<Props, States> {
 									this.state.loading
 										? <button className="btn btn-disabled text-primary-content">Loading...</button>
 										: this.state.disabled
-											? <button className="btn btn-disabled text-primary-content">You are not a member.</button>
+											? <button className="btn btn-disabled text-primary-content">DISABLED</button>
 											: typeof this.state.voted !== "undefined"
 												? <button className="btn btn-disabled text-primary-content">You already voted!</button>
 												: ![0, 1].includes(this.state.selectedVote as number)
