@@ -65,11 +65,9 @@ class ContactUsPage extends React.Component<Props, States> {
 				}
 			}
 
-			console.log(emails.includes(session.user.email as string));
-
-			if (session.user.email && emails.includes(session.user.email))
+			if (session.user.email && emails.includes(session.user.email as string))
 				this.setState({
-					disabled: true
+					disabled: false
 				});
 
 			this.setState({
