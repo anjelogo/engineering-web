@@ -291,7 +291,7 @@ class ContactUsPage extends React.Component<Props, States> {
 										? <button className="btn btn-disabled text-primary-content">Loading...</button>
 										: this.state.disabled
 											? <button className="btn btn-disabled text-primary-content">You are not a member.</button>
-											: typeof this.state.voted == "number"
+											: typeof this.state.voted !== "undefined"
 												? <button className="btn btn-disabled text-primary-content">You already voted!</button>
 												: ![0, 1].includes(this.state.selectedVote as number)
 													? <button className="btn btn-disabled text-primary-content">Select Your Candidates!</button>
