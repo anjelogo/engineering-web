@@ -43,6 +43,7 @@ class ContactUsPage extends React.Component<Props, States> {
 	}
 
 	async handleRefresh() {
+		console.log(this.state)
 		this.setState({
 			session: this.props.session,
 			loading: true
