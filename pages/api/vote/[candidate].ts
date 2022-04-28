@@ -22,11 +22,12 @@ handler
 		let { candidate }: any = req.query;
 		const session: any = await getSession({ req });
 
-		if (!candidate)
-			return res.status(404).send("Candidate not provided");
-
 		if (typeof candidate !== "number")
 			candidate = Number(candidate);
+
+		
+		if (![0, 1].includes(candidate as number))
+			return res.status(404).send("Candidate not provided");
 
 		try {
 			await addUserVote(session, candidate);
