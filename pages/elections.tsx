@@ -125,7 +125,7 @@ class ContactUsPage extends React.Component<Props, States> {
 									{
 										!this.state.session || !this.state.session.user
 											? <h1>CANDIDATES</h1>
-											: this.disabled
+											: this.state.disabled
 												? <h1>CANDIDATES</h1>
 												: <h1>CHOOSE YOUR CANDIDATES</h1>
 									}
