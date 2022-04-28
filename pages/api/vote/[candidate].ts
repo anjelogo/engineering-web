@@ -21,10 +21,6 @@ handler
 	.post(async (req: NextApiRequest, res: NextApiResponse) => {
 		let { candidate }: any = req.query;
 		const session: any = await getSession({ req });
-
-		if (typeof candidate !== "number")
-			candidate = Number(candidate);
-
 		
 		if (![0, 1].includes(candidate as number))
 			return res.status(404).send("Candidate not provided");

@@ -58,7 +58,7 @@ class ContactUsPage extends React.Component<Props, States> {
 				} = await fetch("/api/vote").then(r => { return r.json(); }).catch(() => { return undefined; });
 
 
-				if (vote) {
+				if (typeof vote !== "undefined") {
 					this.setState({
 						voted: vote.candidate
 					});
