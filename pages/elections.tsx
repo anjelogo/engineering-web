@@ -9,6 +9,7 @@ import AlexMurillo from "../public/alexmurillo.jpg";
 import KarenXia from "../public/karenxia.jpg";
 import Gavin from "../public/gavin.jpg";
 import Hyunvin from "../public/hyunvin.jpg";
+import Kevin from "../public/kevin.jpg";
 
 const unselectedCard = "h-full backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2 cursor-pointer";
 const selectedCard = "h-full backdrop-filter backdrop-blur-lg bg-opacity-30 bg-blue-300 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2 cursor-pointer";
@@ -277,6 +278,41 @@ class ContactUsPage extends React.Component<Props, States> {
 															<h2 className="text-primary-content text-3xl font-bebas pt-5">Hyunvin Yim</h2>
 															<h2 className="text-secondary text-4xl font-bebas pt-1">Vice President</h2>
 															<h3 className="text-primary-content text-sm pt-5">&quot;I as vice president imagine a greater future, people with parts that they need, working cooperatively with their team.&quot;</h3>
+														</div>
+													</div>
+													<div className="md:hidden">
+														<figure className="px-20">
+															<Image
+																src={Kevin}
+																alt="Kevin"
+																height={100}
+																width={100}
+																layout="responsive"
+																className="rounded-md"
+															/>
+														</figure>
+														<div className="flex flex-col justify-center text-center">
+															<h2 className="text-primary-content text-3xl font-bebas pt-5">Kevin Jimenez</h2>
+															<h2 className="text-secondary text-4xl font-bebas pt-1">Treasurer</h2>
+															<h3 className="text-primary-content text-sm pt-5">&quot;Smart 7th grader that wants to learn more.&quot;</h3>
+														</div>
+													</div>
+												</div>
+												<div className="hidden md:flex pt-10">
+													<div className="card card-side bg-transparent">
+														<figure className="px-20 pr-10">
+															<Image
+																src={Kevin}
+																alt="Kevin"
+																height={100}
+																width={100}
+																layout="fixed"
+																className="rounded-full"
+															/>
+														</figure>
+														<div className="card-body flex pl-0">
+															<h1 className="text-primary-content font-bebas text-2xl">Kevin Jimenez - <span className="text-secondary">Treasurer</span></h1>
+															<h2 className="text-primary-content">&quot;Smart 7th grader that wants to learn more.&quot;</h2>
 														</div>
 													</div>
 												</div>
