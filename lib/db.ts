@@ -102,3 +102,35 @@ export async function updateMeeting(meeting: Meeting, newMeeting: Meeting): Prom
 
 	return;
 }
+
+interface vote {
+	id: string;
+	candidate: number;
+}
+
+export async function findUserVote(id: string): Promise<vote | undefined> {
+	if (!id)
+		throw new Error("No ID!");
+	
+	const obj: vote = await db.get("votes").findOne({ id: id });
+
+	if (!obj) throw new Error("No Vote!");
+	return obj;
+}
+
+export async function addUserVote(session: any, candidate: number): Promise<void> {
+	if (!session || !candidate || candidate > 1)
+		throw new Error("No Session or Candidate!");
+
+	const voted: vote = await db.get("votes").findOne({ id: session.id });
+	if (voted) throw new Error("Already Voted!");
+
+	const obj = {
+		id: session.id,
+		candidate
+	};
+
+	await db.get("votes").insert(obj);
+
+	return;
+}
