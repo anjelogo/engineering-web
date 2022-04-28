@@ -1,4 +1,4 @@
-export default [
+export const emails: string[] = [
 	"alvaradoj03008@vvstu.org",
 	"alegadoa86404@vvstu.org",
 	"ampieramireza25805@vvstu.org",

@@ -2,7 +2,7 @@ import React from "react";
 import Layout from "../components/layout";
 import Image from "next/image";
 import { getSession } from "next-auth/client";
-import memberemails from "../lib/memberemails";
+import { emails } from "../lib/memberemails";
 
 import DanielDeLeon from "../public/danieldeleon.png";
 import AlexMurillo from "../public/alexmurillo.jpg";
@@ -65,7 +65,7 @@ class ContactUsPage extends React.Component<Props, States> {
 				}
 			}
 
-			if (session.user.email && memberemails.includes(session.user.email))
+			if (session.user.email && emails.includes(session.user.email))
 				this.setState({
 					disabled: true
 				});
@@ -125,9 +125,9 @@ class ContactUsPage extends React.Component<Props, States> {
 									{
 										!this.state.session || !this.state.session.user
 											? <h1>CANDIDATES</h1>
-											: memberemails.includes(this.state.session.user.email)
-												? <h1>CHOOSE YOUR CANDIDATES</h1>
-												: <h1>CANDIDATES</h1>
+											: this.disabled
+												? <h1>CANDIDATES</h1>
+												: <h1>CHOOSE YOUR CANDIDATES</h1>
 									}
 								</div>
 							</div>
@@ -136,9 +136,9 @@ class ContactUsPage extends React.Component<Props, States> {
 									{
 										!this.state.session || !this.state.session.user
 											? <h1>THESE ARE OUR 2022/23 ELECTORAL CANDIDATES</h1>
-											: memberemails.includes(this.state.session.user.email)
-												? <h1>CHOOSE YOUR CANDIDATES, YOU <span className="text-error">CANNOT</span> CHANGE YOUR VOTE AFTER YOU VOTE</h1>
-												: <h1>THESE ARE OUR 2022/23 ELECTORAL CANDIDATES</h1>
+											: this.state.disabled
+												? <h1>THESE ARE OUR 2022/23 ELECTORAL CANDIDATES</h1>
+												: <h1>CHOOSE YOUR CANDIDATES, YOU <span className="text-error">CANNOT</span> CHANGE YOUR VOTE AFTER YOU VOTE</h1>
 									}
 								</div>
 							</div>
