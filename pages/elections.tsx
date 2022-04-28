@@ -71,11 +71,6 @@ class ContactUsPage extends React.Component<Props, States> {
 					disabled: false
 				});
 
-			if (Date.now() >= 1651179600000)
-				this.setState({
-					disabled: true
-				});
-
 			this.setState({
 				session,
 				loading: false
