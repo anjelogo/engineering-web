@@ -119,7 +119,7 @@ export async function findUserVote(id: string): Promise<vote | undefined> {
 }
 
 export async function addUserVote(session: any, candidate: number): Promise<void> {
-	if (!session || !candidate || candidate > 1)
+	if (!session || candidate > 1)
 		throw new Error("No Session or Candidate!");
 
 	const voted: vote = await db.get("votes").findOne({ id: session.id });
