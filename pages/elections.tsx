@@ -297,7 +297,7 @@ class ContactUsPage extends React.Component<Props, States> {
 													? <button className="btn btn-disabled text-primary-content">Select Your Candidates!</button>
 													: !this.state.confirm
 														? <button className="btn btn-primary-content" onClick={() => this.setState({ confirm: true })}>Click here to cast your vote</button>
-														: <button className="btn btn-error" onClick={() => this.vote(this.state.selectedVote)}>Are you sure?</button>
+														: <button className="btn btn-error" onClick={() => this.vote(this.state.selectedVote as number)}>Are you sure?</button>
 								}
 							</div>
 						</div>
