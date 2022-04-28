@@ -96,12 +96,8 @@ class ContactUsPage extends React.Component<Props, States> {
 		});
 	}
 
-	async vote(candidate: number | undefined) {
-		if (!candidate) return;
-
-		this.setState({
-			loading: true
-		});
+	async vote(candidate: number) {
+		if (![0, 1].includes(candidate as number)) return;
 
 		await fetch("/api/vote/" + candidate, { method: "POST" });
 		await this.handleRefresh();
