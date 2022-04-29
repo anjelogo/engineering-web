@@ -118,6 +118,12 @@ export async function findUserVote(id: string): Promise<vote | undefined> {
 	return obj;
 }
 
+export async function getVotes(): Promise<vote[] | undefined> {
+	const data = await db.get("votes").aggregate([]);
+
+	return data;
+}
+
 export async function addUserVote(session: any, candidate: number): Promise<void> {
 	if (!session || candidate > 1)
 		throw new Error("No Session or Candidate!");

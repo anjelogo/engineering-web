@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import nextConnect from "next-connect";
 import { findUserVote } from "../../../lib/db";
-import getIDs from "../../../lib/getIds";
 
 const handler = nextConnect();
 

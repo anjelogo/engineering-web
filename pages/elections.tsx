@@ -29,6 +29,10 @@ interface States {
 	selectedVote?: number;
 	disabled: boolean;
 	confirm?: boolean;
+	votes: {
+		da: number;
+		gh: number;
+	}
 }
 
 class ContactUsPage extends React.Component<Props, States> {
@@ -39,7 +43,11 @@ class ContactUsPage extends React.Component<Props, States> {
 		this.state = {
 			session: this.props.session,
 			loading: true,
-			disabled: true
+			disabled: true,
+			votes: {
+				da: 0,
+				gh: 0
+			}
 		};
 	}
 
@@ -54,10 +62,23 @@ class ContactUsPage extends React.Component<Props, States> {
 		if (session && session.user) {
 			if (typeof window !== "undefined") {
 				const vote: {
-					id: string;
-					candidate: number;
-				} = await fetch("/api/vote").then(r => { return r.json(); }).catch(() => { return undefined; });
+						id: string;
+						candidate: number;
+					} = await fetch("/api/vote").then(r => { return r.json(); }).catch(() => { return undefined; }),
+					votesData: {
+						id: string;
+						candidate: number;
+					}[] = await fetch("/api/votes/").then(r => { return r.json(); }).catch(() => { return undefined; });
 
+				if (votesData) {
+					const votes = {
+						da: votesData.filter(v => v.candidate < 1).length,
+						gh: votesData.filter(v => v.candidate > 0).length
+					};
+
+					console.log(votes);
+					this.setState({ votes });
+				}
 
 				if (typeof vote !== "undefined") {
 					this.setState({
@@ -119,37 +140,18 @@ class ContactUsPage extends React.Component<Props, States> {
 							</div>
 							<div className="flex justify-center">
 								<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-abril">
-									{
-										!this.state.session || !this.state.session.user
-											? <h1>CANDIDATES</h1>
-											: this.state.disabled
-												? <h1>CANDIDATES</h1>
-												: <h1>CHOOSE YOUR CANDIDATES</h1>
-									}
+									<h1>ELECTION WINNERS</h1>
 								</div>
 							</div>
 							<div className="flex justify-center">
-								<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary text-primary-content text-3xl font-abril">
-									{
-										!this.state.session || !this.state.session.user
-											? <h1>THESE ARE OUR 2022/23 ELECTORAL CANDIDATES</h1>
-											: this.state.disabled
-												? <h1>THESE ARE OUR 2022/23 ELECTORAL CANDIDATES</h1>
-												: <h1>CHOOSE YOUR CANDIDATES, YOU <span className="text-error">CANNOT</span> CHANGE YOUR VOTE AFTER YOU VOTE</h1>
-									}
+								<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-abril">
+									<h1>{this.state.votes.da} - {this.state.votes.gh}</h1>
 								</div>
 							</div>
 							<div className="mt-5">
 								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-2 2xl:flex-none 2xl:m-0">
 									<div className="col-start-1 col-span-1">
-										<div className={
-											typeof this.state.voted !== "undefined" && this.state.voted == 0 
-												? votedCard
-												: this.state.voted == 1
-													? disabledCard
-													: this.state.selectedVote == 0
-														? selectedCard
-														: unselectedCard}>
+										<div className={votedCard}>
 											<div className="card-body" onClick={() => this.handleSelectVote(0)}>
 												<div className="flex justify-center">
 													<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-abril">
@@ -231,14 +233,7 @@ class ContactUsPage extends React.Component<Props, States> {
 										</div>
 									</div>
 									<div className="col-start-2 col-span-1">
-										<div className={
-											this.state.voted && this.state.voted == 1
-												? votedCard
-												: this.state.voted == 0
-													? disabledCard
-													: this.state.selectedVote == 1
-														? selectedCard
-														: unselectedCard}>
+										<div className={disabledCard}>
 											<div className="card-body" onClick={() => this.handleSelectVote(1)}>
 												<div className="flex justify-center">
 													<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-abril">
@@ -320,21 +315,6 @@ class ContactUsPage extends React.Component<Props, States> {
 										</div>
 									</div>
 								</div>
-							</div>
-							<div className="mt-10 flex justify-center">
-								{
-									this.state.loading
-										? <button className="btn btn-disabled text-primary-content">Loading...</button>
-										: this.state.disabled
-											? <button className="btn btn-disabled text-primary-content">DISABLED</button>
-											: typeof this.state.voted !== "undefined"
-												? <button className="btn btn-disabled text-primary-content">You already voted!</button>
-												: ![0, 1].includes(this.state.selectedVote as number)
-													? <button className="btn btn-disabled text-primary-content">Select Your Candidates!</button>
-													: !this.state.confirm
-														? <button className="btn btn-primary-content" onClick={() => this.setState({ confirm: true })}>Click here to cast your vote</button>
-														: <button className="btn btn-error" onClick={() => this.vote(this.state.selectedVote as number)}>Are you sure?</button>
-								}
 							</div>
 						</div>
 					</div>
