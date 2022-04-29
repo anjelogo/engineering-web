@@ -149,8 +149,8 @@ class ContactUsPage extends React.Component<Props, States> {
 								</div>
 							</div>
 							<div className="mt-5">
-								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-2 2xl:flex-none 2xl:m-0">
-									<div className="col-start-1 col-span-1">
+								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-3 2xl:flex-none 2xl:m-0">
+									<div className="col-start-2 col-span-1">
 										<div className={votedCard}>
 											<div className="card-body" onClick={() => this.handleSelectVote(0)}>
 												<div className="flex justify-center">
@@ -226,88 +226,6 @@ class ContactUsPage extends React.Component<Props, States> {
 														<div className="card-body flex pl-0">
 															<h1 className="text-primary-content font-bebas text-2xl">Karen Xia - <span className="text-secondary">Treasurer</span></h1>
 															<h2 className="text-primary-content">&quot;I&apos;m a student interested in learning more about the STEM field.&quot;</h2>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="col-start-2 col-span-1">
-										<div className={disabledCard}>
-											<div className="card-body" onClick={() => this.handleSelectVote(1)}>
-												<div className="flex justify-center">
-													<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-abril">
-														<h1>GAVIN & HYUNVIN</h1>
-													</div>
-												</div>
-												<div className="gap-10 2xl:grid 2xl:grid-cols-2 2xl:flex-none 2xl:m-0">
-													<div className="col-start-1 col-span-1 mt-10">
-														<figure className="px-20">
-															<Image
-																src={Gavin}
-																alt="Gavin"
-																height={100}
-																width={100}
-																layout="responsive"
-																className="rounded-md"
-															/>
-														</figure>
-														<div className="flex flex-col justify-center text-center">
-															<h2 className="text-primary-content text-3xl font-bebas pt-5">Gavin Bihlmeier</h2>
-															<h2 className="text-secondary text-4xl font-bebas pt-1">President</h2>
-															<h3 className="text-primary-content text-sm pt-5">&quot;We imagine a greater and brighter future for people of the Engineering Club. People with no parts will no longer worry!&quot;</h3>
-														</div>
-													</div>
-													<div className="col-start-2 col-span-1 mt-10">
-														<figure className="px-20">
-															<Image
-																src={Hyunvin}
-																alt="Hyunvin"
-																height={100}
-																width={100}
-																layout="responsive"
-																className="rounded-md"
-															/>
-														</figure>
-														<div className="flex flex-col justify-center text-center">
-															<h2 className="text-primary-content text-3xl font-bebas pt-5">Hyunvin Yim</h2>
-															<h2 className="text-secondary text-4xl font-bebas pt-1">Vice President</h2>
-															<h3 className="text-primary-content text-sm pt-5">&quot;I as vice president imagine a greater future, people with parts that they need, working cooperatively with their team.&quot;</h3>
-														</div>
-													</div>
-													<div className="md:hidden">
-														<figure className="px-20">
-															<Image
-																src={Kevin}
-																alt="Kevin"
-																height={100}
-																width={100}
-																layout="responsive"
-																className="rounded-md"
-															/>
-														</figure>
-														<div className="flex flex-col justify-center text-center">
-															<h2 className="text-primary-content text-3xl font-bebas pt-5">Kevin Jimenez</h2>
-															<h2 className="text-secondary text-4xl font-bebas pt-1">Treasurer</h2>
-															<h3 className="text-primary-content text-sm pt-5">&quot;Smart 7th grader that wants to learn more.&quot;</h3>
-														</div>
-													</div>
-												</div>
-												<div className="hidden md:flex pt-10">
-													<div className="card card-side bg-transparent">
-														<figure className="px-20 pr-10">
-															<Image
-																src={Kevin}
-																alt="Kevin"
-																height={100}
-																width={100}
-																layout="fixed"
-																className="rounded-full"
-															/>
-														</figure>
-														<div className="card-body flex pl-0">
-															<h1 className="text-primary-content font-bebas text-2xl">Kevin Jimenez - <span className="text-secondary">Treasurer</span></h1>
-															<h2 className="text-primary-content">&quot;Smart 7th grader that wants to learn more.&quot;</h2>
 														</div>
 													</div>
 												</div>
