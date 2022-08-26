@@ -15,7 +15,7 @@
     "dateformat": "^5.0.1",
     "fetch": "^1.1.0",
     "mongodb": "^3.5.9",
-    "mongoose": "^6.0.7",
+    "mongoose": "^6.4.6",
     "monk": "^7.3.4",
     "next": "12.1.0",
     "next-auth": "^3.29.0",
