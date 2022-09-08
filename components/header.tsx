@@ -6,6 +6,7 @@ import { getSession, signIn, signOut } from "next-auth/client";
 import { wrapSession } from "../lib/wrapSession";
 import Image from "next/image";
 import getIDs from "../lib/getIds";
+import AlertConstructor from "./alertConstructor";
 
 interface NavbarProps {
 	children: React.ReactNode
@@ -82,9 +83,6 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 										<Link href="/programs">Programs</Link> 
 									</li>
 									<li>
-										<Link href="/elections">Elections</Link> 
-									</li>
-									<li>
 										<Link href="/contact">Contact Us</Link> 
 									</li>
 									<div className="flex-none" id="toggle">
@@ -120,14 +118,6 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 									<button className="btn btn-ghost btn-sm">
 										Programs
 									</button></Link>
-								<Link href="/elections" passHref>
-									<div className="indicator">
-										<span className="indicator-item badge badge-error">NEW</span>
-										<button className="btn btn-ghost btn-sm">
-											Elections
-										</button>
-									</div>
-								</Link>
 								<Link href="/contact" passHref>
 									<button className="btn btn-ghost btn-sm">
 										Contact Us
@@ -226,6 +216,8 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 						</div>
 
 					</nav>
+
+					<AlertConstructor />
 
 				</header>
 				{this.props.children}

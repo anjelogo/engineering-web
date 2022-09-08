@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-import Typical from "react-typical";
 import Layout from "../components/layout";
 
 const Home = (): JSX.Element => {
@@ -18,11 +17,7 @@ const Home = (): JSX.Element => {
 									<span className="text-primary-content">Inspire. Innovate.</span>
 									<br />
 									<span className="text-secondary">
-										<Typical
-											steps={["Build.", 5000, "Design.", 5000, "Create.", 5000, "Produce.", 5000, "Engineer.", 5000, "Accomplish.", 5000]}
-											loop={Infinity}
-											wrapper="p"
-										/>
+										<p>Create.</p>
 									</span>
 								</span>
 								<span className="text-primary-content mb-5 text-md">

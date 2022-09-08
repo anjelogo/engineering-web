@@ -14,7 +14,14 @@ module.exports = {
 				"topography": "url('../public/topography.svg')",
 				"robotics": "url('../public/roboticsbackground.jpg')",
 				"3dmodeling": "url('../public/3dbackground.jpg')"
-			})
+			}),
+			colors: {
+				"blurple": "#5865F2",
+				"insta1": "#fd1d1d",
+				"insta2": "#833ab4",
+				"insta3": "#405de6",
+				"insta4": "#FEDA77"
+			}
 		},
 		fontFamily: {
 			abril: ["Abril Fatface", "cursive"],

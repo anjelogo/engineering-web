@@ -44,7 +44,7 @@ class AlertConstructor extends React.Component<Props, State> {
 			let meetings: Meeting[] = [];
 
 			if (data) {
-				meetings = data.filter((m) => m.dates.filter((d) => d.time.start <= Date.now() && d.time.end >= Date.now()).length)
+				meetings = data //.filter((m) => m.dates.filter((d) => d.time.start <= Date.now() && d.time.end >= Date.now()).length)
 					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]); //Sort Earliest meeting
 			}
 			
