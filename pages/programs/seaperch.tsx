@@ -1,11 +1,10 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
 import Layout from "../../components/layout";
+import Alijah from "../../public/alijah.png";
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor, RepresentativeCard } from "../../components/utilities";
 import MeetingCard from "../../components/MeetingCard";
-
-import Alijah from "../../public/static/alijah.png";
 
 const SeaPerchProgram = (): JSX.Element => {
 
