@@ -13,6 +13,11 @@ declare module "*.jpg" {
   export default value;
 }
 
+declare module "*.avif" {
+	const value: any;
+	export default value;
+  }
+
 declare module "theme-change"
 
 declare module "react-typical"

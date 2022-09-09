@@ -23,7 +23,7 @@ export const ProgramWrapper = (
 
 	return (
 		<>
-			<div className="bg-primary">
+			<div>
 				<div className="mt-0">
 					<div className={`${background ?? "bg-topography"} hero min-h-screen`}>
 						<div className="text-center hero-content">
@@ -36,7 +36,7 @@ export const ProgramWrapper = (
 						</div>
 					</div>
 					{alerts}
-					<div className="bg-primary min-h-screen mt-10 lg:mb-10">
+					<div className="min-h-screen mt-10 lg:mb-10">
 						{
 							sidebar ? (
 								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">

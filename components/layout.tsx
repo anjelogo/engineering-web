@@ -25,7 +25,7 @@ const Layout = ({ children, title, description }: LayoutProps): JSX.Element => {
 				<meta name="description" content={description} />
 			</Head>
 			<Navbar>
-				<div className="flex flex-col h-screen">
+				<div className=" bg-gradient-to-tl from-accent via-primary to-secondary">
 					{children}
 					<Footer />
 				</div>

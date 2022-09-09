@@ -18,8 +18,8 @@ export default NextAuth({
 		},
 		async signIn(user, account, profile) {
 			if (account.provider === "google" &&
-          profile.verified_email === true &&
-					profile.email.endsWith("@vvstu.org" || "@vvuhsd.org")) {
+				profile.verified_email === true &&
+				profile.email.endsWith("@vvstu.org" || "@vvuhsd.org" || "@gmail.com")) {
 				return true;
 			} else {
 				return false;

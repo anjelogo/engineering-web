@@ -44,7 +44,7 @@ class AlertConstructor extends React.Component<Props, State> {
 			let meetings: Meeting[] = [];
 
 			if (data) {
-				meetings = data //.filter((m) => m.dates.filter((d) => d.time.start <= Date.now() && d.time.end >= Date.now()).length)
+				meetings = data.filter((m) => m.dates.filter((d) => d.time.start <= Date.now() && d.time.end >= Date.now()).length)
 					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]); //Sort Earliest meeting
 			}
 			
@@ -74,14 +74,14 @@ class AlertConstructor extends React.Component<Props, State> {
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="w-6 h-6 mx-2 stroke-current">
 								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>                          
 							</svg> 
-							<label><strong>	{meeting.program}</strong> is having currently having a meeting!</label>
+							<label><strong>	{meeting.program}</strong> is currently having a meeting!</label>
 						</div>
 						<div className="flex-none">
 							{
 								this.state.session?.id
 									? !meeting.users?.filter((u) => u.id === this.state.session.id).length
 										? (
-											<button className="btn btn-sm btn-primary mr-2" onClick={() => this.handleSignIn(meeting)}>
+											<button className="btn btn-sm btn-outline text-info mr-2" onClick={() => this.handleSignIn(meeting)}>
 												Sign in
 											</button>
 										)

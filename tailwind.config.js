@@ -13,7 +13,8 @@ module.exports = {
 			backgroundImage: theme => ({
 				"topography": "url('../public/topography.svg')",
 				"robotics": "url('../public/roboticsbackground.jpg')",
-				"3dmodeling": "url('../public/3dbackground.jpg')"
+				"3dmodeling": "url('../public/3dbackground.jpg')",
+				"landscape": "url('../public/landscape2.jpeg')"
 			}),
 			colors: {
 				"blurple": "#5865F2",
@@ -31,25 +32,26 @@ module.exports = {
 	plugins: [
 		require("daisyui")
 	],
+	mode: "jit",
 	daisyui: {
 		themes: [
 			{
 				"lighttheme": {                          /* your theme name */
 					"primary" : "#ffffff",           /* Primary color */
 					"primary-focus" : "#3d4451",     /* Primary color - focused */
-					"primary-content" : "#000000",   /* Foreground content color to use on primary color */
+					"primary-content" : "#ffffff",   /* Foreground content color to use on primary color */
 
 					"secondary" : "#f6d860",         /* Secondary color */
 					"secondary-focus" : "#f3cc30",   /* Secondary color - focused */
-					"secondary-content" : "#ffffff", /* Foreground content color to use on secondary color */
+					"secondary-content" : "#000000", /* Foreground content color to use on secondary color */
 
 					"accent" : "#37cdbe",            /* Accent color */
 					"accent-focus" : "#2aa79b",      /* Accent color - focused */
 					"accent-content" : "#ffffff",    /* Foreground content color to use on accent color */
 
-					"neutral" : "#000000",           /* Neutral color */
+					"neutral" : "#4d4d4d",           /* Neutral color */
 					"neutral-focus" : "#3d4451",     /* Neutral color - focused */
-					"neutral-content" : "#ffffff",   /* Foreground content color to use on neutral color */
+					"neutral-content" : "#000000",   /* Foreground content color to use on neutral color */
 
 					"base-100" : "#ffffff",          /* Base color of page, used for blank backgrounds */
 					"base-200" : "#f9fafb",          /* Base color, a little darker */
@@ -69,15 +71,15 @@ module.exports = {
 
 					"secondary" : "#f6d860",         /* Secondary color */
 					"secondary-focus" : "#f3cc30",   /* Secondary color - focused */
-					"secondary-content" : "#000000", /* Foreground content color to use on secondary color */
+					"secondary-content" : "#ffffff", /* Foreground content color to use on secondary color */
 
-					"accent" : "#37cdbe",            /* Accent color */
+					"accent" : "#2b9e93",            /* Accent color */
 					"accent-focus" : "#d1d5db",      /* Accent color - focused */
-					"accent-content" : "#000000",    /* Foreground content color to use on accent color */
+					"accent-content" : "#ffffff",    /* Foreground content color to use on accent color */
 
-					"neutral" : "#ffffff",           /* Neutral color */
+					"neutral" : "#000000",           /* Neutral color */
 					"neutral-focus" : "#d1d5db",     /* Neutral color - focused */
-					"neutral-content" : "#000000",   /* Foreground content color to use on neutral color */
+					"neutral-content" : "#ffffff",   /* Foreground content color to use on neutral color */
 
 					"base-100" : "#ffffff",          /* Base color of page, used for blank backgrounds */
 					"base-200" : "#f9fafb",          /* Base color, a little darker */
