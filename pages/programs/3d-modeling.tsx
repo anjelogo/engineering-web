@@ -1,10 +1,11 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
 import Layout from "../../components/layout";
-import Alex from "../../public/alex.jpg";
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
 import { faqConstructor, RepresentativeCard } from "../../components/utilities";
 import MeetingCard from "../../components/MeetingCard";
+
+import Alex from "../../public/static/alex.jpg";
 
 const ModelingProgram = (): JSX.Element => {
 

@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "../components/layout";
 import Image from "next/image";
 
-import RoboticsBackground from "../public/roboticsbackground.jpg";
+import RoboticsBackground from "../public/static/roboticsbackground.jpg";
 
 const Home = (): JSX.Element => (
 	<Layout

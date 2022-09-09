@@ -2,11 +2,11 @@ import React from "react";
 import Layout from "../components/layout";
 import Image from "next/image";
 
-import DanielDeLeon from "../public/danieldeleon.png";
-import AlexMurillo from "../public/alexmurillo.jpg";
-import KarenXia from "../public/karenxia.jpg";
-import ManuelColon from "../public/manuelcolon.jpeg";
-import Alisa from "../public/alisa.jpeg";
+import DanielDeLeon from "../public/static/danieldeleon.png";
+import AlexMurillo from "../public/static/alexmurillo.jpg";
+import KarenXia from "../public/static/karenxia.jpg";
+import ManuelColon from "../public/static/manuelcolon.jpeg";
+import Alisa from "../public/static/alisa.jpeg";
 
 const btnStyles = "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2";
 

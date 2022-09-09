@@ -3,10 +3,8 @@ import React from "react";
 import Layout from "../../components/layout";
 import Image from "next/image";
 
-import RoboticsBackground from "../../public/roboticsbackground.jpg";
-import ThreeDModelingBackground from "../../public/3dbackground.jpg";
-
-import DiscordSVG from "../../public/discord-alt.svg";
+import RoboticsBackground from "../../public/static/roboticsbackground.jpg";
+import ThreeDModelingBackground from "../../public/static/3dbackground.jpg";
 
 const btnStyles = "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2";
 
