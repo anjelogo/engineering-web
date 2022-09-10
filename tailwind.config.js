@@ -14,7 +14,7 @@ module.exports = {
 				"topography": "url('../public/topography.svg')",
 				"robotics": "url('../public/roboticsbackground.jpg')",
 				"3dmodeling": "url('../public/3dbackground.jpg')",
-				"landscape": "url('../public/landscape2.jpeg')"
+				"landscape": "url('../public/vvland.jpeg')"
 			}),
 			colors: {
 				"blurple": "#5865F2",
