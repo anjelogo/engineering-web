@@ -41,7 +41,7 @@ const Home = (): JSX.Element => (
 			</div>
 			<div className="m-10" />
 			<div>
-				<div className="hero h-full bg-landscape bg-fixed p-10">
+				<div className="hero h-full bg-gradient-to-bl from-yellow-600 to-pink-500 bg-fixed p-10">
 					<div className="hero-content flex-wrap lg:grid lg:grid-cols-3">
 						<div className="lg:col-span-2 lg:w-full card image-full">
 							<div className="card-body">
