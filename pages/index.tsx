@@ -17,12 +17,12 @@ const Home = (): JSX.Element => (
 					<div className="hero-content">
 						<div className="card bg-transparent md:ml-10">
 							<h1 className="card-body">
-								<h1 className="card-title text-5xl md:text-8xl font-extrabold text-shadow">
+								<h1 className="card-title text-5xl md:text-8xl font-extrabold">
 									<span className="text-primary-content">
 										INSPIRE.<br />
 										INNOVATE.<br />
 									</span>
-									<span className="bg-clip-text text-transparent bg-gradient-to-tr from-blue-300 to-yellow-400">
+									<span className="bg-fixed bg-clip-text text-transparent bg-gradient-to-b from-[#54b6ca] via-[#f756aa] to-[#9d80cb]">
 										CREATE.
 									</span>
 								</h1>
@@ -46,7 +46,7 @@ const Home = (): JSX.Element => (
 						<div className="md:col-span-2 md:w-full card image-full">
 							<div className="card-body">
 								<h1 className="card-title">
-									<span className="bg-fixed text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
+									<span className="bg-fixed text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#dc419b] via-[#fcef04] to-[#ffffff]">
 										ROBOTICS
 									</span>
 								</h1>
@@ -117,7 +117,7 @@ const Home = (): JSX.Element => (
 								</h1>
 							</div>
 						</div>
-						<div className="bg-fixed md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
+						<div className="md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
 							<div className="card-body">
 								<h1 className="card-title">
 									<span className="text-5xl md:text-8xl font-extrabold text-white">
