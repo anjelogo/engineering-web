@@ -46,7 +46,7 @@ const Home = (): JSX.Element => (
 						<div className="md:col-span-2 md:w-full card image-full">
 							<div className="card-body">
 								<h1 className="card-title">
-									<span className="text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-insta1 to-insta3">
+									<span className="bg-fixed text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
 										ROBOTICS
 									</span>
 								</h1>
@@ -102,13 +102,13 @@ const Home = (): JSX.Element => (
 									<span className="text-neutral-content">
 										Want something?{" "}
 									</span>
-									<span className="bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
+									<span className="bg-fixed bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
 										{" "}Make it.
 									</span>
 									<span className="text-neutral-content">
 										{" "}Come by and use our club{"'"}s 3D printer and make it a
 									</span>
-									<span className="bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
+									<span className="bg-fixed bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
 										{" "}reality
 									</span>
 									<span className="text-neutral-content">
@@ -117,7 +117,7 @@ const Home = (): JSX.Element => (
 								</h1>
 							</div>
 						</div>
-						<div className="md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
+						<div className="bg-fixed md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
 							<div className="card-body">
 								<h1 className="card-title">
 									<span className="text-5xl md:text-8xl font-extrabold text-white">
@@ -125,7 +125,7 @@ const Home = (): JSX.Element => (
 									</span>
 								</h1>
 								<h2>
-									<span className="text-2xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-insta1 to-insta3">
+									<span className="bg-fixed text-2xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-insta1 to-insta3">
 										Imagine and create.
 									</span>
 								</h2>
