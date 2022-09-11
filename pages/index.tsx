@@ -13,11 +13,11 @@ const Home = (): JSX.Element => (
 		<body className="min-h-screen">
 			<div>
 				<div className="pt-10" />
-				<div className="flex m-1 lg:m-0 justify-start items-center h-screen">
+				<div className="flex m-1 md:m-0 justify-start items-center h-screen">
 					<div className="hero-content">
-						<div className="card bg-transparent ml-10">
+						<div className="card bg-transparent md:ml-10">
 							<h1 className="card-body">
-								<h1 className="card-title text-5xl lg:text-8xl font-extrabold text-shadow">
+								<h1 className="card-title text-5xl md:text-8xl font-extrabold text-shadow">
 									<span className="text-primary-content">
 										INSPIRE.<br />
 										INNOVATE.<br />
@@ -41,16 +41,20 @@ const Home = (): JSX.Element => (
 			</div>
 			<div className="m-10" />
 			<div>
-				<div className="hero h-full bg-gradient-to-bl from-yellow-600 to-pink-500 bg-fixed p-10">
-					<div className="hero-content flex-wrap lg:grid lg:grid-cols-3">
-						<div className="lg:col-span-2 lg:w-full card image-full">
+				<div className="hero h-full bg-gradient-to-bl from-yellow-600 to-pink-500 bg-fixed md:p-10">
+					<div className="hero-content flex-wrap md:grid md:grid-cols-3">
+						<div className="md:col-span-2 md:w-full card image-full">
 							<div className="card-body">
-								<span className="card-title text-5xl lg:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-insta1 to-insta3">
-									<h1>ROBOTICS</h1>
-								</span>
-								<span className="text-2xl lg:text-2xl font-extrabold text-white">
-									<h2>Design your dream robot.</h2>
-								</span>
+								<h1 className="card-title">
+									<span className="text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-insta1 to-insta3">
+										ROBOTICS
+									</span>
+								</h1>
+								<h2 className="text-2xl md:text-6xl font-extrabold text-white">
+									<span>
+										Design your dream robot.
+									</span>
+								</h2>
 								<div className="justify-end">
 									<div className="card-actions">
 										<button className="btn btn-outline text-white">
@@ -66,12 +70,12 @@ const Home = (): JSX.Element => (
 								<Image
 									src={RoboticsBackground}
 									alt="Robotics"
-									width={300}
+									width={250}
 									height={250}
 									layout="responsive" />
 							</figure>
 						</div>
-						<div className="card bg-transparent lg:grid lg:grid-start-3">
+						<div className="card bg-transparent md:grid md:grid-start-3">
 							<div className="card-body h-full">
 								<h1 className="card-title text-4xl font-extrabold text-shadow">
 									<span className="text-primary">
@@ -90,9 +94,9 @@ const Home = (): JSX.Element => (
 				</div>
 			</div>
 			<div>
-				<div className="hero h-full p-10 bg-primary">
-					<div className="hero-content flex-wrap lg:grid lg:grid-cols-3">
-						<div className="card bg-transparent lg:grid">
+				<div className="hero h-full md:p-10 bg-primary">
+					<div className="hero-content flex-wrap md:grid md:grid-cols-3">
+						<div className="card bg-transparent md:grid">
 							<div className="card-body h-full">
 								<h1 className="card-title text-4xl font-extrabold text-shadow">
 									<span className="text-neutral-content">
@@ -113,15 +117,15 @@ const Home = (): JSX.Element => (
 								</h1>
 							</div>
 						</div>
-						<div className="lg:grid-start-2 lg:col-span-2 lg:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
+						<div className="md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
 							<div className="card-body">
 								<h1 className="card-title">
-									<span className="text-5xl lg:text-8xl font-extrabold text-white">
+									<span className="text-5xl md:text-8xl font-extrabold text-white">
 										3D MODELING
 									</span>
 								</h1>
 								<h2>
-									<span className="text-2xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-insta1 to-insta3">
+									<span className="text-2xl md:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-insta1 to-insta3">
 										Imagine and create.
 									</span>
 								</h2>
