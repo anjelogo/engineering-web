@@ -17,7 +17,7 @@ const Home = (): JSX.Element => (
 					<div className="hero-content">
 						<div className="card bg-transparent ml-10">
 							<h1 className="card-body">
-								<h1 className="card-title text-6xl lg:text-8xl font-extrabold text-shadow">
+								<h1 className="card-title text-5xl lg:text-8xl font-extrabold text-shadow">
 									<span className="text-primary-content">
 										INSPIRE.<br />
 										INNOVATE.<br />
@@ -45,10 +45,10 @@ const Home = (): JSX.Element => (
 					<div className="hero-content flex-wrap lg:grid lg:grid-cols-3">
 						<div className="lg:col-span-2 lg:w-full card image-full">
 							<div className="card-body">
-								<span className="card-title text-6xl lg:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-insta1 to-insta3">
+								<span className="card-title text-5xl lg:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-insta1 to-insta3">
 									<h1>ROBOTICS</h1>
 								</span>
-								<span className="text-4xl lg:text-6xl font-extrabold text-white">
+								<span className="text-2xl lg:text-2xl font-extrabold text-white">
 									<h2>Design your dream robot.</h2>
 								</span>
 								<div className="justify-end">
@@ -116,12 +116,12 @@ const Home = (): JSX.Element => (
 						<div className="lg:grid-start-2 lg:col-span-2 lg:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
 							<div className="card-body">
 								<h1 className="card-title">
-									<span className="text-6xl lg:text-8xl font-extrabold text-white">
+									<span className="text-5xl lg:text-8xl font-extrabold text-white">
 										3D MODELING
 									</span>
 								</h1>
 								<h2>
-									<span className="text-4xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-insta1 to-insta3">
+									<span className="text-2xl lg:text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-insta1 to-insta3">
 										Imagine and create.
 									</span>
 								</h2>
