@@ -108,7 +108,7 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 						{/* DESKTOP LINKS */}
 
 						<div className="hidden px-2 mx-2 navbar-center md:flex">
-							<div className="flex items-stretch text-lg">
+							<div className="items-stretch text-lg">
 								<Link href="/" passHref>
 									<button className="btn btn-ghost btn-sm">
 										Home
