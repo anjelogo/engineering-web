@@ -21,7 +21,7 @@ const ContactUsPage = (): JSX.Element => {
 				<div>
 					<div className="pt-28"/>
 					<div className="text-center text-primary-content">
-						<h1 className="text-5xl pb-2 font-abril">Contact Us</h1>
+						<h1 className="text-5xl pb-2 font-extrabold">CONTACT US</h1>
 					</div>
 					<div className="text-center text-primary-content">
 						<h2 className="text-2xl pb-2 font-bebas">Officers</h2>

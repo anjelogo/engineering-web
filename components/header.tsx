@@ -60,11 +60,13 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 			<>
 				<header className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
 
-					<nav className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 navbar mb-2 rounded-box text-primary-content">
+					<nav className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 navbar mb-2 rounded-box drop-shadow-lg text-secondary-content">
 							
 						{/* DESKTOP LOGO */}
 
-						<p className="hidden navbar-start md:flex px-2 mx-2 font-abril text-2xl">EC</p>
+						<p className="hidden navbar-start md:flex px-2 mx-2 font-extrabold text-2xl">
+							ENGINEERING CLUB
+						</p>
 
 						{/* MOBILE MENU */}
 
