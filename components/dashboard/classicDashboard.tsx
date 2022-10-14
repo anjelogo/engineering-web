@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable for-direction */
 import React from "react";
 import { getSession } from "next-auth/client";
 import Layout from "../layout/layout";
@@ -7,13 +5,14 @@ import { Meeting } from "../../types/interfaces";
 import dateFormat from "dateformat";
 import Link from "next/link";
 import CreateModal from "./createModal";
+import { Session } from "next-auth";
 
 interface Props {
-	session: any;
+	session: Session;
 }
 
 interface States {
-	session: any;
+	session: Session | null;
 	meetings: {
 		active: Meeting[]
 		upcoming: Meeting[];

@@ -1,10 +1,13 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
 import dateFormat from "dateformat";
 import React from "react";
 import { Meeting } from "../../types/interfaces";
 import uniqid from "uniqid";
 import router from "next/router";
+
+interface Props {
+	children?: React.ReactNode;
+}
 
 interface State {
 	id: string,
@@ -19,9 +22,9 @@ interface State {
 	}
 }
 
-export default class CreateModal extends React.Component<any, State> {
+export default class CreateModal extends React.Component<Props, State> {
 
-	constructor(props: any) {
+	constructor(props: Props) {
 		super(props);
 
 		this.state = {
@@ -38,7 +41,7 @@ export default class CreateModal extends React.Component<any, State> {
 		};
 	}
 
-	createMeetingCard() {
+	createMeetingCard(): JSX.Element {
 		if (this.state.selected.program && this.state.selected.day && this.state.selected.time.hour) {
 			const meeting: Meeting = {
 				program: this.state.selected.program,
@@ -86,7 +89,7 @@ export default class CreateModal extends React.Component<any, State> {
 		}
 	}
 
-	clearSelections() {
+	clearSelections(): void {
 		this.setState({
 			selected: {
 				program: null,
@@ -100,7 +103,7 @@ export default class CreateModal extends React.Component<any, State> {
 		});
 	}
 
-	async createMeetingHandler() {
+	async createMeetingHandler(): Promise<void> {
 		let meeting: Meeting | null = null;
 		if (this.state.selected.program && this.state.selected.day && this.state.selected.time.hour) {
 			meeting = {
@@ -132,7 +135,7 @@ export default class CreateModal extends React.Component<any, State> {
 		router.reload();
 	}
 
-	changeSelectedDay(day: number) {
+	changeSelectedDay(day: number): void {
 		this.setState({
 			selected: {
 				program: this.state.selected.program,
@@ -143,7 +146,7 @@ export default class CreateModal extends React.Component<any, State> {
 		});
 	}
 
-	changeSelectedProgram(program: string) {
+	changeSelectedProgram(program: string): void {
 		this.setState({
 			selected: {
 				program,
@@ -154,7 +157,7 @@ export default class CreateModal extends React.Component<any, State> {
 		});
 	}
 
-	changeSelectedTime(hour: number, minute: number) {
+	changeSelectedTime(hour: number, minute: number): void {
 		this.setState({
 			selected: {
 				program: this.state.selected.program,
@@ -168,7 +171,7 @@ export default class CreateModal extends React.Component<any, State> {
 		});
 	}
 
-	changeSelectedRoom(room: number) {
+	changeSelectedRoom(room: number): void {
 		this.setState({
 			selected: {
 				program: this.state.selected.program,
@@ -179,7 +182,7 @@ export default class CreateModal extends React.Component<any, State> {
 		});
 	}
 
-	calculateTime() {
+	calculateTime(): number {
 		const getNextDayOf = (date: Date, dayOfWeek: number, time: { hour: number | null, minute: number | null}) => {
 				date = new Date(date.getTime());
 				date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
@@ -193,7 +196,7 @@ export default class CreateModal extends React.Component<any, State> {
 		return timestamp;
 	}
 
-	calculateEndTime() {
+	calculateEndTime(): number {
 		const getNextDayOf = (date: Date, dayOfWeek: number, time: { hour: number | null, minute: number | null}) => {
 				date = new Date(date.getTime());
 				date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
@@ -207,7 +210,7 @@ export default class CreateModal extends React.Component<any, State> {
 		return timestamp;
 	}
 
-	render() {
+	render(): JSX.Element {
 
 		return (
 			<>

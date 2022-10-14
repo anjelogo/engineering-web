@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from "react";
 import { getSession, signIn } from "next-auth/client";
 import { wrapSession } from "../../lib/wrapSession";
 import { Meeting } from "../../types/interfaces";
 import dateFormat from "dateformat";
+import { Session } from "next-auth";
 
 interface Props {
 	children?: React.ReactNode;
 	program: string;
-	session: any;
+	session: Session;
 }
 
 interface States {
-	session: any;
+	session: Session | null;
 	meetings: Meeting[];
 	loading: boolean;
 }
@@ -111,7 +110,7 @@ class MeetingCard extends React.Component<Props, States> {
 											<div className="card-actions">
 												{
 													this.state.session?.id
-														? !this.state.meetings[0].users?.filter((u) => u.id === this.state.session.id).length
+														? !this.state.meetings[0].users?.filter((u) => u.id === this.state.session?.id).length
 															? (
 																<button className="btn btn-wide" onClick={() => this.handleSignIn(this.state.meetings[0])}>
 																	Sign in to {this.props.program}

@@ -97,7 +97,7 @@ class Programs extends React.Component<Props, States> {
 											<span className="text-transparent bg-clip-text bg-gradient-to-r from-insta1 to-insta3">
 													Programs.
 											</span>
-											<span className="text-secondary-content">
+											<span className="text-primary-content">
 												{" "}Learn without the hassle of classes.
 											</span>
 										</h1>
@@ -133,7 +133,7 @@ class Programs extends React.Component<Props, States> {
 																</h2>
 															</div>
 															<div className="card-actions">
-																<button className="btn btn-ghost text-secondary-content">
+																<button className="btn btn-ghost text-primary-content">
 																	View Information
 																	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 																		<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -236,7 +236,7 @@ class Programs extends React.Component<Props, States> {
 						</div>
 						<div className="bg-primary">
 							<div className="justify-center items-center md:justify-start">
-								<h1 className="font-extrabold text-2xl text-shadow text-secondary-content px-10 pt-10">
+								<h1 className="font-extrabold text-2xl text-shadow text-primary-content px-10 pt-10">
 									All Programs
 								</h1>
 							</div>
@@ -245,8 +245,8 @@ class Programs extends React.Component<Props, States> {
 							<div className="p-10 space-y-5 lg:space-y-0 lg:flex lg:space-x-5">
 								<div className={btnStyles}>
 									<div className="card-body">
-										<h3 className="card-title text-secondary-content">Robotics</h3> 
-										<h4 className="text-secondary-content text-md">Learn to design and build robots and compete in-school with other students!</h4> 
+										<h3 className="card-title text-primary-content">Robotics</h3> 
+										<h4 className="text-primary-content text-md">Learn to design and build robots and compete in-school with other students!</h4> 
 										<div className="card-actions">
 											<Link href="/programs/robotics" passHref>
 												<button className="btn btn-disabled text-primary-content">
@@ -258,8 +258,8 @@ class Programs extends React.Component<Props, States> {
 								</div>
 								<div className={btnStyles}>
 									<div className="card-body">
-										<h3 className="card-title text-secondary-content">3D Modeling</h3> 
-										<h4 className="text-secondary-content text-md">Learn to design and create 3D models and print them out with 3D printers!</h4>
+										<h3 className="card-title text-primary-content">3D Modeling</h3> 
+										<h4 className="text-primary-content text-md">Learn to design and create 3D models and print them out with 3D printers!</h4>
 										<div className="card-actions">
 											<Link href="/programs/3d-modeling" passHref>
 												<button className="btn btn-disabled text-primary-content">
@@ -271,8 +271,8 @@ class Programs extends React.Component<Props, States> {
 								</div>
 								<div className={btnStyles}>
 									<div className="card-body">
-										<h3 className="card-title text-secondary-content">Rube Goldberg</h3> 
-										<p className="text-secondary-content text-md">
+										<h3 className="card-title text-primary-content">Rube Goldberg</h3> 
+										<p className="text-primary-content text-md">
 												Create eccentric machines and compete against other schools in-state!
 											<br />
 										</p>

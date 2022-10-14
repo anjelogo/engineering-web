@@ -52,7 +52,7 @@ class Home extends React.Component<Props, State> {
 		};
 	}
 
-	componentDidMount() {
+	componentDidMount(): void {
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {

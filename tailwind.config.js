@@ -39,7 +39,7 @@ module.exports = {
 				"lighttheme": {                          /* your theme name */
 					"primary" : "#ffffff",           /* Primary color */
 					"primary-focus" : "#3d4451",     /* Primary color - focused */
-					"primary-content" : "#ffffff",   /* Foreground content color to use on primary color */
+					"primary-content" : "#000000",   /* Foreground content color to use on primary color */
 
 					"secondary" : "#f6d860",         /* Secondary color */
 					"secondary-focus" : "#f3cc30",   /* Secondary color - focused */

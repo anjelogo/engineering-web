@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from "react";
 import Link from "next/link";
 import { getSession, signIn, signOut } from "next-auth/client";
@@ -7,14 +5,15 @@ import { wrapSession } from "../../lib/wrapSession";
 import Image from "next/image";
 import AlertConstructor from "./alertConstructor";
 import adminEmails from "../../lib/adminEmails";
+import { Session } from "next-auth";
 
 interface NavbarProps {
 	children: React.ReactNode
-	session: any;
+	session: Session;
 }
 
 interface NavbarStates {
-	session: any;
+	session: Session | null;
 	loading: boolean;
 }
 
@@ -180,16 +179,13 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 													<li>
 														<p className="ml-5 mr-5 mt-5">
 															<span className="text-lg">
-																<strong>{this.state.session.name}</strong>
+																<strong>{this.state.session?.user?.name}</strong>
 															</span>
 															<br />
 															<span className="text-sm">
-																{this.state.session.user.email}
+																{this.state.session?.user?.email}
 															</span>
 															<br />
-															<span className="text-xs">
-																{this.state.session.id}
-															</span>
 														</p>
 													</li>
 													<div className="divider w-30" />

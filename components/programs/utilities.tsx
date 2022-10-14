@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from "react";
 import Image from "next/image";
 import { ProgramBodyElement } from "./program";
@@ -10,7 +8,7 @@ export const RepresentativeCard = (
 		alt,
 		name
 	}: {
-		imageSrc: any;
+		imageSrc: StaticImageData;
 		alt: string;
 		name: string;
 	}
@@ -42,7 +40,7 @@ export const faqConstructor = (
 		styles?: string;
 		body?: JSX.Element;
 	}[],
-) => {
+): JSX.Element => {
 	const Elem = (
 		{
 			q,

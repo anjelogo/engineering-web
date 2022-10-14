@@ -1,19 +1,19 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { getSession, signIn } from "next-auth/client";
 import React from "react";
 import { Meeting } from "../../types/interfaces";
 import { wrapSession } from "../../lib/wrapSession";
+import { Session } from "next-auth";
 
 interface Props {
-	alerts?: any;
-	session: any;
+	alerts?: JSX.Element[];
+	session: Session;
 }
 
 interface State {
-	session: any;
+	session: Session | null;
 	loading: boolean;
 	meetings: Meeting[];
-	alerts?: any
+	alerts?: JSX.Element[];
 }
 
 class AlertConstructor extends React.Component<Props, State> {
@@ -79,7 +79,7 @@ class AlertConstructor extends React.Component<Props, State> {
 						<div className="flex-none">
 							{
 								this.state.session?.id
-									? !meeting.users?.filter((u) => u.id === this.state.session.id).length
+									? !meeting.users?.filter((u) => u.id === this.state.session?.id).length
 										? (
 											<button className="btn btn-sm btn-outline text-info mr-2" onClick={() => this.handleSignIn(meeting)}>
 												Sign in

@@ -118,7 +118,7 @@ class Dashboard extends React.Component<Props, States> {
 							<p className="text-3xl font-bebas">Meetings</p>
 						</div>
 						<div className="mt-5">
-							<label htmlFor="createModal" className="btn btn-primary-content">Create Meeting</label>
+							<label htmlFor="createModal" className="btn btn-success">Create Meeting</label>
 							<CreateModal />
 						</div>
 						<div className="mt-10 overflow-x-auto">
@@ -136,7 +136,7 @@ class Dashboard extends React.Component<Props, States> {
 										<th />
 									</tr>
 								</thead>
-								<tbody className="text-primary-content">
+								<tbody className="text-black-content">
 									{
 										this.state.loading ?
 											<tr>
@@ -154,8 +154,8 @@ class Dashboard extends React.Component<Props, States> {
 													<>
 														<tr key={i} className="hover">
 															<td></td>
-															<td><strong>{e.program}</strong></td>
-															<td>{e.id}</td>
+															<td><span className="text-black"><strong>{e.program}</strong></span></td>
+															<td><span className="text-black">{e.id}</span></td>
 															<td>
 																<div className="indicator">
 																	<span className="badge badge-info">{e.dates[0].room}</span>
@@ -185,7 +185,7 @@ class Dashboard extends React.Component<Props, States> {
 																}
 															</td>
 															<td />
-															<td>{dateFormat(e.dates[0].time.start, "mm/dd, h:MM TT")}</td>
+															<td><span className="text-black">{dateFormat(e.dates[0].time.start, "mm/dd, h:MM TT")}</span></td>
 															<th>
 																<div className="dropdown dropdown-hover dropdown-end">
 																	<button aria-label={`${e.id} Menu Actions`} className="btn btn-ghost">
@@ -196,7 +196,7 @@ class Dashboard extends React.Component<Props, States> {
 																	<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
 																		<li>
 																			<Link href={`/meetings?id=${e.id}`} passHref>
-																				<a><span>View Meeting</span></a>
+																				<a><span className="text-black">View Meeting</span></a>
 																			</Link>
 																		</li>
 																		<li>
@@ -245,7 +245,7 @@ class Dashboard extends React.Component<Props, States> {
 					</div>
 				</div>
 				<div>
-					<footer className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-10 footer text-primary-content footer-center">
+					<footer className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-10 footer text-black-content footer-center">
 						<div>
 							<Link href="/admin/classic" passHref>
 								<a className="link link-hover"><strong>View Dashboard in Classic View?</strong></a>
