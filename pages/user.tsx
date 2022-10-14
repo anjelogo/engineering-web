@@ -85,11 +85,11 @@ class UserPage extends React.Component<Props, State> {
 																	className="mask-circle"
 																/>
 															</figure>
-															<h1 className="font-extrabold text-4xl md:text-6xl text-white">
+															<h1 className="font-extrabold text-4xl md:text-6xl text-primary">
 																{this.state.user.name}
 															</h1>
 															<div className="space-x-5">
-																<button className="btn text-white btn-outline">
+																<button className="btn text-primary btn-outline">
 																	Follow
 																</button>
 																<button className="btn btn-primary">
@@ -98,15 +98,15 @@ class UserPage extends React.Component<Props, State> {
 															</div>
 														</div>
 													</div>
-													<div className="min-h-screen bg-secondary-content">
+													<div className="min-h-screen bg-primary">
 														<div className="p-20 space-y-5">
-															<h1 className="font-extrabold text-4xl text-secondary">
+															<h1 className="font-extrabold text-4xl text-primary-content">
 																Joined Programs
 															</h1>
 															<div className="w-full h-96 bg-gray-300 bg-opacity-40 rounded-lg drop-shadow-md">
 
 															</div>
-															<h1 className="font-extrabold text-4xl text-secondary">
+															<h1 className="font-extrabold text-4xl text-primary-content">
 																Media
 															</h1>
 															<div className="w-full h-96 bg-gray-300 bg-opacity-40 rounded-lg drop-shadow-md">
