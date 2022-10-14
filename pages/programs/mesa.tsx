@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/layout";
 import Anjelo from "../../public/anjelo.jpg";
-import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
-import { faqConstructor, RepresentativeCard } from "../../components/utilities";
+import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/programs/program";
+import { faqConstructor, RepresentativeCard } from "../../components/programs/utilities";
 
 const NESAProgram = (): JSX.Element => {
 

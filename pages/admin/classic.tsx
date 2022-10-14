@@ -1,20 +1,20 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Session } from "next-auth";
 import { getSession } from "next-auth/client";
 import React from "react";
 import ClassicDashboard from "../../components/dashboard/classicDashboard";
-import Layout from "../../components/layout";
-import getIDs from "../../lib/getIds";
+import Layout from "../../components/layout/layout";
+import adminEmails from "../../lib/adminEmails";
 import { wrapSession } from "../../lib/wrapSession";
 import NotFoundPage from "../404";
 
 interface Props {
 	children?: React.ReactNode;
 	program: string;
-	session: any;
+	session: Session;
 }
 
 interface States {
-	session: any;
+	session: (Session | null);
 	loading: boolean;
 }
 
@@ -69,7 +69,7 @@ class Admin extends React.Component<Props, States> {
 							</Layout>
 						)
 						:
-						(this.state.session?.id && getIDs().includes(this.state.session.id))
+						(this.state.session?.id && adminEmails().includes(this.state.session?.user?.email as string))
 							? (
 								<ClassicDashboard session={this.state.session}/>
 							)

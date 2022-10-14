@@ -2,8 +2,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React from "react";
 import { getSession, signIn } from "next-auth/client";
-import { wrapSession } from "../lib/wrapSession";
-import { Meeting } from "../lib/interfaces";
+import { wrapSession } from "../../lib/wrapSession";
+import { Meeting } from "../../types/interfaces";
 import dateFormat from "dateformat";
 
 interface Props {

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { getSession, signIn } from "next-auth/client";
 import React from "react";
-import { Meeting } from "../lib/interfaces";
-import { wrapSession } from "../lib/wrapSession";
+import { Meeting } from "../../types/interfaces";
+import { wrapSession } from "../../lib/wrapSession";
 
 interface Props {
 	alerts?: any;

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { LegacyRef } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/layout/layout";
 import Image from "next/image";
 
 import RoboticsBackground from "../public/roboticsbackground.jpg";
@@ -98,12 +98,14 @@ class Home extends React.Component<Props, State> {
 										</span>
 									</h1>
 									<div className="card-actions">
-										<button className="btn btn-outline text-white fade-in">
-										View Our Programs
-											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-												<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-											</svg>
-										</button>
+										<Link href="/programs" passHref>
+											<button className="btn btn-outline text-white fade-in">
+											View Our Programs
+												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+													<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+												</svg>
+											</button>
+										</Link>
 									</div>
 								</div>
 							</div>

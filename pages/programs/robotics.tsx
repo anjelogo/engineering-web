@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/layout";
 import Orlando from "../../public/orlando.jpg";
 import Anjelo from "../../public/anjelo.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
-import { faqConstructor } from "../../components/utilities";
-import MeetingCard from "../../components/MeetingCard";
+import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/programs/program";
+import { faqConstructor } from "../../components/programs/utilities";
+import MeetingCard from "../../components/programs/MeetingCard";
 
 const RoboticsProgram = (): JSX.Element => {
 

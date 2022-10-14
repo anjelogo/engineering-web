@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import React from "react";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/layout";
 import Image from "next/image";
 
 import { wrapSession } from "../../lib/wrapSession";
-import { Meeting } from "../../lib/interfaces";
+import { Meeting } from "../../types/interfaces";
 import { getSession } from "next-auth/client";
 
 import Robot from "../../public/robot.png";

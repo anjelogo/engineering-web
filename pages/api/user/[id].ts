@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getSession } from "next-auth/client";
 import nextConnect from "next-connect";
 import { findUserByID } from "../../../lib/db";
-import getIDs from "../../../lib/getIds";
 
 const handler = nextConnect();
 
@@ -13,8 +12,6 @@ handler
 
 		if (!session)
 			res.status(401).send("Unauthorized: Not Logged In");
-		else if (session && !getIDs().includes(session.id))
-			res.status(401).send("Unauthorized: Missing Permissions");
 		else
 			next();
 	})
@@ -25,8 +22,8 @@ handler
 			return res.status(404).send("ID not provided");
 
 		try {
-			const meeting = await findUserByID(typeof id !== "string" ? id[0] : id);
-			res.status(202).send(JSON.stringify(meeting));
+			const user = await findUserByID(typeof id !== "string" ? id[0] : id);
+			res.status(202).send(JSON.stringify(user));
 		} catch (e) {
 			res.status(404).send({ e });
 		}

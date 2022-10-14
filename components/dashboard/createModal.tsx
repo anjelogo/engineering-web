@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import dateFormat from "dateformat";
 import React from "react";
-import { Meeting } from "../../lib/interfaces";
+import { Meeting } from "../../types/interfaces";
 import uniqid from "uniqid";
 import router from "next/router";
 

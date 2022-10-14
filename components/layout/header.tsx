@@ -3,10 +3,10 @@
 import React from "react";
 import Link from "next/link";
 import { getSession, signIn, signOut } from "next-auth/client";
-import { wrapSession } from "../lib/wrapSession";
+import { wrapSession } from "../../lib/wrapSession";
 import Image from "next/image";
-import getIDs from "../lib/getIds";
 import AlertConstructor from "./alertConstructor";
+import adminEmails from "../../lib/adminEmails";
 
 interface NavbarProps {
 	children: React.ReactNode
@@ -147,9 +147,9 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 								/* PROFILES - LIMITED */
 								this.state.loading
 									? (
-										<button aria-label="Profile" className="btn btn-ghost btn-square">
-											<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+										<button aria-label="Profile" className="btn btn-ghost btn-square animate-spin">
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+												<path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
 											</svg>
 										</button>
 									)
@@ -194,13 +194,16 @@ class Navbar extends React.Component<NavbarProps, NavbarStates> {
 													</li>
 													<div className="divider w-30" />
 													{
-														getIDs().includes(this.state.session.id)
+														adminEmails().includes(this.state.session?.user?.email as string)
 															? 
 															<li>
 																<Link href="/admin">Dashboard</Link>
 															</li>
 															: <></>
 													}
+													<li>
+														<a href={`/user?id=${this.state.session.id}`}>Profile</a>
+													</li>
 													<li>
 														<a onClick={() => signOut()}><span className="text-error">Logout</span></a>
 													</li>

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Meeting } from "./interfaces";
+import { Meeting } from "../types/interfaces";
 import monk, { id as objID } from "monk";
 
 const db = monk(process.env.DB ?? "");
@@ -60,9 +60,9 @@ export async function findUserByID(id: string): Promise<Meeting | undefined> {
 		return undefined;
 
 	//Find ID
-	const meeting = await db.get("meetings").findOne({ _id: objID(id) });
+	const user = await db.get("users").findOne({ _id: objID(id) });
 
-	return meeting;
+	return user;
 }
 
 export async function createMeeting(meeting: Meeting): Promise<void> {

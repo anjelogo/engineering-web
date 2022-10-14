@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextApiRequest, NextApiResponse } from "next";
+import { Session } from "next-auth";
 import { getSession } from "next-auth/client";
 import nextConnect from "next-connect";
+import adminEmails from "../../../lib/adminEmails";
 import { createMeeting, findMeetingByID, removeMeeting, updateMeeting } from "../../../lib/db";
-import getIDs from "../../../lib/getIds";
 
 const handler = nextConnect();
 
 handler
 	.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
-		const session: any = await getSession({ req });
+		const session: Session | null = await getSession({ req });
 
 		if (!session)
 			res.status(401).send("Unauthorized: Not Logged In");
-		else if (session && !getIDs().includes(session.id))
+		else if (session && !adminEmails().includes(session?.user?.email as string))
 			res.status(401).send("Unauthorized: Missing Permissions");
 		else
 			next();

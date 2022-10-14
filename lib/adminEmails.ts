@@ -1,4 +1,4 @@
-export default function getIDs(): string[] {
+export default function adminEmails(): string[] {
 	return [
 		"6153aa2b6e211f0008453dfa", //Anjelo
 		"615526f55809c40009441f11", //Alex

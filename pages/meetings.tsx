@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { Meeting } from "../lib/interfaces";
-import Layout from "../components/layout";
+import { Meeting } from "../types/interfaces";
+import Layout from "../components/layout/layout";
 import Image from "next/image";
 import dateFormat from "dateformat";
 import { wrapSession } from "../lib/wrapSession";

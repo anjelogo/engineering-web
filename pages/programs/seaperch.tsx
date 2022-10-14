@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
-import Layout from "../../components/layout";
+import Layout from "../../components/layout/layout";
 import Alijah from "../../public/alijah.png";
-import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
-import { faqConstructor, RepresentativeCard } from "../../components/utilities";
-import MeetingCard from "../../components/MeetingCard";
+import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/programs/program";
+import { faqConstructor, RepresentativeCard } from "../../components/programs/utilities";
+import MeetingCard from "../../components/programs/MeetingCard";
 
 const SeaPerchProgram = (): JSX.Element => {
 
