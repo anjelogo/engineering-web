@@ -2,7 +2,6 @@ import React from "react";
 import { SessionContextValue, signIn } from "next-auth/react";
 import { wrapSession } from "../../lib/wrapSession";
 import { Meeting } from "../../types/interfaces";
-import dateFormat from "dateformat";
 
 interface Props {
 	children?: React.ReactNode;
@@ -93,7 +92,7 @@ class MeetingCard extends React.Component<Props, States> {
 											{
 												this.state.meetings[0].dates.map((date, i) => {
 													return (
-														<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
+														<p key={i} className="text-primary-content text-md">Placeholder
 															<div className="badge mx-2">{date.room}</div>
 														</p>
 													);
@@ -133,7 +132,8 @@ class MeetingCard extends React.Component<Props, States> {
 											{
 												this.state.meetings[0].dates.map((date, i) => {
 													return (
-														<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
+														<p key={i} className="text-primary-content text-md">
+															Placeholder
 															<div className="badge mx-2">{date.room}</div>
 														</p>
 													);

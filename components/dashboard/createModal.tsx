@@ -1,5 +1,3 @@
-
-import dateFormat from "dateformat";
 import React from "react";
 import { Meeting } from "../../types/interfaces";
 import uniqid from "uniqid";
@@ -66,7 +64,7 @@ export default class CreateModal extends React.Component<Props, State> {
 						{
 							meeting.dates.map((date, i) => {
 								return (
-									<p key={i} className="text-primary-content text-md">{dateFormat(new Date(date.time.start), "dddd, h:MM TT")}
+									<p key={i} className="text-primary-content text-md">Placeholder
 										<div className="badge mx-2">{date.room}</div>
 									</p>
 								);

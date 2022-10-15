@@ -3,7 +3,6 @@ import React from "react";
 import { Meeting } from "../types/interfaces";
 import Layout from "../components/layout/layout";
 import Image from "next/image";
-import dateFormat from "dateformat";
 import { wrapSession } from "../lib/wrapSession";
 import { RouteComponentProps } from "react-router";
 import NotFoundPage from "./404";
@@ -125,7 +124,7 @@ class MeetingPage extends React.Component<Props, State> {
 																		<td />
 																		<td>{e.email}</td>
 																		<td />
-																		<td>{dateFormat(e.timestamp, "dddd, h:MM TT")}</td>
+																		<td>Placeholder</td>
 																	</tr>
 																))
 																: <></>
