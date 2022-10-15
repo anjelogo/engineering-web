@@ -100,7 +100,7 @@ class Home extends React.Component<Props, State> {
 									<div className="card-actions">
 										<Link href="/programs" passHref>
 											<button className="btn btn-outline text-white fade-in">
-											View Our Programs
+												View Our Programs
 												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 													<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 												</svg>
@@ -129,12 +129,14 @@ class Home extends React.Component<Props, State> {
 										</h2>
 										<div className="justify-end">
 											<div className="card-actions">
-												<button className="btn btn-outline text-white">
-														Learn More
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-														<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-													</svg>
-												</button>
+												<Link href="/programs/robotics" passHref>
+													<button className="btn btn-outline text-white">
+															Learn More
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+															<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+														</svg>
+													</button>
+												</Link>
 											</div>
 										</div>
 									</div>
@@ -202,12 +204,14 @@ class Home extends React.Component<Props, State> {
 											</span>
 										</h2>
 										<div className="card-actions">
-											<button className="btn btn-outline text-primary-content">
+											<Link href="/programs/3d-modeling" passHref>
+												<button className="btn btn-outline text-primary-content">
 													Learn More
-												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-													<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-												</svg>
-											</button>
+													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+														<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+													</svg>
+												</button>
+											</Link>
 										</div>
 									</div>
 								</div>
@@ -224,12 +228,14 @@ class Home extends React.Component<Props, State> {
 									We pride ourselves in hosting the largest club of engineering-related fields. Check out our other programs and see if you{"'"}re interested?
 								</p>
 								<div className="pt-5">
-									<button className="btn btn-ghost text-info">
-										View Programs
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-											<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-										</svg>
-									</button>
+									<Link href="/programs" passHref>
+										<button className="btn btn-ghost text-info">
+											View Programs
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+												<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+											</svg>
+										</button>
+									</Link>
 								</div>
 							</div>
 						</div>
