@@ -1,6 +1,6 @@
-import NextAuth from "next-auth";
+import NextAuth, { User } from "next-auth";
 import Providers from "next-auth/providers";
-import monk from "monk";
+import monk, { ICollection } from "monk";
 
 export default NextAuth({
 	providers: [
@@ -19,7 +19,7 @@ export default NextAuth({
 			return Promise.resolve(session);
 		},
 		async signIn(user, account, profile) {
-			if (account.provider === "google" && /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(vvstu|vvuhsd)\.(org|com)$/g.test(profile.email as string)) {
+			if (account.provider === "google" /**&& /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(vvstu|vvuhsd)\.(org|com)$/g.test(profile.email as string)**/) {
 				return true;
 			} else {
 				return false;
@@ -28,9 +28,21 @@ export default NextAuth({
 	},
 	events: {
 		createUser:	async (message) => {
-			const db = monk(process.env.DB ?? "");
+			const db = monk(process.env.DB ?? ""),
+				users: ICollection<User> = db.get("users");
 
-			await db.get("users").findOneAndUpdate({ email: message.email }, { $set: { color: "#" + Math.floor(Math.random()*16777215).toString(16)} });
+			await users.findOneAndUpdate({
+				email: message.email,
+			}, {
+				$set: {
+					authLevel: 0,
+					profile: {
+						color: "#" + Math.floor(Math.random() * 16777215).toString(16),
+						description: "No Description Yet :(",
+						programs: [],
+					}
+				}
+			});
 		}
 	}
 });

@@ -4,6 +4,7 @@ import Layout from "../components/layout/layout";
 import { Session, User } from "next-auth";
 import { wrapSession } from "../lib/wrapSession";
 import Image from "next/image";
+import NotFoundPage from "./404";
 
 interface Props {
 	children?: React.ReactNode;
@@ -43,7 +44,8 @@ class UserPage extends React.Component<Props, State> {
 			} else {
 				this.setState({
 					session: null,
-					loading: false
+					loading: false,
+					user
 				});
 			}
 		}
@@ -53,92 +55,89 @@ class UserPage extends React.Component<Props, State> {
 		return (
 			<>
 				{
-					this.state.loading
+					(this.state.loading || !this.state.loading)
 						? (
 							<Layout
-								title="Loading User - Engineering Clib"
-								description={"Loading User"}
+								title={this.state.loading ? "Loading" : this.state.user?.name + " - Engineering Club"}
+								description="Engineering Club"
 							>
-								<div className="pt-28">
-									loading...
-								</div>
+								<body>
+									<div className="pt-28 pb-10 w-full" style={{ backgroundColor: this.state.user ? this.state.user.profile.color : "#f6d860" }}>
+										<div className="flex flex-col items-center justify-center text-center space-y-5">
+											<figure>
+												{
+													this.state.loading
+														? (
+															<div className="bg-gray-300 h-[200px] w-[200px] rounded-full animate-pulse" />
+														)
+														: (
+															<Image
+																src={this.state.user?.image as string}
+																alt={this.state.user?.name as string}
+																width={200}
+																height={200}
+																className="mask-circle"
+															/>
+														)
+												}
+											</figure>
+											{
+												this.state.loading
+													? (
+														<div className="bg-gray-300 rounded-2xl w-[250px] h-[60px] animate-pulse" />
+													)
+													: (
+														<h1 className="font-extrabold text-4xl md:text-6xl text-primary">
+															{this.state.user?.name}
+														</h1>
+													)
+											}
+											<div className="space-x-5">
+												{
+													this.state.loading
+														? (
+															<div className="bg-gray-300 w-[94px] h-[48px] rounded-md animate-pulse" />
+														)
+														: (
+															<>
+																<button className="btn text-primary btn-outline">
+															Follow
+																</button>
+																{
+																	this.state.session && (this.state.session?.user?.email == this.state.user?.email)
+																		? (
+																			<button className="btn btn-primary">
+																		Edit Profile
+																			</button>
+																		)
+																		: (<></>)
+																}
+															</>
+														)
+												}
+											</div>
+										</div>
+									</div>
+									<div className="min-h-screen bg-primary">
+										<div className="p-20 space-y-5">
+											<h1 className="font-extrabold text-4xl text-primary-content">
+											Joined Programs
+											</h1>
+											<div className="w-full h-96 bg-gray-300 bg-opacity-40 rounded-lg drop-shadow-md animate-pulse">
+		
+											</div>
+											<h1 className="font-extrabold text-4xl text-primary-content">
+											Media
+											</h1>
+											<div className="w-full h-96 bg-gray-300 bg-opacity-40 rounded-lg drop-shadow-md animate-pulse">
+		
+											</div>
+										</div>
+									</div>
+								</body>
 							</Layout>
 						)
-						: (
-							this.state.session
-								? (this.state.user)
-									? (
-										<Layout
-											title={this.state.user.name + " - Engineering Club"}
-											description="Engineering Club"
-										>
-											<body>
-												<div>
-													<div className="pt-28 pb-10 bg-gradient-to-br from-insta1 to-insta3">
-														<div className="items-center justify-center text-center space-y-5">
-															<figure>
-																<Image
-																	src={this.state.user.image as string}
-																	alt={this.state.user.name as string}
-																	width={200}
-																	height={200}
-																	className="mask-circle"
-																/>
-															</figure>
-															<h1 className="font-extrabold text-4xl md:text-6xl text-primary">
-																{this.state.user.name}
-															</h1>
-															<div className="space-x-5">
-																<button className="btn text-primary btn-outline">
-																	Follow
-																</button>
-																<button className="btn btn-primary">
-																	Edit Profile
-																</button>
-															</div>
-														</div>
-													</div>
-													<div className="min-h-screen bg-primary">
-														<div className="p-20 space-y-5">
-															<h1 className="font-extrabold text-4xl text-primary-content">
-																Joined Programs
-															</h1>
-															<div className="w-full h-96 bg-gray-300 bg-opacity-40 rounded-lg drop-shadow-md">
-
-															</div>
-															<h1 className="font-extrabold text-4xl text-primary-content">
-																Media
-															</h1>
-															<div className="w-full h-96 bg-gray-300 bg-opacity-40 rounded-lg drop-shadow-md">
-
-															</div>
-														</div>
-													</div>
-												</div>
-											</body>
-										</Layout>
-									)
-									:	(
-										<Layout
-											title="User Not Found - Engineering Club"
-											description="The user you are looking for does not seem to exist."
-										>
-											<div className="pt-28">
-												<p>User not found</p>
-											</div>
-										</Layout>
-									)
-								: (
-									<Layout
-										title="Not Logged in! - Engineering Clib"
-										description={"Loading User"}
-									>
-										<div>
-
-										</div>
-									</Layout>
-								)
-						)
+						: <NotFoundPage />
 				}
 			</>
 		);

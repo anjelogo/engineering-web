@@ -7,14 +7,6 @@ import { findUserByID } from "../../../lib/db";
 const handler = nextConnect();
 
 handler
-	.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
-		const session: any = await getSession({ req });
-
-		if (!session)
-			res.status(401).send("Unauthorized: Not Logged In");
-		else
-			next();
-	})
 	.get(async (req: NextApiRequest, res: NextApiResponse) => {
 		const { id } = req.query;
 

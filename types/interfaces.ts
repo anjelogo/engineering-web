@@ -1,3 +1,5 @@
+import { DefaultSession } from "next-auth";
+
 export interface Meeting {
 	program: string;
 	id: string;
@@ -16,3 +18,12 @@ export interface Meeting {
 		timestamp: number;
 	}[]
 }
+
+export type User = {
+	authLevel: number;
+	profile: {
+		color:	string;
+		description:	string;
+		programs: string[];
+	}
+} & DefaultSession["user"];
