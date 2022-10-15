@@ -5,16 +5,15 @@ import Layout from "../components/layout/layout";
 import Image from "next/image";
 import dateFormat from "dateformat";
 import { wrapSession } from "../lib/wrapSession";
-import { getSession } from "next-auth/client";
 import { RouteComponentProps } from "react-router";
 import NotFoundPage from "./404";
+import { SessionContextValue } from "next-auth/react";
 
 interface Props extends RouteComponentProps {
-	session: any;
+	session: SessionContextValue;
 }
 
 interface State {
-	session: any;
 	meeting: (Meeting | null);
 	loading: boolean;
 }
@@ -25,7 +24,6 @@ class MeetingPage extends React.Component<Props, State> {
 		super(props);
 
 		this.state = {
-			session: this.props.session,
 			meeting: null,
 			loading: true
 		};
@@ -34,19 +32,12 @@ class MeetingPage extends React.Component<Props, State> {
 	async componentDidMount() {
 		if (typeof window !== "undefined") {
 			const id = new URLSearchParams(window.location.search).get("id"),
-				session = await getSession(),
 				meeting = await fetch("/api/meetings/" + id).then(r => { return r.json(); }).catch(() => { return null; });
 
-			if (session && meeting) 
-				this.setState({
-					session,
-					meeting,
-					loading: false
-				});
-			else
-				this.setState({
-					loading: false
-				});
+			this.setState({
+				meeting,
+				loading: false
+			});
 		}
 	}
 
@@ -72,7 +63,7 @@ class MeetingPage extends React.Component<Props, State> {
 								</div>
 							</div>
 						</Layout>
-						: (this.state.session && this.state.meeting)
+						: (this.props.session.data && this.state.meeting)
 							? (
 								<Layout
 									title="Meeting Details - Engineering Club"

@@ -1,19 +1,17 @@
-import { getSession, signIn } from "next-auth/client";
+import { SessionContextValue, signIn } from "next-auth/react";
 import React from "react";
 import { Meeting } from "../../types/interfaces";
 import { wrapSession } from "../../lib/wrapSession";
-import { Session } from "next-auth";
 
 interface Props {
 	alerts?: JSX.Element[];
-	session: Session;
+	session: SessionContextValue;
 }
 
 interface State {
-	session: Session | null;
-	loading: boolean;
 	meetings: Meeting[];
 	alerts?: JSX.Element[];
+	loading: boolean;
 }
 
 class AlertConstructor extends React.Component<Props, State> {
@@ -22,7 +20,6 @@ class AlertConstructor extends React.Component<Props, State> {
 		super(props);
 
 		this.state = {
-			session: this.props.session,
 			meetings: [],
 			loading: true
 		};
@@ -30,15 +27,12 @@ class AlertConstructor extends React.Component<Props, State> {
 
 	async handleRefresh() {
 		this.setState({
-			session: this.props.session,
 			meetings: [],
 			alerts: [],
 			loading: true
 		});
 
-		const session = await getSession();
-
-		if (session) {
+		if (this.props.session.data) {
 			const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
 			let meetings: Meeting[] = [];
@@ -49,14 +43,12 @@ class AlertConstructor extends React.Component<Props, State> {
 			}
 			
 			this.setState({
-				session,
 				meetings,
 				loading: false
 			});
 		}
 		else
 			this.setState({
-				session: this.props.session,
 				meetings: [],
 				loading: false
 			});
@@ -78,8 +70,8 @@ class AlertConstructor extends React.Component<Props, State> {
 						</div>
 						<div className="flex-none">
 							{
-								this.state.session?.id
-									? !meeting.users?.filter((u) => u.id === this.state.session?.id).length
+								this.props.session.data
+									? !meeting.users?.filter((u) => u.id === this.props.session.data?.user.id).length
 										? (
 											<button className="btn btn-sm btn-outline text-info mr-2" onClick={() => this.handleSignIn(meeting)}>
 												Sign in

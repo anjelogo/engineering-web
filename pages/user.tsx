@@ -1,18 +1,17 @@
 import React from "react";
-import { getSession } from "next-auth/client";
 import Layout from "../components/layout/layout";
-import { Session, User } from "next-auth";
+import { User } from "next-auth";
 import { wrapSession } from "../lib/wrapSession";
 import Image from "next/image";
 import NotFoundPage from "./404";
+import { SessionContextValue } from "next-auth/react";
 
 interface Props {
 	children?: React.ReactNode;
-	session: Session;
+	session: SessionContextValue;
 }
 
 interface State {
-	session?: Session | null;
 	loading: boolean;
 	user: User | undefined
 }
@@ -23,7 +22,6 @@ class UserPage extends React.Component<Props, State> {
 		super(props);
 
 		this.state = {
-			session: this.props.session,
 			loading: true,
 			user: undefined
 		};
@@ -32,22 +30,12 @@ class UserPage extends React.Component<Props, State> {
 	async componentDidMount() {
 		if (typeof window != undefined) {
 			const id = new URLSearchParams(window.location.search).get("id"),
-				session = await getSession(),
 				user = await fetch("/api/user/" + id).then(r => { return r.json(); }).catch(() => { return undefined; });
 
-			if (!this.props.session.loading && session?.user) {
-				this.setState({
-					session,
-					loading: false,
-					user
-				});
-			} else {
-				this.setState({
-					session: null,
-					loading: false,
-					user
-				});
-			}
+			this.setState({
+				loading: false,
+				user
+			});
 		}
 	}
 
@@ -104,7 +92,7 @@ class UserPage extends React.Component<Props, State> {
 															Follow
 																</button>
 																{
-																	this.state.session && (this.state.session?.user?.email == this.state.user?.email)
+																	this.props.session.data && (this.props.session.data?.user?.email == this.state.user?.email)
 																		? (
 																			<button className="btn btn-primary">
 																		Edit Profile

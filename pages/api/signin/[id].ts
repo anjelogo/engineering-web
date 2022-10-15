@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
 import { addUserToMeeting, findMeetingByID } from "../../../lib/db";
 

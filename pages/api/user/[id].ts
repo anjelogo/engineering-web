@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextApiRequest, NextApiResponse } from "next";
-import { getSession } from "next-auth/client";
 import nextConnect from "next-connect";
 import { findUserByID } from "../../../lib/db";
 

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextApiRequest, NextApiResponse } from "next";
 import { Session } from "next-auth";
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
 import adminEmails from "../../../lib/adminEmails";
 import { createMeeting, findMeetingByID, removeMeeting, updateMeeting } from "../../../lib/db";

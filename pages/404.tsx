@@ -1,7 +1,7 @@
 import * as React from "react";
 import Layout from "../components/layout/layout";
 import Link from "next/link";
-import { signin } from "next-auth/client";
+import { signIn } from "next-auth/react";
 
 const NotFoundPage = (): JSX.Element => {
 	return (
@@ -19,7 +19,7 @@ const NotFoundPage = (): JSX.Element => {
 							</Link>
 							<br />
 							Know what you{"'"}re doing?
-							<a className="link link-hover" onClick={() => signin("google", { callbackUrl: `${process.env.WEB_URI}/admin` })}> Sign In</a></h1>
+							<a className="link link-hover" onClick={() => signIn("google", { callbackUrl: `${process.env.WEB_URI}/` })}> Sign In</a></h1>
 					</div>
 				</div>
 			</div>

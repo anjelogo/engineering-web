@@ -54,7 +54,7 @@ const ModelingProgram = (): JSX.Element => {
 								top={true}
 								content={[
 									(
-										<div className="card shadow-xl">
+										<div className="card bg-gray-300 bg-opacity-40">
 											<div className="text-center 2xl:text-left card-body">
 												<h4 className="text-primary-content text-md">
 												Explore engineering with 3D Modeling. Manipulate polygons and shapes to create a 3D Model and print them out using a 3D printer.

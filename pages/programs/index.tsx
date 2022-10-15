@@ -6,7 +6,7 @@ import Image from "next/image";
 
 import { wrapSession } from "../../lib/wrapSession";
 import { Meeting } from "../../types/interfaces";
-import { getSession } from "next-auth/client";
+import { getSession } from "next-auth/react";
 
 import Robot from "../../public/robot.png";
 import Printer from "../../public/3dprinter.png";

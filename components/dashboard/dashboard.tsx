@@ -1,30 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable for-direction */
 import React from "react";
-import { getSession } from "next-auth/client";
 import Layout from "../layout/layout";
 import { Meeting } from "../../types/interfaces";
 import dateFormat from "dateformat";
 import Link from "next/link";
 import CreateModal from "./createModal";
 
-interface Props {
-	session: any;
-}
-
 interface States {
-	session: any;
 	meetings: Meeting[];
 	loading: boolean;
 }
 
-class Dashboard extends React.Component<Props, States> {
+class Dashboard extends React.Component<Record<string, never> , States> {
 
-	constructor(props: Props) {
+	constructor(props: never) {
 		super(props);
 
 		this.state = {
-			session: this.props.session,
 			meetings: [],
 			loading: true
 		};
@@ -32,28 +25,16 @@ class Dashboard extends React.Component<Props, States> {
 
 	async refreshSession(): Promise<void> {
 		this.setState({
-			session: this.props.session,
 			meetings: [],
 			loading: true
 		});
 
-		const session = await getSession();
+		const meetings: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
-		const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
-
-		if (!this.props.session.loading && session?.user)
-			this.setState({
-				session,
-				meetings: data,
-				loading: false
-			});
-		else {
-			this.setState({
-				session: this.props.session,
-				meetings: data,
-				loading: false
-			});
-		}
+		this.setState({
+			meetings,
+			loading: false
+		});
 	}
 
 	async componentDidMount(): Promise<void> {
@@ -106,10 +87,7 @@ class Dashboard extends React.Component<Props, States> {
 				description="Engineering Club Dashboard"
 			>
 				<div className="bg-primary flex flex-col">
-					<div className="m-10 min-h-screen">
-						<div className="mt-20 text-primary-content">
-							<p className="text-3xl font-bebas">Welcome, <span className="text-secondary">{this.state.session?.name ? this.state.session.name : "Loading..."}</span></p>
-						</div>
+					<div className="m-28 min-h-screen">
 						<div className="mt-5 text-primary-content">
 							<p className="text-5xl font-bebas">Admin Dashboard</p>
 						</div>

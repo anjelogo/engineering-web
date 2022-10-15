@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/_document.tsx"
-  ],
+, "lib/mongodb.js"  ],
   "exclude": [
     "node_modules"
   ]

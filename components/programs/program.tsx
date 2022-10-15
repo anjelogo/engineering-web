@@ -28,10 +28,10 @@ export const ProgramWrapper = (
 					<div className={`${background ?? "bg-topography"} hero min-h-screen`}>
 						<div className="text-center hero-content">
 							<div className="max-w-md text-primary-content">
-								<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-abril">
+								<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-extrabold">
 									<h1>{title}</h1>
 								</div>
-								<h2 className="text-2xl bg-primary p-2 font-bebas">{subtitle ?? "..."}</h2>
+								<h2 className="text-2xl bg-primary p-2 font-extrabold">{subtitle ?? "..."}</h2>
 							</div>
 						</div>
 					</div>
@@ -78,9 +78,8 @@ export const ProgramBodyElement = (
 	return (
 		<>
 			<div className={`text-center ${left ?? "2xl:text-left"} text-primary-content ${top ?? "pt-7"}`}>
-				<h3 className="text-3xl pb-2 font-abril">{title}</h3>
+				<h3 className="text-3xl pb-2 font-extrabold">{title}</h3>
 			</div>
-			<div className="divider" />
 			<div className="pt-5">
 				{content}
 			</div>
@@ -100,9 +99,8 @@ export const ProgramSidebarWrapper = (
 	return (
 		<>
 			<div className="text-center text-primary-content">
-				<h3 className="text-3xl pb-2 font-abril">{title}</h3>
+				<h3 className="text-3xl pb-2 font-extrabold">{title}</h3>
 			</div>
-			<div className="divider" />
 			<div className="pt-5 space-y-10">
 				{content}
 			</div>

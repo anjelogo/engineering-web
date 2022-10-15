@@ -1,18 +1,16 @@
 import React from "react";
-import { getSession, signIn } from "next-auth/client";
+import { SessionContextValue, signIn } from "next-auth/react";
 import { wrapSession } from "../../lib/wrapSession";
 import { Meeting } from "../../types/interfaces";
 import dateFormat from "dateformat";
-import { Session } from "next-auth";
 
 interface Props {
 	children?: React.ReactNode;
 	program: string;
-	session: Session;
+	session: SessionContextValue;
 }
 
 interface States {
-	session: Session | null;
 	meetings: Meeting[];
 	loading: boolean;
 }
@@ -23,7 +21,6 @@ class MeetingCard extends React.Component<Props, States> {
 		super(props);
 
 		this.state = {
-			session: this.props.session,
 			loading: true,
 			meetings: []
 		};
@@ -35,14 +32,11 @@ class MeetingCard extends React.Component<Props, States> {
 
 	async handleRefresh() {
 		this.setState({
-			session: this.props.session,
 			meetings: [],
 			loading: true
 		});
 
-		const session = await getSession();
-
-		if (session) {
+		if (this.props.session.data) {
 			const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
 			let meetings: Meeting[] = [];
@@ -53,14 +47,12 @@ class MeetingCard extends React.Component<Props, States> {
 			}
 			
 			this.setState({
-				session,
 				meetings,
 				loading: false
 			});
 		}
 		else
 			this.setState({
-				session: this.props.session,
 				meetings: [],
 				loading: false
 			});
@@ -97,7 +89,7 @@ class MeetingCard extends React.Component<Props, States> {
 								? (
 									<div className="card bg-secondary">
 										<div className="text-center items-center card-body">
-											<h2 className="card-title text-primary-content font-bebas text-2xl">Program Meetings</h2>
+											<h2 className="card-title text-primary-content font-extrabold text-2xl">Program Meetings</h2>
 											{
 												this.state.meetings[0].dates.map((date, i) => {
 													return (
@@ -109,8 +101,8 @@ class MeetingCard extends React.Component<Props, States> {
 											}
 											<div className="card-actions">
 												{
-													this.state.session?.id
-														? !this.state.meetings[0].users?.filter((u) => u.id === this.state.session?.id).length
+													this.props.session.data
+														? !this.state.meetings[0].users?.filter((u) => u.id === this.props.session.data?.user.id).length
 															? (
 																<button className="btn btn-wide" onClick={() => this.handleSignIn(this.state.meetings[0])}>
 																	Sign in to {this.props.program}
@@ -137,7 +129,7 @@ class MeetingCard extends React.Component<Props, States> {
 								: (
 									<div className="card bg-secondary">
 										<div className="text-center items-center card-body">
-											<h2 className="card-title text-primary-content font-bebas text-2xl">Upcoming Meetings</h2>
+											<h2 className="card-title text-primary-content font-extrabold text-2xl">Upcoming Meetings</h2>
 											{
 												this.state.meetings[0].dates.map((date, i) => {
 													return (
@@ -149,7 +141,7 @@ class MeetingCard extends React.Component<Props, States> {
 											}
 											<div className="card-actions">
 												{
-													this.state.session?.id
+													this.props.session.data
 														? (
 															<button className="btn btn-wide btn-disabled">
 																Sign in to {this.props.program}
@@ -168,15 +160,15 @@ class MeetingCard extends React.Component<Props, States> {
 							: (
 								<div className="card bg-secondary">
 									<div className="text-center items-center card-body">
-										<h2 className="card-title text-primary-content font-bebas text-2xl">Upcoming Meetings</h2>
+										<h2 className="card-title text-primary-content font-extrabold text-2xl">Upcoming Meetings</h2>
 										{
-											this.state.session?.id
+											this.props.session.data
 												? <p className="text-primary-content text-md"><div className="badge badge-error mx-2">No Meetings Scheduled</div></p>
 												: <p className="text-primary-content text-md"><strong>Log In to view meetings</strong></p> 
 										}
 										<div className="card-actions">
 											{
-												this.state.session?.id
+												this.props.session.data
 													? (
 														<button className="btn btn-wide btn-disabled">
 															Sign in to {this.props.program}
