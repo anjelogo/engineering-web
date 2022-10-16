@@ -72,12 +72,20 @@ class UserPage extends React.Component<Props, State> {
 											{
 												this.state.loading
 													? (
-														<div className="bg-gray-300 rounded-2xl w-[250px] h-[60px] animate-pulse" />
+														<>
+															<div className="bg-gray-300 rounded-full w-[250px] h-[60px] animate-pulse" />
+															<div className="bg-gray-300 rounded-full w-[230px] h-[31px] animate-pulse" />
+														</>
 													)
 													: (
-														<h1 className="font-extrabold text-4xl md:text-6xl text-primary">
-															{this.state.user?.name}
-														</h1>
+														<>
+															<h1 className="font-extrabold text-4xl md:text-6xl text-primary">
+																{this.state.user?.name}
+															</h1>
+															<h2 className="font-bold text-2xl text-primary">
+																{this.state.user?.profile.description}
+															</h2>
+														</>
 													)
 											}
 											<div className="space-x-5">
