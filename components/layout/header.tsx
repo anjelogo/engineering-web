@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SessionContextValue, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import AlertConstructor from "./alertConstructor";
-import { adminEmails } from "../../lib/functions";
+import { hasAuthLevel } from "../../lib/functions";
 import { wrapSession } from "../../lib/wrapSession";
 
 interface NavbarProps {
@@ -18,6 +18,16 @@ class Navbar extends React.Component<NavbarProps> {
 	}
 
 	render(): JSX.Element {
+		const badges: {
+			[index: number]: JSX.Element
+		} = {
+			4: (<span className="badge badge-info">Admin</span>),
+			3:	(<span className="badge badge-error">Officer</span>),
+			2:	(<span className="badge badge-accent">Representative</span>),
+			1:	(<></>),
+			0:	(<></>)
+		};
+
 		return (
 			<>
 				<header className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
@@ -160,13 +170,16 @@ class Navbar extends React.Component<NavbarProps> {
 															<p className="ml-5 mr-5 mt-5">
 																<span className="text-lg">
 																	<strong>{this.props.session.data.user.name}</strong>
+																	{
+																		badges[this.props.session.data.user.authLevel]
+																	}
 																</span>
 																<br />
 															</p>
 														</li>
 														<div className="divider w-30" />
 														{
-															adminEmails().includes(this.props.session.data.user.email as string)
+															hasAuthLevel(this.props.session.data.user, 2)
 																? 
 																<li>
 																	<Link href="/admin">Dashboard</Link>

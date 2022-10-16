@@ -2,7 +2,7 @@ import { SessionContextValue } from "next-auth/react";
 import React from "react";
 import Dashboard from "../components/dashboard/dashboard";
 import Layout from "../components/layout/layout";
-import { adminEmails } from "../lib/functions";
+import { hasAuthLevel } from "../lib/functions";
 import { wrapSession } from "../lib/wrapSession";
 import NotFoundPage from "./404";
 
@@ -41,7 +41,7 @@ class Admin extends React.Component<Props> {
 							</Layout>
 						)
 						:
-						(this.props.session.data && adminEmails().includes(this.props.session.data.user.email as string))
+						(this.props.session.data && hasAuthLevel(this.props.session.data.user, 3))
 							? (
 								<Dashboard />
 							)

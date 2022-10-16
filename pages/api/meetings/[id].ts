@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
-import { adminEmails } from "../../../lib/functions";
+import { hasAuthLevel } from "../../../lib/functions";
 import { createMeeting, findMeetingByID, removeMeeting, updateMeeting } from "../../../lib/db";
 
 const handler = nextConnect();
@@ -14,7 +14,7 @@ handler
 
 		if (!session)
 			res.status(401).send("Unauthorized: Not Logged In");
-		else if (session && !adminEmails().includes(session?.user?.email as string))
+		else if (session && !hasAuthLevel(session.user, 3))
 			res.status(401).send("Unauthorized: Missing Permissions");
 		else
 			next();

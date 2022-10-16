@@ -1,7 +1,15 @@
-export function adminEmails(): string[] {
-	return [
-		"mendozab37705@vvstu.org", //Brianna
-	];
+import { User } from "../types/interfaces";
+
+export function hasAuthLevel(user: User, level: number): boolean {
+	const authLevel	= user ? user.authLevel : 0;
+
+	//Admin: 4
+	//Officer: 3
+	//Representative: 2
+	//Member: 1
+	//Guest: 0
+
+	return authLevel >= level;
 }
 
 export function dateToLocaleString(date: Date): string {

@@ -40,7 +40,7 @@ export default NextAuth({
 				email: message.user.email,
 			}, {
 				$set: {
-					authLevel: 0,
+					authLevel: 1,
 					profile: {
 						color: "#" + Math.floor(Math.random() * 16777215).toString(16),
 						description: "No Description Yet :(",
