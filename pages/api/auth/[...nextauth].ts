@@ -24,7 +24,7 @@ export default NextAuth({
 			return Promise.resolve(session);
 		},
 		async signIn({ account, profile }) {
-			if (account?.provider === "google" && /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(vvstu|vvuhsd)\.(org|com)$/g.test(profile?.email as string)) {
+			if (account?.provider === "google" /* && /^[a-zA-Z0-9_.+-]+@(?:(?:[a-zA-Z0-9-]+\.)?[a-zA-Z]+\.)?(vvstu|vvuhsd)\.(org|com)$/g.test(profile?.email as string) */) {
 				return true;
 			} else {
 				return false;
@@ -45,6 +45,7 @@ export default NextAuth({
 						color: "#" + Math.floor(Math.random() * 16777215).toString(16),
 						description: "No Description Yet :(",
 						programs: [],
+						followers: [],
 					}
 				}
 			});

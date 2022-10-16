@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
 import { addUserToMeeting, findMeetingByID } from "../../../lib/db";
@@ -25,7 +26,7 @@ handler
 			return res.status(404).send("Meeting Not Found");
 
 		try {
-			await addUserToMeeting(meeting.id, session);
+			await addUserToMeeting(meeting.id, session as Session);
 			res.status(202).end();
 		} catch (e) {
 			res.status(404).send({ e });

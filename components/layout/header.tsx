@@ -135,7 +135,7 @@ class Navbar extends React.Component<NavbarProps> {
 										</button>
 									)
 									:
-									this.props.session.data
+									this.props.session.status == "authenticated"
 										? (
 											<>
 												<div className="dropdown dropdown-hover dropdown-end">

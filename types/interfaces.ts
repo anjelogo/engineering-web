@@ -23,5 +23,6 @@ export type User = {
 		color:	string;
 		description:	string;
 		programs: string[];
+		followers:	string[];
 	}
 } & DefaultSession["user"];

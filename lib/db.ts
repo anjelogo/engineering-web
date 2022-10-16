@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Meeting } from "../types/interfaces";
+import { Meeting, User } from "../types/interfaces";
 import monk, { id as objID } from "monk";
+import { Session } from "next-auth";
 
 const db = monk(process.env.DB ?? "");
 
@@ -12,7 +13,7 @@ export async function getMeetings(): Promise<Meeting[] | undefined> {
 	return meetings;
 }
 
-export async function addUserToMeeting(meetingID: string, session: any): Promise<void> {
+export async function addUserToMeeting(meetingID: string, session: Session): Promise<void> {
 
 	if (!meetingID || !session)
 		throw new Error("No Meeting ID!");
@@ -22,10 +23,10 @@ export async function addUserToMeeting(meetingID: string, session: any): Promise
 	if (!meeting)
 		throw new Error("Could not find meeting!");
 
-	if ((meeting.users && meeting.users.length && meeting.users.map((u) => u.email).includes(session.email)))
+	if ((meeting.users && meeting.users.length && meeting.users.map((u) => u.email).includes(session.user.email)))
 		return;
 
-	const users: Meeting["users"][] = [
+	const users: Meeting["users"] = [
 		...meeting.users ?? [],
 		{
 			...session.user,
@@ -34,6 +35,49 @@ export async function addUserToMeeting(meetingID: string, session: any): Promise
 	];
 
 	await db.get("meetings").findOneAndUpdate({ id: meeting.id }, { $set: { users } });
+
+	return;
+}
+
+export async function addFollowerToUser(email: string, session: Session): Promise<void> {
+
+	if (!email || !session)
+		throw new Error("No Email!");
+
+	const user = await findUserByEmail(email);
+
+	if (!user)
+		throw new Error("Could not find user!");
+
+	if ((user.profile.followers && user.profile.followers.length && user.profile.followers.includes(session.user.email as	string)))
+		return;
+
+	const followers: User["profile"]["followers"] = [
+		...user.profile.followers ?? [],
+		session.user.email as string
+	];
+
+	await db.get("users").findOneAndUpdate({ email: user.email }, { $set: { "profile.followers": followers } });
+
+	return;
+}
+
+export async function removeFollowerFromUser(email: string, session: Session): Promise<void> {
+
+	if (!email || !session)
+		throw new Error("No Email!");
+
+	const user = await findUserByEmail(email);
+
+	if (!user)
+		throw new Error("Could not find user!");
+
+	if (!(user.profile.followers && user.profile.followers.length && user.profile.followers.includes(session.user.email as string)))
+		return;
+
+	const followers: User["profile"]["followers"] = user.profile.followers.filter((f) => f !== session.user.email);
+
+	await db.get("users").findOneAndUpdate({ email: user.email }, { $set: { "profile.followers": followers } });
 
 	return;
 }
@@ -49,15 +93,37 @@ export async function findMeetingByID(id: string): Promise<Meeting | undefined> 
 	return meeting;
 }
 
-export async function findUserByID(id: string): Promise<Meeting | undefined> {
+export async function findUserByID(id: string): Promise<User | undefined> {
 
 	if (!id)
 		return undefined;
 
-	//Find ID
 	const user = await db.get("users").findOne({ _id: objID(id) });
 
 	return user;
+}
+
+export async function findUserByEmail(email: string): Promise<User | undefined> {
+
+	if (!email)
+		return undefined;
+
+	const user = await db.get("users").findOne({ email });
+
+	return user;
+}
+
+export async function updateUser(user: User, newUser: User): Promise<void> {
+	if (!user ||	!newUser)
+		return;
+		
+	const userData = await findUserByEmail(user.email as string);
+	if (!userData)
+		return;
+
+	await db.get("users").findOneAndUpdate({ email: user.email }, { $set: newUser });
+
+	return;
 }
 
 export async function createMeeting(meeting: Meeting): Promise<void> {
@@ -94,44 +160,6 @@ export async function updateMeeting(meeting: Meeting, newMeeting: Meeting): Prom
 		return;
 
 	await db.get("meetings").findOneAndUpdate({ id: meeting.id }, { $set: newMeeting });
-
-	return;
-}
-
-interface vote {
-	id: string;
-	candidate: number;
-}
-
-export async function findUserVote(id: string): Promise<vote | undefined> {
-	if (!id)
-		throw new Error("No ID!");
-	
-	const obj: vote = await db.get("votes").findOne({ id: id });
-
-	if (!obj) throw new Error("No Vote!");
-	return obj;
-}
-
-export async function getVotes(): Promise<vote[] | undefined> {
-	const data = await db.get("votes").aggregate([]);
-
-	return data;
-}
-
-export async function addUserVote(session: any, candidate: number): Promise<void> {
-	if (!session || candidate > 1)
-		throw new Error("No Session or Candidate!");
-
-	const voted: vote = await db.get("votes").findOne({ id: session.id });
-	if (voted) throw new Error("Already Voted!");
-
-	const obj = {
-		id: session.id,
-		candidate
-	};
-
-	await db.get("votes").insert(obj);
 
 	return;
 }

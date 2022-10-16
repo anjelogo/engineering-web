@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextApiRequest, NextApiResponse } from "next";
 import nextConnect from "next-connect";
-import { findUserByID } from "../../../lib/db";
+import { findUserByID } from "../../../../lib/db";
 
 const handler = nextConnect();
 
