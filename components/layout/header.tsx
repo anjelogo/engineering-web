@@ -3,7 +3,7 @@ import Link from "next/link";
 import { SessionContextValue, signIn, signOut } from "next-auth/react";
 import Image from "next/image";
 import AlertConstructor from "./alertConstructor";
-import adminEmails from "../../lib/adminEmails";
+import { adminEmails } from "../../lib/functions";
 import { wrapSession } from "../../lib/wrapSession";
 
 interface NavbarProps {

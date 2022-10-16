@@ -5,6 +5,7 @@ import Layout from "../layout/layout";
 import { Meeting } from "../../types/interfaces";
 import Link from "next/link";
 import CreateModal from "./createModal";
+import { dateToLocaleString } from "../../lib/functions";
 
 interface States {
 	meetings: Meeting[];
@@ -162,7 +163,7 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 																}
 															</td>
 															<td />
-															<td><span className="text-black">Placeholder</span></td>
+															<td><span className="text-black">{dateToLocaleString(new Date(e.dates[0].time.start))}</span></td>
 															<th>
 																<div className="dropdown dropdown-hover dropdown-end">
 																	<button aria-label={`${e.id} Menu Actions`} className="btn btn-ghost">

@@ -22,21 +22,16 @@ export async function addUserToMeeting(meetingID: string, session: any): Promise
 	if (!meeting)
 		throw new Error("Could not find meeting!");
 
-	if ((meeting.users && meeting.users.length && meeting.users.map((u) => u.id).includes(session.id)))
+	if ((meeting.users && meeting.users.length && meeting.users.map((u) => u.email).includes(session.email)))
 		return;
 
-	const obj = {
-			image: session.user.image,
-			name: session.name,
-			id: session.id,
-			email: session.user.email,
+	const users: Meeting["users"][] = [
+		...meeting.users ?? [],
+		{
+			...session.user,
 			timestamp: Date.now()
-		},
-		users = (meeting.users && meeting.users.length)
-			? [...meeting.users, obj]
-			: [obj];
-
-	console.log(users);
+		}
+	];
 
 	await db.get("meetings").findOneAndUpdate({ id: meeting.id }, { $set: { users } });
 

@@ -10,13 +10,11 @@ export interface Meeting {
 		};
 		room: string;
 	}[]
-	users?: {
-		image: string;
-		name: string;
-		email: string;
-		id: string;
-		timestamp: number;
-	}[]
+	users?: MeetingUser[];
+}
+
+export interface MeetingUser extends User {
+	timestamp: number;
 }
 
 export type User = {

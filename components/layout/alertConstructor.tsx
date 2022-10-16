@@ -71,7 +71,7 @@ class AlertConstructor extends React.Component<Props, State> {
 						<div className="flex-none">
 							{
 								this.props.session.data
-									? !meeting.users?.filter((u) => u.id === this.props.session.data?.user.id).length
+									? !meeting.users?.filter((u) => u.email === this.props.session.data?.user.email).length
 										? (
 											<button className="btn btn-sm btn-outline text-info mr-2" onClick={() => this.handleSignIn(meeting)}>
 												Sign in

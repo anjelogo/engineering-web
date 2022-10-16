@@ -2,6 +2,12 @@ import React from "react";
 import { Meeting } from "../../types/interfaces";
 import uniqid from "uniqid";
 import router from "next/router";
+import { dateToLocaleString } from "../../lib/functions";
+
+//Disable the next Line because typings are wrong
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore: Unreachable code error
+import DateTimeRangePicker from "@wojtekmaj/react-datetimerange-picker/dist/entry.nostyle";
 
 interface Props {
 	children?: React.ReactNode;
@@ -11,11 +17,10 @@ interface State {
 	id: string,
 	selected: {
 		program: (string | null);
-		day: (number | null);
-		time: {
-			hour: (number | null)
-			minute: (number | null)
-		};
+		range: {
+			start: number;
+			end: number;
+		}
 		room: number;
 	}
 }
@@ -29,10 +34,9 @@ export default class CreateModal extends React.Component<Props, State> {
 			id: uniqid(),
 			selected: {
 				program: null,
-				day: null,
-				time: {
-					hour: 14,
-					minute: 0
+				range: {
+					start: Date.now(),
+					end: Date.now()
 				},
 				room: 705
 			}
@@ -40,15 +44,15 @@ export default class CreateModal extends React.Component<Props, State> {
 	}
 
 	createMeetingCard(): JSX.Element {
-		if (this.state.selected.program && this.state.selected.day && this.state.selected.time.hour) {
+		if (this.state.selected.program) {
 			const meeting: Meeting = {
 				program: this.state.selected.program,
 				id: this.state.id,
 				dates: [
 					{
 						time: {
-							start: this.calculateTime(),
-							end: this.calculateTime()
+							start: this.state.selected.range.start,
+							end: this.state.selected.range.end
 						},
 						room: this.state.selected.room.toString()
 					}
@@ -64,7 +68,8 @@ export default class CreateModal extends React.Component<Props, State> {
 						{
 							meeting.dates.map((date, i) => {
 								return (
-									<p key={i} className="text-primary-content text-md">Placeholder
+									<p key={i} className="text-primary-content text-md">
+										{dateToLocaleString(new Date(date.time.start))} - {dateToLocaleString(new Date(date.time.end))}
 										<div className="badge mx-2">{date.room}</div>
 									</p>
 								);
@@ -91,10 +96,9 @@ export default class CreateModal extends React.Component<Props, State> {
 		this.setState({
 			selected: {
 				program: null,
-				day: null,
-				time: {
-					hour: 14,
-					minute: 0
+				range: {
+					start: Date.now(),
+					end: Date.now()
 				},
 				room: 705
 			}
@@ -103,15 +107,15 @@ export default class CreateModal extends React.Component<Props, State> {
 
 	async createMeetingHandler(): Promise<void> {
 		let meeting: Meeting | null = null;
-		if (this.state.selected.program && this.state.selected.day && this.state.selected.time.hour) {
+		if (this.state.selected.program) {
 			meeting = {
 				program: this.state.selected.program,
 				id: this.state.id,
 				dates: [
 					{
 						time: {
-							start: this.calculateTime(),
-							end: this.calculateEndTime()
+							start: this.state.selected.range.start,
+							end: this.state.selected.range.end
 						},
 						room: this.state.selected.room.toString()
 					}
@@ -133,38 +137,23 @@ export default class CreateModal extends React.Component<Props, State> {
 		router.reload();
 	}
 
-	changeSelectedDay(day: number): void {
-		this.setState({
-			selected: {
-				program: this.state.selected.program,
-				day,
-				time: this.state.selected.time,
-				room: this.state.selected.room
-			}
-		});
-	}
-
 	changeSelectedProgram(program: string): void {
 		this.setState({
 			selected: {
-				program,
-				day: this.state.selected.day,
-				time: this.state.selected.time,
-				room: this.state.selected.room
+				...this.state.selected,
+				program
 			}
 		});
 	}
 
-	changeSelectedTime(hour: number, minute: number): void {
+	changeSelectedRange(range: [Date, Date]): void {
 		this.setState({
 			selected: {
-				program: this.state.selected.program,
-				day: this.state.selected.day,
-				time: {
-					hour,
-					minute
-				},
-				room: this.state.selected.room
+				...this.state.selected,
+				range: {
+					start: range[0].getTime(),
+					end: range[1].getTime()
+				}
 			}
 		});
 	}
@@ -172,40 +161,10 @@ export default class CreateModal extends React.Component<Props, State> {
 	changeSelectedRoom(room: number): void {
 		this.setState({
 			selected: {
-				program: this.state.selected.program,
-				day: this.state.selected.day,
-				time: this.state.selected.time,
+				...this.state.selected,
 				room
 			}
 		});
-	}
-
-	calculateTime(): number {
-		const getNextDayOf = (date: Date, dayOfWeek: number, time: { hour: number | null, minute: number | null}) => {
-				date = new Date(date.getTime());
-				date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
-				date.setHours(time.hour ?? 14, time.minute ?? 0, 0);
-				return Date.parse(date as unknown as string);
-			},
-			timestamp = this.state.selected.day
-				? getNextDayOf(new Date(Date.now()), this.state.selected.day, this.state.selected.time)
-				: 0;
-		
-		return timestamp;
-	}
-
-	calculateEndTime(): number {
-		const getNextDayOf = (date: Date, dayOfWeek: number, time: { hour: number | null, minute: number | null}) => {
-				date = new Date(date.getTime());
-				date.setDate(date.getDate() + (dayOfWeek + 7 - date.getDay()) % 7);
-				date.setHours((time.hour ?? 14) + 1, time.minute ?? 0, 0);
-				return Date.parse(date as unknown as string);
-			},
-			timestamp = this.state.selected.day
-				? getNextDayOf(new Date(Date.now()), this.state.selected.day, this.state.selected.time)
-				: 0;
-		
-		return timestamp;
 	}
 
 	render(): JSX.Element {
@@ -218,23 +177,27 @@ export default class CreateModal extends React.Component<Props, State> {
 						<p className="text-2xl font-bebas">Start A Meeting</p>
 						<p className="mt-5 text-lg font-bebas">Program</p>
 						<div className="mt-5 btn-group">
-							<button onClick={() => this.changeSelectedProgram("Robotics")} className={`btn ${this.state.selected.program === "Robotics" ? "btn-secondary" : "btn-primary-content"}`}>Robotics</button>
-							<button onClick={() => this.changeSelectedProgram("3D-Modeling")} className={`btn ${this.state.selected.program === "3D-Modeling" ? "btn-secondary" : "btn-primary-content"}`}>3D Modeling</button>
-							<button onClick={() => this.changeSelectedProgram("SeaPerch")} className={`btn ${this.state.selected.program === "SeaPerch" ? "btn-secondary" : "btn-primary-content"}`}>SeaPerch</button>
+							{
+								[
+									"Robotics",
+									"3D-Modeling",
+									"RubeGoldberg",
+									"Film"
+								].map((program, i) => {
+									return (
+										<button key={i} className={`btn ${this.state.selected.program == program ? "btn-secondary" : "btn-primary-content"}`} onClick={() => this.changeSelectedProgram(program)}>
+											{program}
+										</button>
+									);
+								})
+							}
 						</div>
-						<p className="mt-5 text-lg font-bebas">Day</p>
-						<div className="mt-5 btn-group">
-							<button onClick={() => this.changeSelectedDay(1)} className={`btn ${this.state.selected.day === 1 ? "btn-secondary" : "btn-primary-content"}`}>Mon</button>
-							<button onClick={() => this.changeSelectedDay(2)} className={`btn ${this.state.selected.day === 2 ? "btn-secondary" : "btn-primary-content"}`}>Tues</button>
-							<button className="btn btn-disabled">Wed</button>
-							<button onClick={() => this.changeSelectedDay(4)} className={`btn ${this.state.selected.day === 4 ? "btn-secondary" : "btn-primary-content"}`}>Thurs</button>
-							<button onClick={() => this.changeSelectedDay(5)} className={`btn ${this.state.selected.day === 5 ? "btn-secondary" : "btn-primary-content"}`}>Fri</button>
-						</div>
-						<p className="mt-5 text-lg font-bebas">Time</p>
-						<div className="mt-5 btn-group">
-							<button onClick={() => this.changeSelectedTime(11, 28)} className={`btn ${this.state.selected.time.hour === 11 ? "btn-secondary" : "btn-primary-content"}`}>A Lunch</button>
-							<button onClick={() => this.changeSelectedTime(12, 22)} className={`btn ${this.state.selected.time.hour === 12 ? "btn-secondary" : "btn-primary-content"}`}>B Lunch</button>
-							<button onClick={() => this.changeSelectedTime(14, 0)} className={`btn ${this.state.selected.time.hour === 14 ? "btn-secondary" : "btn-primary-content"}`}>Aftershool</button>
+						<p className="mt-5 text-lg font-bebas">Date Range</p>
+						<div className="mt-5">
+							<DateTimeRangePicker
+								onChange={(e: [Date, Date]) => this.changeSelectedRange.bind(this)(e)}
+								value={[new Date(this.state.selected.range.start), new Date(this.state.selected.range.end)]}
+							/>
 						</div>
 						<p className="mt-5 text-lg font-bebas">Room Number</p>
 						<div className="mt-5 btn-group">
@@ -242,7 +205,7 @@ export default class CreateModal extends React.Component<Props, State> {
 							<button onClick={() => this.changeSelectedRoom(802)} className={`btn ${this.state.selected.room === 802 ? "btn-secondary" : "btn-primary-content"}`}>802</button>
 							<button onClick={() => this.changeSelectedRoom(406)} className={`btn ${this.state.selected.room === 406 ? "btn-secondary" : "btn-primary-content"}`}>406</button>
 						</div>
-						<div className="hidden lg:flex-none">
+						<div className="lg:flex-none">
 							<p className="mt-5 text-lg font-bebas">Scheduled Date</p>
 							<p className="mt-5 text-md">{this.createMeetingCard()}</p>
 						</div>
@@ -250,7 +213,7 @@ export default class CreateModal extends React.Component<Props, State> {
 							<label
 								onClick={() => this.createMeetingHandler()}
 								htmlFor="createModal"
-								className={`btn ${this.calculateTime() === 0 ? "btn-disabled" : "btn-success"}`}
+								className={`btn ${this.state.selected.range.start - this.state.selected.range.end == 0 ? "btn-disabled" : "btn-success"}`}
 							>
 								Create Meeting
 							</label> 

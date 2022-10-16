@@ -7,6 +7,7 @@ import { wrapSession } from "../lib/wrapSession";
 import { RouteComponentProps } from "react-router";
 import NotFoundPage from "./404";
 import { SessionContextValue } from "next-auth/react";
+import { dateToLocaleString } from "../lib/functions";
 
 interface Props extends RouteComponentProps {
 	session: SessionContextValue;
@@ -106,8 +107,8 @@ class MeetingPage extends React.Component<Props, State> {
 																			<div className="flex items-center space-x-3">
 																				<div className="avatar">
 																					<Image
-																						src={e.image}
-																						alt={e.name}
+																						src={e.image as string}
+																						alt={e.name as string}
 																						height={36}
 																						width={36}
 																						layout="intrinsic"
@@ -124,7 +125,7 @@ class MeetingPage extends React.Component<Props, State> {
 																		<td />
 																		<td>{e.email}</td>
 																		<td />
-																		<td>Placeholder</td>
+																		<td>{dateToLocaleString(new Date(e.timestamp))}</td>
 																	</tr>
 																))
 																: <></>

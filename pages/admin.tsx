@@ -2,7 +2,7 @@ import { SessionContextValue } from "next-auth/react";
 import React from "react";
 import Dashboard from "../components/dashboard/dashboard";
 import Layout from "../components/layout/layout";
-import adminEmails from "../lib/adminEmails";
+import { adminEmails } from "../lib/functions";
 import { wrapSession } from "../lib/wrapSession";
 import NotFoundPage from "./404";
 

@@ -101,7 +101,7 @@ class MeetingCard extends React.Component<Props, States> {
 											<div className="card-actions">
 												{
 													this.props.session.data
-														? !this.state.meetings[0].users?.filter((u) => u.id === this.props.session.data?.user.id).length
+														? !this.state.meetings[0].users?.filter((u) => u.email === this.props.session.data?.user.email).length
 															? (
 																<button className="btn btn-wide" onClick={() => this.handleSignIn(this.state.meetings[0])}>
 																	Sign in to {this.props.program}

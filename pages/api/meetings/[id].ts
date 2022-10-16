@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
-import adminEmails from "../../../lib/adminEmails";
+import { adminEmails } from "../../../lib/functions";
 import { createMeeting, findMeetingByID, removeMeeting, updateMeeting } from "../../../lib/db";
 
 const handler = nextConnect();

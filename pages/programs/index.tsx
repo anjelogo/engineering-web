@@ -11,6 +11,7 @@ import { getSession } from "next-auth/react";
 import Robot from "../../public/robot.png";
 import Printer from "../../public/3dprinter.png";
 import Film from "../../public/film.png";
+import { dateToLocaleString } from "../../lib/functions";
 
 const smCardStyles = "card w-1/4 backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
 const fullCardStyles = "card backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
@@ -22,7 +23,7 @@ interface Props {
 
 interface States {
 	session: any;
-	meetings: Meeting[];
+	meeting: Meeting | null;
 	loading: boolean;
 }
 
@@ -34,7 +35,7 @@ class Programs extends React.Component<Props, States> {
 		this.state = {
 			session: null,
 			loading: true,
-			meetings: []
+			meeting: null
 		};
 	}
 
@@ -45,7 +46,7 @@ class Programs extends React.Component<Props, States> {
 	async handleRefresh() {
 		this.setState({
 			session: this.props.session,
-			meetings: [],
+			meeting: null,
 			loading: true
 		});
 
@@ -54,23 +55,23 @@ class Programs extends React.Component<Props, States> {
 		if (session) {
 			const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
-			let meetings: Meeting[] = [];
+			let meeting: (Meeting | null) = null;
 
 			if (data) {
-				meetings = data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now()).length)
-					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0]);
+				meeting = data.filter((m) => m.dates.filter((d) => d.time.end >= Date.now()).length)
+					.sort((a, b) => a.dates.map(m => m.time.start)[0] - b.dates.map(m => m.time.start)[0])[0]; //Sort Earliest meeting
 			}
 			
 			this.setState({
 				session,
-				meetings,
+				meeting,
 				loading: false
 			});
 		}
 		else
 			this.setState({
 				session: this.props.session,
-				meetings: [],
+				meeting: null,
 				loading: false
 			});
 	}
@@ -110,37 +111,39 @@ class Programs extends React.Component<Props, States> {
 										{
 											this.state.loading
 												? (
-													<>
+													<div className="space-y-5">
 														<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-56"/>
 														<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-40"/>
 														<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-52"/>
-													</>
+													</div>
 												)
 												: 
-												this.state.meetings.length
+												this.state.meeting
 													? (
 														<>
-															<div className="text-white">
+															<div className="text-primary">
 																<h1 className="card-title text-3xl font-extrabold">
 																	<span>
-																		Upcoming Meeting
+																		Upcoming {this.state.meeting.program} Meeting
 																	</span>
 																</h1>
 																<h2 className="text-xl">
 																	<span className="font-extrabold">
-																		{this.state.meetings[0].program}
+																		Room {this.state.meeting.dates[0].room} - {dateToLocaleString(new Date(this.state.meeting.dates[0].time.start))} 
 																	</span>
 																	<span className="font-bold text-secondary">
 																	</span>
 																</h2>
 															</div>
 															<div className="card-actions">
-																<button className="btn btn-ghost text-primary-content">
-																	View Information
-																	<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-																		<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-																	</svg>
-																</button>
+																<Link href={`/programs/${this.state.meeting.program.toLowerCase()}`} passHref>
+																	<button className="btn btn-outline text-info">
+																		View Information
+																		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+																			<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+																		</svg>
+																	</button>
+																</Link>
 															</div>
 														</>
 													)

@@ -8,6 +8,9 @@ import { SessionProvider } from "next-auth/react";
 import * as ga from "../lib/ga";
 
 import "../styles/globals.css";
+import "@wojtekmaj/react-datetimerange-picker/dist/DateTimeRangePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
 
 function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
