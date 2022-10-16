@@ -13,7 +13,7 @@ import Printer from "../../public/3dprinter.png";
 import Film from "../../public/film.png";
 import { dateToLocaleString } from "../../lib/functions";
 
-const smCardStyles = "card w-1/4 backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
+const smCardStyles = "card md:w-1/4 backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
 const fullCardStyles = "card backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
 
 interface Props {
@@ -193,7 +193,7 @@ class Programs extends React.Component<Props, States> {
 											</p>
 											<div className="pt-5">
 												<button className="btn btn-ghost text-info">
-												Learn More
+													Learn More
 													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 														<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 													</svg>
@@ -202,7 +202,6 @@ class Programs extends React.Component<Props, States> {
 										</div>
 									</div>
 								</div>
-									
 							</div>
 						</div>
 						<div>
@@ -218,7 +217,7 @@ class Programs extends React.Component<Props, States> {
 											</p>
 											<div className="pt-5">
 												<button className="btn btn-ghost text-info">
-												Learn More
+													Learn More
 													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 														<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
 													</svg>
