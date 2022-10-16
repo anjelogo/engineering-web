@@ -26,7 +26,8 @@ interface State {
 class Home extends React.Component<Props, State> {
 	RoboticsCardRef: React.RefObject<Element>;
 	RoboticsDescriptionRef: React.RefObject<Element>;
-	ThreeDModeling: React.RefObject<Element>;
+	ThreeDModelingCardRef: React.RefObject<Element>;
+	ThreeDModelingDescriptionRef: React.RefObject<Element>;
 	FooterInsterestedCardIsVisible: React.RefObject<Element>;
 
 	constructor(props: Props) {
@@ -34,7 +35,8 @@ class Home extends React.Component<Props, State> {
 
 		this.RoboticsCardRef = React.createRef();
 		this.RoboticsDescriptionRef = React.createRef();
-		this.ThreeDModeling = React.createRef();
+		this.ThreeDModelingCardRef = React.createRef();
+		this.ThreeDModelingDescriptionRef = React.createRef();
 		this.FooterInsterestedCardIsVisible = React.createRef();
 
 		this.state = {
@@ -62,8 +64,8 @@ class Home extends React.Component<Props, State> {
 							descriptionIsVisible: entry.isIntersecting
 						},
 						threedmodeling: {
-							cardIsVisible: false,
-							descriptionIsVisible: false
+							cardIsVisible: entry.isIntersecting,
+							descriptionIsVisible: entry.isIntersecting,
 						},
 						footer: {
 							interestedCardIsVisible: entry.isIntersecting
@@ -170,7 +172,7 @@ class Home extends React.Component<Props, State> {
 					<div>
 						<div className="hero h-full md:p-10 bg-primary">
 							<div className="hero-content flex-wrap md:grid md:grid-cols-3">
-								<div ref={this.ThreeDModeling as LegacyRef<HTMLDivElement>} className={`${this.state.threedmodeling.descriptionIsVisible ? "fade-in" : ""} card bg-transparent md:grid`}>
+								<div ref={this.ThreeDModelingDescriptionRef as LegacyRef<HTMLDivElement>} className={`${this.ThreeDModelingDescriptionRef ? "fade-in" : ""} card bg-transparent md:grid`}>
 									<div className="card-body h-full">
 										<h1 className="card-title text-4xl font-extrabold text-shadow">
 											<span className="text-neutral-content">
@@ -191,7 +193,7 @@ class Home extends React.Component<Props, State> {
 										</h1>
 									</div>
 								</div>
-								<div className="md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
+								<div ref={this.ThreeDModelingCardRef as LegacyRef<HTMLDivElement>} className={`${this.state.threedmodeling.cardIsVisible ? "fade-in" : ""} md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600`}>
 									<div className="card-body">
 										<h1 className="card-title">
 											<span className="text-5xl md:text-8xl font-extrabold text-white">
