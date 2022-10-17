@@ -54,7 +54,7 @@ class Navbar extends React.Component<NavbarProps> {
 										<Link href="/">Home</Link>
 									</li> 
 									<li>
-										<Link href="/updates">Updates</Link> 
+										<Link href="/discover">Discover</Link> 
 									</li>
 									<li>
 										<Link href="/programs">Programs</Link> 
@@ -91,9 +91,9 @@ class Navbar extends React.Component<NavbarProps> {
 										Home
 									</button>
 								</Link> 
-								<Link href="/updates" passHref>
+								<Link href="/discover" passHref>
 									<button className="btn btn-ghost btn-sm">
-										Updates
+										Discover
 									</button>
 								</Link>
 								<Link href="/programs" passHref>
@@ -137,63 +137,63 @@ class Navbar extends React.Component<NavbarProps> {
 									:
 									this.props.session.status == "authenticated"
 										? (
-											<>
+											<>{/* 
 												<div className="dropdown dropdown-hover dropdown-end">
 													<button aria-label="Notifications" className="btn btn-ghost btn-square">
 														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 															<path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
 														</svg>
 													</button>
-												</div>
-												<div className="dropdown dropdown-hover dropdown-end">
-													<button aria-label="Profile" className="btn btn-ghost btn-square">
-														{
-															this.props.session.data.user.image
-																? (
-																	<Image 
-																		src={this.props.session.data.user.image}
-																		height={30}
-																		width={30}
-																		alt="profile picture"
-																		className="rounded-full"
-																	/>
-																)
-																: (
-																	<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-																		<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-																	</svg>
-																)
-														}
-													</button>
-													<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
-														<li>
-															<p className="ml-5 mr-5 mt-5">
-																<span className="text-lg">
-																	<strong>{this.props.session.data.user.name}</strong>
-																	{
-																		badges[this.props.session.data.user.authLevel]
-																	}
-																</span>
-																<br />
-															</p>
-														</li>
-														<div className="divider w-30" />
-														{
-															hasAuthLevel(this.props.session.data.user, 2)
-																? 
-																<li>
-																	<Link href="/admin">Dashboard</Link>
-																</li>
-																: <></>
-														}
-														<li>
-															<a href={`/user?id=${this.props.session.data.user.id}`}>Profile</a>
-														</li>
-														<li>
-															<a onClick={() => signOut()}><span className="text-error">Logout</span></a>
-														</li>
-													</ul>
-												</div>
+												</div> */}
+											<div className="dropdown dropdown-hover dropdown-end">
+												<button aria-label="Profile" className="btn btn-ghost btn-square">
+													{
+														this.props.session.data.user.image
+															? (
+																<Image 
+																	src={this.props.session.data.user.image}
+																	height={30}
+																	width={30}
+																	alt="profile picture"
+																	className="rounded-full"
+																/>
+															)
+															: (
+																<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+																	<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+																</svg>
+															)
+													}
+												</button>
+												<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
+													<li>
+														<p className="ml-5 mr-5 mt-5">
+															<span className="text-lg">
+																<strong>{this.props.session.data.user.name}</strong>
+																{
+																	badges[this.props.session.data.user.authLevel]
+																}
+															</span>
+															<br />
+														</p>
+													</li>
+													<div className="divider w-30" />
+													{
+														hasAuthLevel(this.props.session.data.user, 2)
+															? 
+															<li>
+																<Link href="/admin">Dashboard</Link>
+															</li>
+															: <></>
+													}
+													<li>
+														<a href={`/user?id=${this.props.session.data.user.id}`}>Profile</a>
+													</li>
+													<li>
+														<a onClick={() => signOut()}><span className="text-error">Logout</span></a>
+													</li>
+												</ul>
+											</div>
 											</>
 										)
 										: (
