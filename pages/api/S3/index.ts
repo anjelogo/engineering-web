@@ -5,9 +5,9 @@ import { S3 } from "aws-sdk";
 
 const handler = nextConnect(),
 	bucket = new S3({
-		accessKeyId: process.env.AWS_ACCESS_KEY,
-		secretAccessKey: process.env.AWS_SECRET_KEY,
-		region: process.env.AWS_REGION,
+		accessKeyId: process.env.S3_ACCESS_KEY,
+		secretAccessKey: process.env.S3_SECRET_KEY,
+		region: process.env.S3_REGION,
 		signatureVersion:	"v4",
 	});
 
@@ -19,7 +19,7 @@ handler
 			return res.status(404).send("Missing Params");
 
 		const fileParams = {
-				Bucket: process.env.AWS_BUCKET,
+				Bucket: process.env.S3_BUCKET,
 				Key: name,
 				Expires: 600,
 				ContentType:	type,
