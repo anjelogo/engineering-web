@@ -53,9 +53,9 @@ class Navbar extends React.Component<NavbarProps> {
 									<li>
 										<Link href="/">Home</Link>
 									</li> 
-									{/* <li>
+									<li>
 										<Link href="/discover">Discover</Link> 
-									</li> */}
+									</li>
 									<li>
 										<Link href="/programs">Programs</Link> 
 									</li>
@@ -91,11 +91,11 @@ class Navbar extends React.Component<NavbarProps> {
 										Home
 									</button>
 								</Link> 
-								{/* <Link href="/discover" passHref>
+								<Link href="/discover" passHref>
 									<button className="btn btn-ghost btn-sm">
 										Discover
 									</button>
-								</Link> */}
+								</Link>
 								<Link href="/programs" passHref>
 									<button className="btn btn-ghost btn-sm">
 										Programs
@@ -155,7 +155,7 @@ class Navbar extends React.Component<NavbarProps> {
 																	height={30}
 																	width={30}
 																	alt="profile picture"
-																	className="rounded-full"
+																	className="mask mask-squircle"
 																/>
 															)
 															: (

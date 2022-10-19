@@ -3,8 +3,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
-import { addFollowerToUser, findUserByID, removeFollowerFromUser } from "../../../../lib/db";
-import { hasAuthLevel } from "../../../../lib/functions";
+import { addFollowerToUser, findUserByEmail, findUserByID, removeFollowerFromUser } from "../../../../lib/db";
 
 const handler = nextConnect();
 
@@ -22,7 +21,14 @@ handler
 			return res.status(404).send("ID not provided");
 
 		try {
-			const user = await findUserByID(typeof id !== "string" ? id[0] : id);
+			//email regex
+			const regex =	new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+			let	user;
+
+			if (regex.test(id as string))
+				user = await findUserByEmail(typeof id !== "string" ? id[0] : id);
+			else
+				user = await findUserByID(typeof id !== "string" ? id[0] : id);
 			res.status(202).send(JSON.stringify(user?.profile.followers));
 		} catch (e) {
 			res.status(404).send({ e });
@@ -35,7 +41,14 @@ handler
 		if (!id)
 			return res.status(404).send("ID not provided");
 
-		const user = await findUserByID(typeof id !== "string" ? id[0] : id);
+		//email regex
+		const regex =	new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+		let	user;
+
+		if (regex.test(id as string))
+			user = await findUserByEmail(typeof id !== "string" ? id[0] : id);
+		else
+			user = await findUserByID(typeof id !== "string" ? id[0] : id);
 
 		if (!user)
 			return res.status(404).send("User Not Found");
@@ -54,7 +67,14 @@ handler
 		if (!id)
 			return res.status(404).send("ID not provided");
 
-		const user = await findUserByID(typeof id !== "string" ? id[0] : id);
+		//email regex
+		const regex =	new RegExp(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
+		let	user;
+
+		if (regex.test(id as string))
+			user = await findUserByEmail(typeof id !== "string" ? id[0] : id);
+		else
+			user = await findUserByID(typeof id !== "string" ? id[0] : id);
 
 		if (!user)
 			return res.status(404).send("User Not Found");

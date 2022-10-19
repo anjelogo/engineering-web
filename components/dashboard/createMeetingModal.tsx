@@ -1,5 +1,5 @@
 import React from "react";
-import { Meeting } from "../../types/interfaces";
+import { Meeting, Program } from "../../types/interfaces";
 import uniqid from "uniqid";
 import router from "next/router";
 import { dateToLocaleString } from "../../lib/functions";
@@ -16,7 +16,7 @@ interface Props {
 interface State {
 	id: string,
 	selected: {
-		program: (string | null);
+		program: (Program | null);
 		range: {
 			start: number;
 			end: number;
@@ -137,7 +137,7 @@ export default class CreateModal extends React.Component<Props, State> {
 		router.reload();
 	}
 
-	changeSelectedProgram(program: string): void {
+	changeSelectedProgram(program: Program): void {
 		this.setState({
 			selected: {
 				...this.state.selected,
@@ -171,7 +171,7 @@ export default class CreateModal extends React.Component<Props, State> {
 
 		return (
 			<>
-				<input type="checkbox" id="createModal" className="modal-toggle" /> 
+				<input type="checkbox" id="createMeetingModal" className="modal-toggle" /> 
 				<div className="modal">
 					<div className="modal-box bg-primary text-primary-content">
 						<p className="text-2xl font-bebas">Start A Meeting</p>
@@ -185,7 +185,7 @@ export default class CreateModal extends React.Component<Props, State> {
 									"Film"
 								].map((program, i) => {
 									return (
-										<button key={i} className={`btn ${this.state.selected.program == program ? "btn-secondary" : "btn-primary-content"}`} onClick={() => this.changeSelectedProgram(program)}>
+										<button key={i} className={`btn ${this.state.selected.program == program ? "btn-secondary" : "btn-primary-content"}`} onClick={() => this.changeSelectedProgram(program as Program)}>
 											{program}
 										</button>
 									);
@@ -212,12 +212,12 @@ export default class CreateModal extends React.Component<Props, State> {
 						<div className="modal-action">
 							<label
 								onClick={() => this.createMeetingHandler()}
-								htmlFor="createModal"
+								htmlFor="createMeetingModal"
 								className={`btn ${this.state.selected.range.start - this.state.selected.range.end == 0 ? "btn-disabled" : "btn-success"}`}
 							>
 								Create Meeting
 							</label> 
-							<label onClick={() => this.clearSelections()} htmlFor="createModal" className="btn">Cancel</label>
+							<label onClick={() => this.clearSelections()} htmlFor="createMeetingModal" className="btn">Cancel</label>
 						</div>
 					</div>
 				</div>

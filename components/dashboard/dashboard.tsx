@@ -4,7 +4,7 @@ import React from "react";
 import Layout from "../layout/layout";
 import { Meeting } from "../../types/interfaces";
 import Link from "next/link";
-import CreateModal from "./createModal";
+import CreateMeetingModal from "./createMeetingModal";
 import { dateToLocaleString } from "../../lib/functions";
 
 interface States {
@@ -86,7 +86,7 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 				title="Dashboard - Engineering Club"
 				description="Engineering Club Dashboard"
 			>
-				<div className="bg-primary flex flex-col">
+				<div className="bg-floatingcogs bg-base-200 flex flex-col">
 					<div className="m-28 min-h-screen">
 						<div className="mt-5 text-primary-content">
 							<p className="text-5xl font-bebas">Admin Dashboard</p>
@@ -96,8 +96,8 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 							<p className="text-3xl font-bebas">Meetings</p>
 						</div>
 						<div className="mt-5">
-							<label htmlFor="createModal" className="btn btn-success">Create Meeting</label>
-							<CreateModal />
+							<label htmlFor="createMeetingModal" className="btn btn-success">Create Meeting</label>
+							<CreateMeetingModal />
 						</div>
 						<div className="mt-10 overflow-x-auto">
 							<table className="table w-full">

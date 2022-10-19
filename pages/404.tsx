@@ -9,7 +9,7 @@ const NotFoundPage = (): JSX.Element => {
 			title="404: Page not found"
 			description="Page Not Found"
 		>
-			<div className="bg-primary flex flex-col h-screen">
+			<div className="bg-base-200 bg-floatingcogs flex flex-col h-screen">
 				<div className="hero min-h-screen">
 					<div className="flex text-center">
 						<h1 className="text-lg text-primary-content">
