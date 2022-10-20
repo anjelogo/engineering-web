@@ -9,7 +9,7 @@ import Printer from "../../public/3dprinter.png";
 import Film from "../../public/film.png";
 import UpcomingMeetingCard from "../../components/programs/UpcomingMeetingCard";
 
-const smCardStyles = "card md:w-1/4 backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
+const smCardStyles = "card backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
 const fullCardStyles = "card backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
 
 export default function Programs(): JSX.Element {
@@ -19,7 +19,7 @@ export default function Programs(): JSX.Element {
 			description="The official programs of Univeristy Preparatory's Engineering Club"
 		>
 			<section className="bg-floatingcogs bg-base-200 bg-fixed pt-28">
-				<div className="md:mx-40 md:grid md:grid-cols-3 bg-primary p-10 shadow-2xl md:gap-5">
+				<div className="space-y-10 lg:space-y-0 bg-primary p-10 shadow-2xl md:gap-5 md:mx-40 lg:grid lg:grid-cols-3">
 					<div className="md:col-span-2 md:w-full">
 						<h1 className="font-extrabold text-5xl">
 							<span className="text-transparent bg-clip-text bg-gradient-to-r from-insta1 to-insta3">
@@ -37,7 +37,7 @@ export default function Programs(): JSX.Element {
 			</section>
 			<section className="bg-gradient-to-bl from-yellow-600 to-pink-500 p-10">
 				<div className="flex h-30 items-center justify-center md:grids md:grid-cols-3">
-					<div className="hidden md:flex md:col-start-1 col-span-2">
+					<div className="hidden lg:flex lg:col-start-1 lg:col-span-2">
 						<Image
 							src={Robot}
 							alt="Robot"
@@ -47,8 +47,8 @@ export default function Programs(): JSX.Element {
 						/>
 					</div>
 					<div className={`${fullCardStyles} py-10 rounded-[10px]`}>
-						<div className="text-center space-y-2 mx-5 md:mx-32 md:col-start-3">
-							<h1 className="bg-fixed text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#dc419b] via-[#fcef04] to-[#ffffff]">
+						<div className="text-center space-y-2 mx-5 lg:mx-32 lg:col-start-3">
+							<h1 className="bg-fixed text-5xl lg:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#dc419b] via-[#fcef04] to-[#ffffff]">
 								ROBOTICS
 							</h1>
 							<p className="font-extrabold text-md text-primary">
@@ -67,17 +67,17 @@ export default function Programs(): JSX.Element {
 				</div>
 			</section>
 			<section className="bg-gradient-to-br from-[#b2ef91] to-[#fa9372] p-10">
-				<div className="flex h-30 items-center justify-center md:grids md:grid-cols-3">
+				<div className="flex h-30 items-center justify-center lg:grids lg:grid-cols-3">
 					<div className={`${fullCardStyles} py-10 rounded-[10px]`}>
-						<div className="text-center space-y-2 mx-5 md:mx-32 md:col-start-3">
-							<h1 className="bg-fixed text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#dc419b] via-[#fcef04] to-[#ffffff]">
+						<div className="text-center space-y-2 mx-5 lg:mx-32 lg:col-start-3">
+							<h1 className="bg-fixed text-5xl lg:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#dc419b] via-[#fcef04] to-[#ffffff]">
 								3D MODELING
 							</h1>
 							<p className="font-extrabold text-md text-primary">
 								Learn to design and create 3D models and print them out with 3D printers!
 							</p>
 							<div className="pt-5">
-								<button className="btn btn-ghost text-info">
+								<button className="btn btn-ghost text-primary">
 									Learn More
 									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
 										<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
@@ -86,7 +86,7 @@ export default function Programs(): JSX.Element {
 							</div>
 						</div>
 					</div>
-					<div className="hidden md:flex md:col-start-1 md:col-span-2">
+					<div className="hidden lg:flex lg:col-start-1 lg:col-span-2">
 						<Image
 							src={Printer}
 							alt="3D Printer"
@@ -98,8 +98,8 @@ export default function Programs(): JSX.Element {
 				</div>
 			</section>
 			<section className="bg-gradient-to-br from-[#005177] to-[#80297e] p-10">
-				<div className="flex h-30 items-center justify-center md:grids md:grid-cols-3 md:space-x-10">
-					<div className="hidden md:flex md:col-start-1 md:col-span-2">
+				<div className="flex h-30 items-center justify-center lg:grids lg:grid-cols-3 lg:space-x-10">
+					<div className="hidden lg:flex lg:col-start-1 lg:col-span-2">
 						<Image
 							src={Film}
 							alt="Film Set"
@@ -109,8 +109,8 @@ export default function Programs(): JSX.Element {
 						/>
 					</div>
 					<div className={`${fullCardStyles} py-10 rounded-[10px]`}>
-						<div className="text-center space-y-2 mx-5 md:mx-32 md:col-start-3">
-							<h1 className="bg-fixed text-5xl md:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#dc419b] via-[#fcef04] to-[#ffffff]">
+						<div className="text-center space-y-2 mx-5 lg:mx-32 lg:col-start-3">
+							<h1 className="bg-fixed text-5xl lg:text-8xl font-extrabold bg-clip-text text-transparent bg-gradient-to-b from-[#dc419b] via-[#fcef04] to-[#ffffff]">
 								FILM
 							</h1>
 							<p className="font-extrabold text-md text-primary">
@@ -131,7 +131,7 @@ export default function Programs(): JSX.Element {
 			<div className="bg-primary">
 				<div className="justify-center items-center md:justify-start">
 					<h1 className="font-extrabold text-2xl text-shadow text-primary-content px-10 pt-10">
-									All Programs
+						All Programs
 					</h1>
 				</div>
 			</div>
@@ -143,8 +143,8 @@ export default function Programs(): JSX.Element {
 							<h4 className="text-primary-content text-md">Learn to design and build robots and compete in-school with other students!</h4> 
 							<div className="card-actions">
 								<Link href="/programs/robotics" passHref>
-									<button className="btn text-primary-content">
-													Learn More
+									<button className="btn btn-primary-content">
+										Learn More
 									</button>
 								</Link>
 							</div>
@@ -156,8 +156,8 @@ export default function Programs(): JSX.Element {
 							<h4 className="text-primary-content text-md">Learn to design and create 3D models and print them out with 3D printers!</h4>
 							<div className="card-actions">
 								<Link href="/programs/3d-modeling" passHref>
-									<button className="btn text-primary-content">
-													Learn More
+									<button className="btn btn-primary-content">
+										Learn More
 									</button>
 								</Link>
 							</div> 
@@ -167,13 +167,13 @@ export default function Programs(): JSX.Element {
 						<div className="card-body">
 							<h3 className="card-title text-primary-content">Rube Goldberg</h3> 
 							<p className="text-primary-content text-md">
-												Create eccentric machines and compete against other schools in-state!
+								Create eccentric machines and compete against other schools in-state!
 								<br />
 							</p>
 							<div className="card-actions">
 								<Link href="/programs/rubegoldberg" passHref>
-									<button className="btn text-primary-content">
-													Learn More
+									<button className="btn btn-primary-content">
+										Learn More
 									</button>
 								</Link>
 							</div> 
@@ -183,13 +183,13 @@ export default function Programs(): JSX.Element {
 						<div className="card-body">
 							<h3 className="card-title text-primary-content">Film</h3> 
 							<p className="text-primary-content text-md">
-												Create short films and showcase them	on the big screen!
+									Create short films and showcase them	on the big screen!
 								<br />
 							</p>
 							<div className="card-actions">
 								<Link href="/programs/film" passHref>
-									<button className="btn text-primary-content">
-													Learn More
+									<button className="btn btn-primary-content">
+										Learn More
 									</button>
 								</Link>
 							</div> 

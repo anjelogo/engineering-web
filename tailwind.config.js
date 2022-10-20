@@ -10,11 +10,11 @@ module.exports = {
 	theme: {
 		extend: {
 			backgroundImage: theme => ({
-				"topography": "url('../public/topography.svg')",
-				"robotics": "url('../public/roboticsbackground.jpg')",
-				"3dmodeling": "url('../public/3dbackground.jpg')",
-				"landscape": "url('../public/vvland.jpeg')",
-				"floatingcogs": "url('../public/floating-cogs.svg')"
+				"topography": "url('/topography.svg')",
+				"robotics": "url('/roboticsbackground.jpg')",
+				"3dmodeling": "url('/3dbackground.jpg')",
+				"landscape": "url('/vvland.jpeg')",
+				"floatingcogs": "url('/floating-cogs.svg')"
 			}),
 			colors: {
 				"blurple": "#5865F2",

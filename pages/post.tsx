@@ -90,8 +90,8 @@ class DiscoverPage extends React.Component<Props, State> {
 				title={`${this.state.loading ? "Loading..." : this.state.post?.content.title} - Engineering Club`}
 				description="Loading..."
 			>
-				<section className="min-h-screen py-28 bg-base-100 bg-floatingcogs bg-fixed">
-					<div className="grid grid-cols-3 gap-5 mx-80">
+				<section className="min-h-screen py-28 bg-base-200 bg-floatingcogs bg-fixed">
+					<div className="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-5 mx-0 md:mx-20 lg:mx-40 xl:80 2xl:120">
 						<div className="col-span-3 col-start-1">
 							<div className={`bg-primary w-full shadow-xl ${this.state.loading ? "animate-pulse" : ""}`}>
 								<div className="p-10">

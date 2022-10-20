@@ -175,19 +175,19 @@ class Home extends React.Component<Props, State> {
 								<div ref={this.ThreeDModelingDescriptionRef as LegacyRef<HTMLDivElement>} className={`${this.ThreeDModelingDescriptionRef ? "fade-in" : ""} card bg-transparent md:grid`}>
 									<div className="card-body h-full">
 										<h1 className="card-title text-4xl font-extrabold text-shadow">
-											<span className="text-neutral-content">
+											<span className="text-primary-content">
 												Want something?{" "}
 											</span>
 											<span className="bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
 												{" "}Make it.
 											</span>
-											<span className="text-neutral-content">
+											<span className="text-primary-content">
 												{" "}Come by and use our club{"'"}s 3D printer and make it a
 											</span>
 											<span className="bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
 												{" "}reality
 											</span>
-											<span className="text-neutral-content">
+											<span className="text-primary-content">
 												.
 											</span>
 										</h1>

@@ -57,7 +57,7 @@ class DiscoverPage extends React.Component<Props, State> {
 			>
 				<body>
 					<section className="min-h-screen pt-28 bg-base-200 bg-fixed bg-floatingcogs">
-						<div className="bg-primary p-10 shadow-xl mx-80">
+						<div className="bg-primary p-10 shadow-xl mx-0 md:mx-20 lg:mx-40 xl:mx-80 2xl:120">
 							<h1 className="pb-2 font-extrabold text-6xl text-transparent bg-gradient-to-l from-insta1 to-insta3 bg-clip-text">
 								Discover
 							</h1>
@@ -72,13 +72,13 @@ class DiscoverPage extends React.Component<Props, State> {
 									: <></>
 							}
 							<div className="divider" />
-							<div className="py-5 grid grid-cols-3 gap-5">
+							<div className="py-5 space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-5">
 
 								{ /** First Card */}
 								
-								<div className="col-start-1 col-span-3">
+								<div className="md:col-start-1 md:col-span-3">
 									<Link href={this.state.loading ? "" : `/post?id=${this.state.posts[0].id}`} passHref>
-										<a className="card card-side bg-base-100 bg-opacity-40 w-full h-full cursor-pointer hover:bg-opacity-90 transition-all duration-150">
+										<a className="card md:card-side bg-base-100 bg-opacity-40 w-full h-full cursor-pointer hover:bg-opacity-90 transition-all duration-150">
 											<figure>
 												<Image 
 													src={this.state.loading ? floatingcogs : this.state.posts[0].content.thumbnail}
@@ -111,8 +111,8 @@ class DiscoverPage extends React.Component<Props, State> {
 
 								{ /** Carousel */}
 
-								<div className="col-start-1 col-span-3">
-									<div className="carousel carousel-center space-x-5">
+								<div className="md:col-start-1 md:col-span-3">
+									<div className="md:carousel md:carousel-center space-y-10 md:space-y-0 md:space-x-5">
 										{
 											this.state.loading
 												?	<div className="bg-gray-200 bg-opacity-40 animated-pulse rounded-box h-[24px] w-[100px]" />
