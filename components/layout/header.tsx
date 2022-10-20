@@ -60,7 +60,7 @@ class Navbar extends React.Component<NavbarProps> {
 										<Link href="/programs">Programs</Link> 
 									</li>
 									<li>
-										<Link href="/contact">Contact Us</Link> 
+										<Link href="/about">About Us</Link> 
 									</li>
 									<div className="flex-none" id="toggle">
 										<button aria-label="Theme Changer" data-toggle-theme="darktheme,lighttheme" data-act-class="ACTIVECLASS" className="btn btn-ghost btn-square">
@@ -101,9 +101,9 @@ class Navbar extends React.Component<NavbarProps> {
 										Programs
 									</button>
 								</Link>
-								<Link href="/contact" passHref>
+								<Link href="/about" passHref>
 									<button className="btn btn-ghost btn-sm">
-										Contact Us
+										About Us
 									</button>
 								</Link>
 							</div>

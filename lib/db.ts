@@ -13,6 +13,13 @@ const db = monk(process.env.DB ?? ""),
 		signatureVersion:	"v4",
 	});
 
+export async function getUsers(): Promise<User[] | undefined> {
+
+	const users = await db.get("users").aggregate([]);
+
+	return users;
+}
+
 export async function getPosts(): Promise<Meeting[] | undefined> {
 
 	const meetings = await db.get("posts").aggregate([]);

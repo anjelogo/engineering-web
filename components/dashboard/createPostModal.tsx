@@ -13,6 +13,7 @@ interface Props {
 interface State {
 	type: Program | "General" | undefined;
 	title: string;
+	thumbnail: string;
 	body: string;
 }
 
@@ -25,6 +26,7 @@ class CreatePost extends React.Component<Props,	State> {
 		this.state = {
 			type: undefined,
 			title: "",
+			thumbnail: "",
 			body: ""
 		};
 	}
@@ -40,6 +42,12 @@ class CreatePost extends React.Component<Props,	State> {
 	changeTitle(event: React.FormEvent<HTMLInputElement>): void {
 		this.setState({
 			title: event.currentTarget.value
+		});
+	}
+
+	changeImage(event: React.FormEvent<HTMLInputElement>): void {
+		this.setState({
+			thumbnail: event.currentTarget.value
 		});
 	}
 
@@ -128,6 +136,8 @@ class CreatePost extends React.Component<Props,	State> {
 								})
 							}
 						</div>
+						<p className="text-lg text-primary-content font-extrabold">Blog Thumbnail</p>
+						<input type="text" placeholder="Blog Thumbnail" className="input input-bordered	input-primary w-full" onChange={(e) => this.changeImage.bind(this)(e)} />
 						<p className="text-lg text-primary-content font-extrabold">Blog Title</p>
 						<input type="text" placeholder="Blog Title" className="input input-bordered	input-primary w-full" onChange={(e) => this.changeTitle.bind(this)(e)} />
 						<p className="text-lg text-primary-content font-extrabold">Blog Body</p>

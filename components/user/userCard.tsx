@@ -17,6 +17,7 @@ interface Props {
 	session: SessionContextValue;
 	email: User["email"];
 	options: Options;
+	className?: string;
 }
 
 interface State {
@@ -99,7 +100,7 @@ class UserCard extends React.Component<Props, State> {
 		};
 
 		return (
-			<div className="rounded-box shadow-2xl border-4 backdrop-blur-sm"
+			<div className={"rounded-box shadow-2xl border-4 backdrop-blur-sm" + (this.props.className != undefined ? " " + this.props.className : "")}
 				style={
 					{
 						backgroundColor: this.state.user ? this.state.user?.profile.color + "AA" : "#CCCCCCAA",
