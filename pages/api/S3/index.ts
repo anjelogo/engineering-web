@@ -2,6 +2,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import nextConnect from "next-connect";
 import { S3 } from "aws-sdk";
+import { hasAuthLevel } from "../../../lib/functions";
+import { Session } from "next-auth";
+import { getSession } from "next-auth/react";
 
 const handler = nextConnect(),
 	bucket = new S3({
@@ -12,6 +15,16 @@ const handler = nextConnect(),
 	});
 
 handler
+	.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
+		const session: Session | null = await getSession({ req });
+
+		if (!session)
+			res.status(401).send("Unauthorized: Not Logged In");
+		else if (session && !hasAuthLevel(session.user, 3))
+			res.status(401).send("Unauthorized: Missing Permissions");
+		else
+			next();
+	})
 	.post(async (req: NextApiRequest, res: NextApiResponse) => {
 		const { name, type } = JSON.parse(req.body);
 

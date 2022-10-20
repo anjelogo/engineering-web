@@ -1,7 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextApiRequest, NextApiResponse } from "next";
+import { Session } from "next-auth";
+import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
 import { createPost, findPostByID, removePost, updatePost } from "../../../lib/db";
+import { hasAuthLevel } from "../../../lib/functions";
 import { Post } from "../../../types/interfaces";
 
 const handler = nextConnect();
@@ -19,6 +22,16 @@ handler
 		} catch (e) {
 			res.status(404).send({ e });
 		}
+	})
+	.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
+		const session: Session | null = await getSession({ req });
+
+		if (!session)
+			res.status(401).send("Unauthorized: Not Logged In");
+		else if (session && !hasAuthLevel(session.user, 3))
+			res.status(401).send("Unauthorized: Missing Permissions");
+		else
+			next();
 	})
 	.post(async (req: NextApiRequest, res: NextApiResponse) => {
 		const { post }: { post: (Post | undefined) } = req.body;
