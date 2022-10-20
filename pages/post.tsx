@@ -129,7 +129,7 @@ class DiscoverPage extends React.Component<Props, State> {
 							}
 						</div>
 						<div className="col-span-2 col-start-2">
-							<div className="rounded-box shadow-2xl border-4 backdrop-blur-sm border-primary/40 bg-primary h-full">
+							<div className="rounded-box shadow-2xl border-4 backdrop-blur-sm border-primary bg-primary/40 h-full">
 								<div className="p-5 items-start">
 									<h1 className="text-primary-content text-2xl font-extrabold">
 										Latest Updates
