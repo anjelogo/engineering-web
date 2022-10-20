@@ -86,19 +86,16 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 				title="Dashboard - Engineering Club"
 				description="Engineering Club Dashboard"
 			>
-				<div className="bg-floatingcogs bg-base-200 flex flex-col">
-					<div className="m-28 min-h-screen">
-						<div className="mt-5 text-primary-content">
-							<p className="text-5xl font-bebas">Admin Dashboard</p>
-						</div>
-						<div className="divider mb-0 mt-0 w-56" />
-						<div className="mt-5 text-primary-content">
-							<p className="text-3xl font-bebas">Meetings</p>
-						</div>
+				<div className="min-h-screen pt-28 bg-floatingcogs bg-base-200 bg-fixed">
+					<div className="p-10 mx-0 md:mx-20 lg:mx-40 xl:mx-80 2xl:mx-[480px] bg-primary shadow-xl h-full">
+						<h1 className="pb-2 font-extrabold text-4xl text-primary-content">
+							Meeting Dashboard
+						</h1>
 						<div className="mt-5">
-							<label htmlFor="createMeetingModal" className="btn btn-success">Create Meeting</label>
+							<label htmlFor="createMeetingModal" className="btn btn-sm btn-primary-content">Create Meeting</label>
 							<CreateMeetingModal />
 						</div>
+						<div className="divider" />
 						<div className="mt-10 overflow-x-auto">
 							<table className="table w-full">
 								<thead>
@@ -114,7 +111,7 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 										<th />
 									</tr>
 								</thead>
-								<tbody className="text-black-content">
+								<tbody className="text-primary-content">
 									{
 										this.state.loading ?
 											<tr>
@@ -132,8 +129,8 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 													<>
 														<tr key={i} className="hover">
 															<td></td>
-															<td><span className="text-black"><strong>{e.program}</strong></span></td>
-															<td><span className="text-black">{e.id}</span></td>
+															<td><span className="text-primary-content"><strong>{e.program}</strong></span></td>
+															<td><span className="text-primary-content">{e.id}</span></td>
 															<td>
 																<div className="indicator">
 																	<span className="badge badge-info">{e.dates[0].room}</span>
@@ -163,7 +160,7 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 																}
 															</td>
 															<td />
-															<td><span className="text-black">{dateToLocaleString(new Date(e.dates[0].time.start))}</span></td>
+															<td><span className="text-primary-content">{dateToLocaleString(new Date(e.dates[0].time.start))}</span></td>
 															<th>
 																<div className="dropdown dropdown-hover dropdown-end">
 																	<button aria-label={`${e.id} Menu Actions`} className="btn btn-ghost">
@@ -174,7 +171,7 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 																	<ul tabIndex={0} className="backdrop-blur-lg bg-gray-300/30 p-2 shadow menu dropdown-content rounded-box w-52">
 																		<li>
 																			<Link href={`/meetings?id=${e.id}`} passHref>
-																				<a><span className="text-black">View Meeting</span></a>
+																				<a><span className="text-primary-content">View Meeting</span></a>
 																			</Link>
 																		</li>
 																		<li>
@@ -221,15 +218,6 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 							</table>
 						</div>
 					</div>
-				</div>
-				<div>
-					<footer className="backdrop-blur-lg bg-gray-300/30 p-10 footer text-black-content footer-center">
-						<div>
-							<Link href="/admin/classic" passHref>
-								<a className="link link-hover"><strong>View Dashboard in Classic View?</strong></a>
-							</Link>
-						</div>
-					</footer>
 				</div>
 			</Layout>
 		);

@@ -92,7 +92,7 @@ class AboutUsPage extends React.Component<Props, State> {
 							Contact Us
 						</h1>
 						<div className="divider" />
-						<div className="flex flex-col space-y md:flex-row md:space-y-0 md:justify-center md:space-x-5">
+						<div className="flex flex-col space-y-5 md:flex-row md:space-y-0 md:justify-center md:space-x-5">
 							<div className="card bg-blurple shadow-xl flex-1">
 								<div className="card-body">
 									<h1 className="card-title text-primary text-3xl font-extrabold">
