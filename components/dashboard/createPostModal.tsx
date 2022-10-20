@@ -107,7 +107,7 @@ class CreatePost extends React.Component<Props,	State> {
 			<>
 				<input type="checkbox" id="createPost" className="modal-toggle" /> 
 				<div className="modal modal-bottom md:modal-middle">
-					<div className="modal-box w-11/12 max-w-5xl h-full bg-base-200 bg-opacity-40 border-4 border-base-200 rounded-none backdrop-blur-md backdrop-filter space-y-5">
+					<div className="modal-box w-11/12 max-w-5xl h-full bg-base-200/40 border-4 border-base-200 rounded-none backdrop-blur-md space-y-5">
 						<p className="text-2xl text-primary-content font-extrabold">Create Blog Post</p>
 						<div className="divider" />
 						<p className="text-lg text-primary-content font-extrabold">Blog Post Type</p>

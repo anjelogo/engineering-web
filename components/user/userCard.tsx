@@ -99,7 +99,7 @@ class UserCard extends React.Component<Props, State> {
 		};
 
 		return (
-			<div className="rounded-box shadow-2xl border-4 backdrop-filter backdrop-blur-sm"
+			<div className="rounded-box shadow-2xl border-4 backdrop-blur-sm"
 				style={
 					{
 						backgroundColor: this.state.user ? this.state.user?.profile.color + "AA" : "#CCCCCCAA",

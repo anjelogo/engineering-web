@@ -32,7 +32,7 @@ class Navbar extends React.Component<NavbarProps> {
 			<>
 				<header className="pt-5 p-10 bg-transparent fixed left-0 right-0 z-50">
 
-					<nav className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 navbar mb-2 rounded-box drop-shadow-lg text-secondary-content">
+					<nav className="backdrop-blur-lg bg-gray-300/30 navbar mb-2 rounded-box drop-shadow-lg text-secondary-content">
 							
 						{/* DESKTOP LOGO */}
 
@@ -49,7 +49,7 @@ class Navbar extends React.Component<NavbarProps> {
 										<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
 									</svg>
 								</div>
-								<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
+								<ul tabIndex={0} className="backdrop-blur-lg bg-gray-300/30 p-2 shadow menu dropdown-content rounded-box w-52">
 									<li>
 										<Link href="/">Home</Link>
 									</li> 
@@ -165,7 +165,7 @@ class Navbar extends React.Component<NavbarProps> {
 															)
 													}
 												</button>
-												<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
+												<ul tabIndex={0} className="backdrop-blur-lg bg-gray-300/30 p-2 shadow menu dropdown-content rounded-box w-52">
 													<li>
 														<p className="ml-5 mr-5 mt-5">
 															<span className="text-lg">

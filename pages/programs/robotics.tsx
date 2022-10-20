@@ -106,7 +106,7 @@ const RoboticsProgram = (): JSX.Element => {
 								title="Competition Details"
 								content={[
 									(
-										<div className="card bg-gray-300 bg-opacity-40">
+										<div className="card bg-gray-300/40">
 											<div className="text-center 2xl:text-left card-body">
 												<h4 className="text-primary-content text-md">
 													<strong>LEGO Mindstorms</strong>

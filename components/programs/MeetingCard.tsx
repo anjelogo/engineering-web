@@ -73,10 +73,10 @@ class MeetingCard extends React.Component<Props, States> {
 						? (
 							<div className="card bg-secondary animate-pulse h-64">
 								<div className="text-center items-center card-body space-y-3">
-									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-56"/>
-									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-40"/>
-									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-52"/>
-									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-36"/>
+									<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-56"/>
+									<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-40"/>
+									<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-52"/>
+									<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-36"/>
 									<div className="card-actions">
 										<div className="btn btn-wide btn-disabled animate-pulse" />
 									</div>

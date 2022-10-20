@@ -47,7 +47,7 @@ const FilmProgram = (): JSX.Element => {
 								top={true}
 								content={[
 									(
-										<div className="card bg-gray-300 bg-opacity-40">
+										<div className="card bg-gray-300/40">
 											<div className="text-center 2xl:text-left card-body">
 												<h4 className="text-primary-content text-md">
 													The entire end goal of the club is to create a short (10-20 min) film to showcase at the Engineering club at the year of the year at March 2023. Taking this even further, we can submit our short film to High School Film Festival like the All American High School Film Festival in New York or NFFTY, another 24 and younger film festival in Seattle, Washington.

@@ -9,8 +9,8 @@ import Printer from "../../public/3dprinter.png";
 import Film from "../../public/film.png";
 import UpcomingMeetingCard from "../../components/programs/UpcomingMeetingCard";
 
-const smCardStyles = "card backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
-const fullCardStyles = "card backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
+const smCardStyles = "card backdrop-blur-lg bg-gray-300/30 duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
+const fullCardStyles = "card backdrop-blur-lg bg-gray-300/30 duration-200 ease-in-out hover:shadow-xl hover:-translate-y-2";
 
 export default function Programs(): JSX.Element {
 	return (

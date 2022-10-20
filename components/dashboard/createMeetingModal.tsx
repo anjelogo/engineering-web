@@ -60,7 +60,7 @@ export default class CreateModal extends React.Component<Props, State> {
 			};
 	
 			return (
-				<div className="card bg-gray-400 bg-opacity-50 w-64">
+				<div className="card bg-gray-400/50 w-64">
 					<div className="card-body items-center text-center">
 						<p className="font-bebas card-title mb-0">{meeting.program}</p>
 						<p className="text-xs">ID: {meeting.id}</p>
@@ -80,12 +80,12 @@ export default class CreateModal extends React.Component<Props, State> {
 			);
 		} else {
 			return (
-				<div className="card bg-gray-400 bg-opacity-50 animate-pulse h-56 w-64">
+				<div className="card bg-gray-400/50 animate-pulse h-56 w-64">
 					<div className="text-center items-center card-body space-y-3">
-						<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-36"/>
-						<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-52"/>
-						<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-20"/>
-						<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-20"/>
+						<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-36"/>
+						<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-52"/>
+						<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-20"/>
+						<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-20"/>
 					</div>
 				</div>
 			);

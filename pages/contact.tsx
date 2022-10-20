@@ -8,7 +8,7 @@ import KarenXia from "../public/karenxia.jpg";
 import ManuelColon from "../public/manuelcolon.jpeg";
 import Alisa from "../public/alisa.jpeg";
 
-const btnStyles = "backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2";
+const btnStyles = "backdrop-blur-lg bg-gray-300/30 transform duration-200 ease-in-out card hover:shadow-xl hover:-translate-y-2";
 
 const ContactUsPage = (): JSX.Element => {
 

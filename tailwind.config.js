@@ -1,15 +1,8 @@
 module.exports = {
-	purge: {
-		content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-		options: {
-			safelist: [
-				/data-theme$/,
-			]
-		},
-	},
+	content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
-			backgroundImage: theme => ({
+			backgroundImage: () => ({
 				"topography": "url('/topography.svg')",
 				"robotics": "url('/roboticsbackground.jpg')",
 				"3dmodeling": "url('/3dbackground.jpg')",

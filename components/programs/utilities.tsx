@@ -14,7 +14,7 @@ export const RepresentativeCard = (
 	}
 ): JSX.Element => {
 	return (
-		<div className="transform duration-200 ease-in-out card bg-gray-300 bg-opacity-40 hover:-translate-y-2">
+		<div className="transform duration-200 ease-in-out card bg-gray-500/40 hover:-translate-y-2">
 			<div className="m-5">
 				<figure className="px-20">
 					<Image

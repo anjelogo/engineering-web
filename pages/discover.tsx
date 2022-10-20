@@ -78,7 +78,7 @@ class DiscoverPage extends React.Component<Props, State> {
 								
 								<div className="md:col-start-1 md:col-span-3">
 									<Link href={this.state.loading ? "" : `/post?id=${this.state.posts[0].id}`} passHref>
-										<a className="card md:card-side bg-base-100 bg-opacity-40 w-full h-full cursor-pointer hover:bg-opacity-90 transition-all duration-150">
+										<a className="card md:card-side bg-base-100/40 hover:bg-base-100/40 w-full h-full cursor-pointer transition-all duration-150">
 											<figure>
 												<Image 
 													src={this.state.loading ? floatingcogs : this.state.posts[0].content.thumbnail}
@@ -91,7 +91,7 @@ class DiscoverPage extends React.Component<Props, State> {
 											<div className="card-body items-start">
 												{
 													this.state.loading
-														?	<div className="card-title bg-gray-200 bg-opacity-40 animated-pulse rounded-box h-[24px] w-[100px]" />
+														?	<div className="card-title bg-gray-200/40 animated-pulse rounded-box h-[24px] w-[100px]" />
 														: (
 															<>
 																<h2 className="card-title text-primary-content text-xl">{dateToLocaleString(new Date(this.state.posts?.[0].timestamp as number))}</h2>
@@ -115,11 +115,11 @@ class DiscoverPage extends React.Component<Props, State> {
 									<div className="md:carousel md:carousel-center space-y-10 md:space-y-0 md:space-x-5">
 										{
 											this.state.loading
-												?	<div className="bg-gray-200 bg-opacity-40 animated-pulse rounded-box h-[24px] w-[100px]" />
+												?	<div className="bg-gray-200/40 animated-pulse rounded-box h-[24px] w-[100px]" />
 												: this.state.posts?.slice(1).map((post, i) => {
 													return (
 														<Link href={`/post?id=${post.id}`} passHref key={i}>
-															<a key={i} className="carousel-item card bg-base-100 bg-opacity-40 cursor-pointer hover:bg-opacity-90 transition-all duration-150">
+															<a key={i} className="carousel-item card bg-base-100/40 hover:bg-base-100/90 cursor-pointer transition-all duration-150">
 																<figure>
 																	<Image
 																		src={this.state.loading ? floatingcogs : post.content.thumbnail}

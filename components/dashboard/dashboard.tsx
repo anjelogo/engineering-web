@@ -171,7 +171,7 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
 																		</svg>
 																	</button>
-																	<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
+																	<ul tabIndex={0} className="backdrop-blur-lg bg-gray-300/30 p-2 shadow menu dropdown-content rounded-box w-52">
 																		<li>
 																			<Link href={`/meetings?id=${e.id}`} passHref>
 																				<a><span className="text-black">View Meeting</span></a>
@@ -223,7 +223,7 @@ class Dashboard extends React.Component<Record<string, never> , States> {
 					</div>
 				</div>
 				<div>
-					<footer className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-10 footer text-black-content footer-center">
+					<footer className="backdrop-blur-lg bg-gray-300/30 p-10 footer text-black-content footer-center">
 						<div>
 							<Link href="/admin/classic" passHref>
 								<a className="link link-hover"><strong>View Dashboard in Classic View?</strong></a>

@@ -41,7 +41,7 @@ class UpcomingMeetingCard extends React.Component<Props, State> {
 
 			this.setState({
 				loading: false,
-				meeting: meetings.sort((a, b) => b.dates[0].time.start - a.dates[0].time.start)[0]
+				meeting: meetings.filter((d) => (d.dates[0].time.end >= Date.now() && d.dates[0].time.start >= Date.now() || (d.dates[0].time.end >= Date.now() && d.dates[0].time.start <= Date.now()))).sort((a, b) => b.dates[0].time.start - a.dates[0].time.start)[0]
 			});
 		}
 	}
@@ -54,9 +54,9 @@ class UpcomingMeetingCard extends React.Component<Props, State> {
 						this.state.loading
 							? (
 								<div className="space-y-5">
-									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-56"/>
-									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-40"/>
-									<div className="rounded-box bg-gray-500 bg-opacity-40 animate-pulse h-5 w-52"/>
+									<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-56"/>
+									<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-40"/>
+									<div className="rounded-box bg-gray-500/40 animate-pulse h-5 w-52"/>
 								</div>
 							)
 							: 

@@ -94,7 +94,7 @@ class CreatePost extends React.Component<Props,	State> {
 			<>
 				<input type="checkbox" id="editProfile" className="modal-toggle" /> 
 				<div className="modal modal-bottom md:modal-middle">
-					<div className="modal-box w-11/12 max-w-5xl h-3/4 max-h-3xl bg-base-200 bg-opacity-40 border-4 border-base-200 rounded-none backdrop-blur-md backdrop-filter space-y-5">
+					<div className="modal-box w-11/12 max-w-5xl h-3/4 max-h-3xl bg-base-200/40 border-4 border-base-200 rounded-none backdrop-blur-md space-y-5">
 						<p className="text-2xl text-primary-content font-extrabold">Edit Profile: {this.state.user?.email}</p>
 						<div className="divider" />
 						{

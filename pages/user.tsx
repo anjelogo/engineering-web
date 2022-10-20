@@ -57,7 +57,7 @@ class UserPage extends React.Component<Props, State> {
 						<div className="col-span-3 col-start-1">
 							{
 								this.state.loading
-									? <div className="rounded-full bg-gray-200 bg-opacity-40 shadow-xl w-full backdrop-filter backdrop-blur-md" />
+									? <div className="rounded-full bg-gray-200/40 shadow-xl w-full backdrop-blur-md" />
 									: <UserCard email={this.state.user?.email} options={{ editable: true }}/>
 							}
 						</div>
