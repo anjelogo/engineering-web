@@ -14,7 +14,7 @@ const NotFoundPage = (): JSX.Element => {
 						404
 					</h1>
 					<h1 className="pb-2 font-extrabold text-2xl text-primary-content">
-						Page Not	Found
+						Page Not Found
 					</h1>
 					<div className="divider" />
 					<p className="pb-2 text-2xl text-primary-content font-bold">
