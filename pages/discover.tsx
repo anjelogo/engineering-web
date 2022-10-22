@@ -1,7 +1,7 @@
 import { SessionContextValue } from "next-auth/react";
 import Image from "next/image";
 import React from "react";
-import Layout from "../components/layout/layout";
+import Layout from "../components/base/layout";
 import { dateToLocaleString, hasAuthLevel } from "../lib/functions";
 import { Post } from "../types/interfaces";
 import floatingcogs from "../public/topography.svg";

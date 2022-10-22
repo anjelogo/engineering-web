@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { LegacyRef } from "react";
-import Layout from "../components/layout/layout";
+import Layout from "../components/base/layout";
 import Image from "next/image";
 
 import RoboticsBackground from "../public/roboticsbackground.jpg";

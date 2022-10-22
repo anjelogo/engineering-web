@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable for-direction */
 import React from "react";
-import Layout from "../layout/layout";
+import Layout from "../base/layout";
 import { Meeting } from "../../types/interfaces";
 import Link from "next/link";
 import CreateMeetingModal from "./createMeetingModal";

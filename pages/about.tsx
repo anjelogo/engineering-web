@@ -3,7 +3,7 @@ import React from "react";
 import { SessionContextValue } from "next-auth/react";
 import { wrapSession } from "../lib/wrapSession";
 import { User } from "../types/interfaces";
-import Layout from "../components/layout/layout";
+import Layout from "../components/base/layout";
 import UserCard from "../components/user/userCard";
 import Link from "next/link";
 
@@ -59,7 +59,7 @@ class AboutUsPage extends React.Component<Props, State> {
 						</h1>
 						<div className="divider" />
 						<p className="text-2xl text-primary-content font-bold">
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry{"'"}s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+							Engineering Club is a club within University Preparatory. Originally formed as MESA, Engineering Club evolved to a hub of engineering related activities within University Preparatory. Boasting a membership of over 100 students, Engineering Club is one of the largest clubs at University Preparatory. Interested in hosting a program of your own within Engineering Club? Contact one our officers down below!
 						</p>
 					</section>
 					<section className="p-10 bg-gradient-to-r from-[#40c9ff] to-[#e81cff] shadow-xl">

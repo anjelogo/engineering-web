@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
-import Layout from "../../components/layout/layout";
-import Alex from "../../public/alex.jpg";
+import Layout from "../../components/base/layout";
 import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/programs/program";
-import { faqConstructor, RepresentativeCard } from "../../components/programs/utilities";
+import { faqConstructor } from "../../components/programs/utilities";
 import MeetingCard from "../../components/programs/MeetingCard";
+import UserCard from "../../components/user/userCard";
 
 const FilmProgram = (): JSX.Element => {
 
@@ -47,16 +47,12 @@ const FilmProgram = (): JSX.Element => {
 								top={true}
 								content={[
 									(
-										<div className="card bg-gray-300/40">
-											<div className="text-center 2xl:text-left card-body">
-												<h4 className="text-primary-content text-md">
+										<h4 className="text-xl pt-5 text-primary-content text-md font-bold">
 													The entire end goal of the club is to create a short (10-20 min) film to showcase at the Engineering club at the year of the year at March 2023. Taking this even further, we can submit our short film to High School Film Festival like the All American High School Film Festival in New York or NFFTY, another 24 and younger film festival in Seattle, Washington.
-													<br />
-													<br />
+											<br />
+											<br />
 													Throughout the club, we will first go through a {"'"}crash course{"'"}. Each one of your {"'"}groups{"'"} being taught by me, whether it is story making, script writing, video editing, and cinematography. After we get a grasp and enhance our skillset, we will go into the best part, making our short film. We will take our idea into action and capture our short film! If you still have any questions about our program, contact me, Anthony, and I{"'"}ll be happy to answer.
-												</h4> 
-											</div>
-										</div>
+										</h4>
 									)
 								]}
 							/>
@@ -64,20 +60,16 @@ const FilmProgram = (): JSX.Element => {
 						faqConstructor(faqs)
 					]
 				}
-				sidebar={<ProgramSidebarWrapper
-					title="Program Details"
-					content={[
-						(
-							<RepresentativeCard 
-								imageSrc={Alex}
-								alt="Alex"
-								name="Alexander Medina"
-							/>
-						), (
-							<MeetingCard program="3D-Modeling" />
-						)
-					]}
-				/>}
+				sidebar={
+					<ProgramSidebarWrapper>
+						<h2 className="font-extrabold text-3xl">Meeting Sign In</h2>
+						<div className="divider" />
+						<MeetingCard program="3D-Modeling" />
+						<h2 className="font-extrabold text-3xl">Representative</h2>
+						<div className="divider" />
+						<UserCard email="anjelonavalgo@gmail.com" options={{ navigable:	true }} />
+					</ProgramSidebarWrapper> 
+				}
 			/>
 		</Layout>
 	);

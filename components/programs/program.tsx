@@ -13,51 +13,40 @@ interface ProgramWrapperProps {
 export const ProgramWrapper = (
 	{ title,
 		subtitle,
-		background,
-		alerts,
 		body,
 		sidebar,
-		children
 	}: ProgramWrapperProps
 ): JSX.Element => {
 
 	return (
-		<>
-			<div>
-				<div className="mt-0">
-					<div className={`${background ?? "bg-topography"} hero min-h-screen`}>
-						<div className="text-center hero-content">
-							<div className="max-w-md text-primary-content">
-								<div className="p-2 pr-2 pl-2 inline-block mb-5 bg-primary-content text-primary text-5xl font-extrabold">
-									<h1>{title}</h1>
-								</div>
-								<h2 className="text-2xl bg-primary p-2 font-extrabold">{subtitle ?? "..."}</h2>
-							</div>
+		<div className="py-28 min-h-screen bg-floatingcogs bg-base-200 bg-fixed">
+			<div className="md:grid md:grid-cols-3 md:gap-10 mx-0 md:mx-20 lg:mx-40 xl:mx-50">
+				<section className="col-start-1 col-span-2">
+					<div className="p-10 bg-primary shadow-xl h-full">
+						<h1 className="pb-2 font-extrabold text-6xl text-transparent bg-gradient-to-l from-insta1 to-insta3 bg-clip-text">
+							{title}
+						</h1>
+						<h2 className="text-primary-content text-xl font-bold">
+							{subtitle}
+						</h2>
+						<div className="divider" />
+						<div className="space-y-5">
+							{body.map((b, i) => (
+								<>
+									<div key={i}>{b}</div>
+									<div className="divider" />
+								</>
+							))}
 						</div>
 					</div>
-					{alerts}
-					<div className="min-h-screen mt-10 lg:mb-10">
-						{
-							sidebar ? (
-								<div className="flex flex-wrap gap-10 m-5 justify-center 2xl:grid 2xl:grid-cols-6 2xl:flex-none 2xl:m-0">
-									<div className="col-start-2 col-span-3">
-										{body}
-									</div>
-									<div className="col-start-5 col-span-1">
-										{sidebar}
-									</div>
-								</div>
-							) : (
-								<div className="flex flex-wrap justify-center">
-									{body}
-								</div>
-							)
-						}
+				</section>
+				<section className="md:col-start-3 md:col-span-1">
+					<div className="p-10 bg-primary shadow-xl0 md:sticky md:top-28">
+						{sidebar}
 					</div>
-					{children}
-				</div>
+				</section>
 			</div>
-		</>
+		</div>
 	);
 
 };
@@ -66,8 +55,6 @@ export const ProgramBodyElement = (
 	{
 		title,
 		content,
-		top,
-		left
 	}: {
 		title: string;
 		content: JSX.Element[];
@@ -76,33 +63,26 @@ export const ProgramBodyElement = (
 	}
 ): JSX.Element => {
 	return (
-		<>
-			<div className={`text-center ${left ?? "2xl:text-left"} text-primary-content ${top ?? "pt-7"}`}>
-				<h3 className="text-3xl pb-2 font-extrabold">{title}</h3>
-			</div>
-			<div className="pt-5">
-				{content}
-			</div>
-		</>
+		<div>
+			<h2 className="text-3xl text-primary-content font-extrabold">
+				{title}
+			</h2>
+			{content}
+		</div>
 	);
 };
 
 export const ProgramSidebarWrapper = (
 	{
-		title,
-		content,
+		children,
 	}: {
-		title: string;
-		content: JSX.Element[];
+		children: React.ReactNode;
 	}
 ): JSX.Element => {
 	return (
 		<>
-			<div className="text-center text-primary-content">
-				<h3 className="text-3xl pb-2 font-extrabold">{title}</h3>
-			</div>
 			<div className="pt-5 space-y-10">
-				{content}
+				{children}
 			</div>
 		</>
 	);

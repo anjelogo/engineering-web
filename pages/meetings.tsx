@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import { Meeting } from "../types/interfaces";
-import Layout from "../components/layout/layout";
+import Layout from "../components/base/layout";
 import Image from "next/image";
 import { wrapSession } from "../lib/wrapSession";
 import { RouteComponentProps } from "react-router";

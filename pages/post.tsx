@@ -1,6 +1,6 @@
 import { SessionContextValue } from "next-auth/react";
 import React from "react";
-import Layout from "../components/layout/layout";
+import Layout from "../components/base/layout";
 import { wrapSession } from "../lib/wrapSession";
 import { Post, User } from "../types/interfaces";
 import ReactMarkdown from "react-markdown";
@@ -103,7 +103,7 @@ class DiscoverPage extends React.Component<Props, State> {
 													<h1 className="text-primary-content text-6xl font-extrabold">
 														{this.state.post?.content.title}
 													</h1>
-													<h1 className="text-primary-content text-xl font-bold">
+													<h1 className="">
 														{dateToLocaleString(new Date(this.state.post?.timestamp as number))}
 													</h1>
 													<div className="badge badge-primary-content badge-outline">

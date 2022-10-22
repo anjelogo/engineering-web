@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../components/layout/layout";
+import Layout from "../components/base/layout";
 import { User } from "next-auth";
 import { wrapSession } from "../lib/wrapSession";
 import NotFoundPage from "./404";

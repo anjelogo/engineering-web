@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Link from "next/link";
 import React from "react";
-import Layout from "../../components/layout/layout";
+import Layout from "../../components/base/layout";
 import Image from "next/image";
 
 import Robot from "../../public/robot.png";
@@ -143,7 +143,7 @@ export default function Programs(): JSX.Element {
 							<h4 className="text-primary-content text-md">Learn to design and build robots and compete in-school with other students!</h4> 
 							<div className="card-actions">
 								<Link href="/programs/robotics" passHref>
-									<button className="btn btn-primary-content">
+									<button className="btn btn-primary">
 										Learn More
 									</button>
 								</Link>
@@ -156,7 +156,7 @@ export default function Programs(): JSX.Element {
 							<h4 className="text-primary-content text-md">Learn to design and create 3D models and print them out with 3D printers!</h4>
 							<div className="card-actions">
 								<Link href="/programs/3d-modeling" passHref>
-									<button className="btn btn-primary-content">
+									<button className="btn btn-primary">
 										Learn More
 									</button>
 								</Link>
@@ -172,7 +172,7 @@ export default function Programs(): JSX.Element {
 							</p>
 							<div className="card-actions">
 								<Link href="/programs/rubegoldberg" passHref>
-									<button className="btn btn-primary-content">
+									<button className="btn btn-disabled">
 										Learn More
 									</button>
 								</Link>
@@ -188,7 +188,7 @@ export default function Programs(): JSX.Element {
 							</p>
 							<div className="card-actions">
 								<Link href="/programs/film" passHref>
-									<button className="btn btn-primary-content">
+									<button className="btn btn-primary">
 										Learn More
 									</button>
 								</Link>
