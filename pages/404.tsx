@@ -1,28 +1,32 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import * as React from "react";
-import Layout from "../components/layout";
+import Layout from "../components/base/layout";
 import Link from "next/link";
-import { signin } from "next-auth/client";
+import { signIn } from "next-auth/react";
 
-const NotFoundPage = () => {
+const NotFoundPage = (): JSX.Element => {
 	return (
 		<Layout
 			title="404: Page not found"
 			description="Page Not Found"
 		>
-			<div className="bg-primary flex flex-col h-screen">
-				<div className="hero min-h-screen">
-					<div className="flex text-center">
-						<h1 className="text-lg text-primary-content">
-							<strong>404: Page not found.</strong>
-							<Link href="/" passHref>
-								<span className="link link-hover"> Go back home?</span>
-							</Link>
-							<br />
-							Know what you{"'"}re doing?
-							<a className="link link-hover" onClick={() => signin("google", { callbackUrl: `${process.env.WEB_URI}/admin` })}> Sign In</a></h1>
-					</div>
-				</div>
+			<div className="min-h-screen pt-28 bg-base-200 bg-floatingcogs bg-fixed">
+				<section className="p-10 mx-0 md:mx-20 lg:mx-40 xl:mx-80 2xl:mx-[480px] bg-primary shadow-xl h-full">
+					<h1 className="pb-2 font-extrabold text-9xl text-primary-content">
+						404
+					</h1>
+					<h1 className="pb-2 font-extrabold text-2xl text-primary-content">
+						Page Not	Found
+					</h1>
+					<div className="divider" />
+					<p className="pb-2 text-2xl text-primary-content font-bold">
+						We couldn{"'"}t find the page you were looking for.
+					</p>
+					<Link href="/" passHref>
+						<a className="hover:link text-xl text-primary-content font-bold">
+							Go back home?
+						</a>
+					</Link>
+				</section>
 			</div>
 		</Layout>
 	);

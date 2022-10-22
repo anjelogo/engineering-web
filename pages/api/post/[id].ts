@@ -3,12 +3,26 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Session } from "next-auth";
 import { getSession } from "next-auth/react";
 import nextConnect from "next-connect";
+import { createPost, findPostByID, removePost, updatePost } from "../../../lib/db";
 import { hasAuthLevel } from "../../../lib/functions";
-import { createMeeting, findMeetingByID, removeMeeting, updateMeeting } from "../../../lib/db";
+import { Post } from "../../../types/interfaces";
 
 const handler = nextConnect();
 
 handler
+	.get(async (req: NextApiRequest, res: NextApiResponse) => {
+		const { id } = req.query;
+
+		if (!id)
+			return res.status(404).send("ID not provided");
+
+		try {
+			const post = await findPostByID(typeof id !== "string" ? id[0] : id);
+			res.status(202).send(JSON.stringify(post));
+		} catch (e) {
+			res.status(404).send({ e });
+		}
+	})
 	.use(async (req: NextApiRequest, res: NextApiResponse, next) => {
 		const session: Session | null = await getSession({ req });
 
@@ -19,37 +33,24 @@ handler
 		else
 			next();
 	})
-	.get(async (req: NextApiRequest, res: NextApiResponse) => {
-		const { id } = req.query;
-
-		if (!id)
-			return res.status(404).send("ID not provided");
-
-		try {
-			const meeting = await findMeetingByID(typeof id !== "string" ? id[0] : id);
-			res.status(202).send(JSON.stringify(meeting));
-		} catch (e) {
-			res.status(404).send({ e });
-		}
-	})
 	.post(async (req: NextApiRequest, res: NextApiResponse) => {
-		const body = req.body;
+		const { post }: { post: (Post | undefined) } = req.body;
 
-		if (!body)
+		if (!post)
 			return res.status(404).send("Missing Params");
 
-		const meeting = await findMeetingByID(body.id);
+		const postData = await findPostByID(post?.id as string);
 
-		if (!meeting)
+		if (!postData) {
 			try {
-				await createMeeting(body);
+				await createPost(post as	Post);
 				res.status(202).end();
 			} catch (e) {
-				res.status(404).send({ e });
+				res.send({ e });
 			}
-		else
+		} else
 			try {
-				await updateMeeting(meeting, body);
+				await updatePost(post, post as Post);
 				res.status(202).end();
 			} catch (e) {
 				res.status(404).send({ e });
@@ -61,13 +62,13 @@ handler
 		if (!id)
 			return res.status(404).send("ID not provided");
 
-		const meeting = await findMeetingByID(typeof id !== "string" ? id[0] : id);
+		const post = await findPostByID(typeof id !== "string" ? id[0] : id);
 		
-		if (!meeting)
-			return res.status(404).send("Meeting not found");
+		if (!post)
+			return res.status(404).send("Post not found");
 		else {
 			try {
-				await removeMeeting(meeting);
+				await removePost(post);
 				res.status(202).end();
 			} catch (e) {
 				res.status(404).send({ e });

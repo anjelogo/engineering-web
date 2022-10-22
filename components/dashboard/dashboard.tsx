@@ -1,30 +1,23 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable for-direction */
 import React from "react";
-import { getSession } from "next-auth/client";
-import Layout from "../layout";
-import { Meeting } from "../../lib/interfaces";
-import dateFormat from "dateformat";
+import Layout from "../base/layout";
+import { Meeting } from "../../types/interfaces";
 import Link from "next/link";
-import CreateModal from "./createModal";
-
-interface Props {
-	session: any;
-}
+import CreateMeetingModal from "./createMeetingModal";
+import { dateToLocaleString } from "../../lib/functions";
 
 interface States {
-	session: any;
 	meetings: Meeting[];
 	loading: boolean;
 }
 
-class Dashboard extends React.Component<Props, States> {
+class Dashboard extends React.Component<Record<string, never> , States> {
 
-	constructor(props: Props) {
+	constructor(props: never) {
 		super(props);
 
 		this.state = {
-			session: this.props.session,
 			meetings: [],
 			loading: true
 		};
@@ -32,28 +25,16 @@ class Dashboard extends React.Component<Props, States> {
 
 	async refreshSession(): Promise<void> {
 		this.setState({
-			session: this.props.session,
 			meetings: [],
 			loading: true
 		});
 
-		const session = await getSession();
+		const meetings: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
 
-		const data: Meeting[] = await fetch("/api/meetings", { method: "GET" }).then((res) => { return res.json(); });
-
-		if (!this.props.session.loading && session?.user)
-			this.setState({
-				session,
-				meetings: data,
-				loading: false
-			});
-		else {
-			this.setState({
-				session: this.props.session,
-				meetings: data,
-				loading: false
-			});
-		}
+		this.setState({
+			meetings,
+			loading: false
+		});
 	}
 
 	async componentDidMount(): Promise<void> {
@@ -105,22 +86,16 @@ class Dashboard extends React.Component<Props, States> {
 				title="Dashboard - Engineering Club"
 				description="Engineering Club Dashboard"
 			>
-				<div className="bg-primary flex flex-col">
-					<div className="m-10 min-h-screen">
-						<div className="mt-20 text-primary-content">
-							<p className="text-3xl font-bebas">Welcome, <span className="text-secondary">{this.state.session?.name ? this.state.session.name : "Loading..."}</span></p>
-						</div>
-						<div className="mt-5 text-primary-content">
-							<p className="text-5xl font-bebas">Admin Dashboard</p>
-						</div>
-						<div className="divider mb-0 mt-0 w-56" />
-						<div className="mt-5 text-primary-content">
-							<p className="text-3xl font-bebas">Meetings</p>
-						</div>
+				<div className="min-h-screen pt-28 bg-floatingcogs bg-base-200 bg-fixed">
+					<div className="p-10 mx-0 md:mx-20 lg:mx-40 xl:mx-80 2xl:mx-[480px] bg-primary shadow-xl h-full">
+						<h1 className="pb-2 font-extrabold text-4xl text-primary-content">
+							Meeting Dashboard
+						</h1>
 						<div className="mt-5">
-							<label htmlFor="createModal" className="btn btn-primary-content">Create Meeting</label>
-							<CreateModal />
+							<label htmlFor="createMeetingModal" className="btn btn-sm btn-primary-content">Create Meeting</label>
+							<CreateMeetingModal />
 						</div>
+						<div className="divider" />
 						<div className="mt-10 overflow-x-auto">
 							<table className="table w-full">
 								<thead>
@@ -154,8 +129,8 @@ class Dashboard extends React.Component<Props, States> {
 													<>
 														<tr key={i} className="hover">
 															<td></td>
-															<td><strong>{e.program}</strong></td>
-															<td>{e.id}</td>
+															<td><span className="text-primary-content"><strong>{e.program}</strong></span></td>
+															<td><span className="text-primary-content">{e.id}</span></td>
 															<td>
 																<div className="indicator">
 																	<span className="badge badge-info">{e.dates[0].room}</span>
@@ -185,7 +160,7 @@ class Dashboard extends React.Component<Props, States> {
 																}
 															</td>
 															<td />
-															<td>{dateFormat(e.dates[0].time.start, "mm/dd, h:MM TT")}</td>
+															<td><span className="text-primary-content">{dateToLocaleString(new Date(e.dates[0].time.start))}</span></td>
 															<th>
 																<div className="dropdown dropdown-hover dropdown-end">
 																	<button aria-label={`${e.id} Menu Actions`} className="btn btn-ghost">
@@ -193,10 +168,10 @@ class Dashboard extends React.Component<Props, States> {
 																			<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
 																		</svg>
 																	</button>
-																	<ul tabIndex={0} className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-2 shadow menu dropdown-content rounded-box w-52">
+																	<ul tabIndex={0} className="backdrop-blur-lg bg-gray-300/30 p-2 shadow menu dropdown-content rounded-box w-52">
 																		<li>
 																			<Link href={`/meetings?id=${e.id}`} passHref>
-																				<a><span>View Meeting</span></a>
+																				<a><span className="text-primary-content">View Meeting</span></a>
 																			</Link>
 																		</li>
 																		<li>
@@ -243,15 +218,6 @@ class Dashboard extends React.Component<Props, States> {
 							</table>
 						</div>
 					</div>
-				</div>
-				<div>
-					<footer className="backdrop-filter backdrop-blur-lg bg-opacity-30 bg-gray-300 p-10 footer text-primary-content footer-center">
-						<div>
-							<Link href="/admin/classic" passHref>
-								<a className="link link-hover"><strong>View Dashboard in Classic View?</strong></a>
-							</Link>
-						</div>
-					</footer>
 				</div>
 			</Layout>
 		);

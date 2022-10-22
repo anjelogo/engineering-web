@@ -1,13 +1,14 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
-import Layout from "../../components/layout";
+import Layout from "../../components/base/layout";
 import Orlando from "../../public/orlando.jpg";
 import Anjelo from "../../public/anjelo.jpg";
 import Image from "next/image";
 import Link from "next/link";
-import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
-import { faqConstructor } from "../../components/utilities";
-import MeetingCard from "../../components/MeetingCard";
+import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/programs/program";
+import { faqConstructor } from "../../components/programs/utilities";
+import MeetingCard from "../../components/programs/MeetingCard";
+import UserCard from "../../components/user/userCard";
 
 const RoboticsProgram = (): JSX.Element => {
 
@@ -88,16 +89,12 @@ const RoboticsProgram = (): JSX.Element => {
 								top={true}
 								content={[
 									(
-										<div className="card shadow-xl">
-											<div className="text-center 2xl:text-left card-body">
-												<h4 className="text-primary-content text-md">
+										<h4 className="text-xl pt-5 text-primary-content text-md font-bold">
 														Explore engineering with Robotics. A combination of Computer Science and Engineering.
-													<br />
-													<br />
+											<br />
+											<br />
 														Students will learn to construct robots using kits provided by Engineering Club and learn essential engineering skills like designing, constructing, operating, and the usage of robots.
-												</h4> 
-											</div>
-										</div>
+										</h4>
 									)
 								]}
 							/>
@@ -106,29 +103,25 @@ const RoboticsProgram = (): JSX.Element => {
 								title="Competition Details"
 								content={[
 									(
-										<div className="card shadow-xl">
-											<div className="text-center 2xl:text-left card-body">
-												<h4 className="text-primary-content text-md">
-													<strong>LEGO Mindstorms</strong>
-													<br />
+										<h4 className="text-xl pt-5 text-primary-content text-md font-bold">
+											<strong>LEGO Mindstorms</strong>
+											<br />
 														Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
-													<br />
-													<br />
+											<br />
+											<br />
 														Obstacle Course/Maze - Students will build a robot which can traverse a maze/obstacle course. This section will be fully coded, which means that students will have no control over their robots once they enter the course.
-													<br />
-													<br />
+											<br />
+											<br />
 														“Rocket League” - Students will team up with other groups and participate in a game of soccer using their robots. Like the game “Rocket League”, students will use their robots in order to score as many goals as possible in a set amount of time. The team with the most goals wins.
-													<br />
-													<br />
-													<strong>VEX</strong>
-													<br />
+											<br />
+											<br />
+											<strong>VEX</strong>
+											<br />
 														Battle Bots - Students will build robots which will be used to fight against other robots. In a sumo-style fight, the objective will be to either push the other robot out of a set ring or to render the other robot unable to be moved without human interference.
-													<br />
-													<br />
+											<br />
+											<br />
 														Obstacle Course - Students will build a robot that can traverse an obstacle course which will have included tasks such as retrieval of an object, pressing a button, and/or completing a puzzle. Students will be graded on time and accuracy.
-												</h4>
-											</div>
-										</div>
+										</h4>
 									)
 								]}
 							/>
@@ -136,74 +129,17 @@ const RoboticsProgram = (): JSX.Element => {
 						faqConstructor(faqs)
 					]
 				}
-				sidebar={<ProgramSidebarWrapper
-					title="Program Details"
-					content={[
-						(
-							<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
-								<figure className="px-20">
-									<Image
-										src={Orlando}
-										alt="Orlando"
-										height={100}
-										width={100}
-										layout="responsive"
-										className="mask mask-circle"
-									/>
-								</figure>
-								<div className="text-center card-body items-center">
-									<p className="card-title text-primary-content font-bebas text-xl mb-0">Program Representative</p>
-									<div className="divider mb-0 mt-0 w-5" />
-									<p className="card-title text-primary-content font-bebas text-2xl">Competiton Organizer</p>
-									<p className="text-primary-content font-bebas text-xl">Orlando Pereira</p> 
-								</div>
-							</div>
-						), (
-							<div className="transform duration-200 ease-in-out card shadow-xl hover:-translate-y-2">
-								<figure className="px-20">
-									<Image
-										src={Anjelo}
-										alt="Alex"
-										height={100}
-										width={100}
-										layout="responsive"
-										className="mask mask-circle"
-									/>
-								</figure>
-								<div className="text-center card-body items-center">
-									<p className="card-title text-primary-content font-bebas text-xl mb-0">Program Co-Representative</p>
-									<div className="divider mb-0 mt-0 w-5" />
-									<p className="card-title text-primary-content font-bebas text-2xl">Technical Lead</p>
-									<p className="text-primary-content font-bebas text-xl">Anjelo Go</p> 
-								</div>
-							</div>
-						), (
-							<div className="card shadow-xl">
-								<div className="text-center card-body items-center space-y-5">
-									<h4 className="card-title text-primary-content font-bebas text-2xl">Competiton Documents</h4>
-									<Link href="https://docs.google.com/document/d/1-yfMk7GijWDBEMRiHen6EshK4HI7kO0d5s9VhDX1rGY/edit?usp=sharing" passHref>
-										<button className="btn btn-primary-content btn-wide text-2xs">
-											<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-											</svg>
-											VEX Competition Details
-										</button>
-									</Link>
-									<Link href="https://docs.google.com/document/d/1ZQFmOvwCBiFBfVjKjqWRtPACClSY9Yj9hmSFvnYFSuM/edit?usp=sharing" passHref>
-										<button className="btn btn-primary-content btn-wide text-2xs">
-											<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-												<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-											</svg>
-											LEGO Competition Details
-										</button>
-									</Link>
-								</div>
-							</div>
-						), (
-							<MeetingCard program="Robotics" />
-						)
-					]}
-				/>}
+				sidebar={
+					<ProgramSidebarWrapper>
+						<h2 className="font-extrabold text-3xl">Meeting Sign In</h2>
+						<div className="divider" />
+						<MeetingCard program="Robotics" />
+						<h2 className="font-extrabold text-3xl">Representatives</h2>
+						<div className="divider" />
+						<UserCard email="anjelonavalgo@gmail.com" options={{ navigable: true }} />
+						<UserCard email="anjelonavalgo@gmail.com" options={{ navigable: true }} />
+					</ProgramSidebarWrapper>
+				}
 			/>
 		</Layout>
 	);

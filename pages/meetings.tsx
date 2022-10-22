@@ -1,20 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
-import { Meeting } from "../lib/interfaces";
-import Layout from "../components/layout";
+import { Meeting } from "../types/interfaces";
+import Layout from "../components/base/layout";
 import Image from "next/image";
-import dateFormat from "dateformat";
 import { wrapSession } from "../lib/wrapSession";
-import { getSession } from "next-auth/client";
 import { RouteComponentProps } from "react-router";
 import NotFoundPage from "./404";
+import { SessionContextValue } from "next-auth/react";
+import { dateToLocaleString } from "../lib/functions";
 
 interface Props extends RouteComponentProps {
-	session: any;
+	session: SessionContextValue;
 }
 
 interface State {
-	session: any;
 	meeting: (Meeting | null);
 	loading: boolean;
 }
@@ -25,7 +24,6 @@ class MeetingPage extends React.Component<Props, State> {
 		super(props);
 
 		this.state = {
-			session: this.props.session,
 			meeting: null,
 			loading: true
 		};
@@ -34,19 +32,12 @@ class MeetingPage extends React.Component<Props, State> {
 	async componentDidMount() {
 		if (typeof window !== "undefined") {
 			const id = new URLSearchParams(window.location.search).get("id"),
-				session = await getSession(),
 				meeting = await fetch("/api/meetings/" + id).then(r => { return r.json(); }).catch(() => { return null; });
 
-			if (session && meeting) 
-				this.setState({
-					session,
-					meeting,
-					loading: false
-				});
-			else
-				this.setState({
-					loading: false
-				});
+			this.setState({
+				meeting,
+				loading: false
+			});
 		}
 	}
 
@@ -72,7 +63,7 @@ class MeetingPage extends React.Component<Props, State> {
 								</div>
 							</div>
 						</Layout>
-						: (this.state.session && this.state.meeting)
+						: (this.props.session.data && this.state.meeting)
 							? (
 								<Layout
 									title="Meeting Details - Engineering Club"
@@ -116,8 +107,8 @@ class MeetingPage extends React.Component<Props, State> {
 																			<div className="flex items-center space-x-3">
 																				<div className="avatar">
 																					<Image
-																						src={e.image}
-																						alt={e.name}
+																						src={e.image as string}
+																						alt={e.name as string}
 																						height={36}
 																						width={36}
 																						layout="intrinsic"
@@ -134,7 +125,7 @@ class MeetingPage extends React.Component<Props, State> {
 																		<td />
 																		<td>{e.email}</td>
 																		<td />
-																		<td>{dateFormat(e.timestamp, "dddd, h:MM TT")}</td>
+																		<td>{dateToLocaleString(new Date(e.timestamp))}</td>
 																	</tr>
 																))
 																: <></>

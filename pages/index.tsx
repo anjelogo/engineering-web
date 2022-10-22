@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { LegacyRef } from "react";
-import Layout from "../components/layout";
+import Layout from "../components/base/layout";
 import Image from "next/image";
 
 import RoboticsBackground from "../public/roboticsbackground.jpg";
@@ -26,7 +26,8 @@ interface State {
 class Home extends React.Component<Props, State> {
 	RoboticsCardRef: React.RefObject<Element>;
 	RoboticsDescriptionRef: React.RefObject<Element>;
-	ThreeDModeling: React.RefObject<Element>;
+	ThreeDModelingCardRef: React.RefObject<Element>;
+	ThreeDModelingDescriptionRef: React.RefObject<Element>;
 	FooterInsterestedCardIsVisible: React.RefObject<Element>;
 
 	constructor(props: Props) {
@@ -34,7 +35,8 @@ class Home extends React.Component<Props, State> {
 
 		this.RoboticsCardRef = React.createRef();
 		this.RoboticsDescriptionRef = React.createRef();
-		this.ThreeDModeling = React.createRef();
+		this.ThreeDModelingCardRef = React.createRef();
+		this.ThreeDModelingDescriptionRef = React.createRef();
 		this.FooterInsterestedCardIsVisible = React.createRef();
 
 		this.state = {
@@ -52,7 +54,7 @@ class Home extends React.Component<Props, State> {
 		};
 	}
 
-	componentDidMount() {
+	componentDidMount(): void {
 		const observer = new IntersectionObserver((entries) => {
 			entries.forEach((entry) => {
 				if (entry.isIntersecting) {
@@ -62,8 +64,8 @@ class Home extends React.Component<Props, State> {
 							descriptionIsVisible: entry.isIntersecting
 						},
 						threedmodeling: {
-							cardIsVisible: false,
-							descriptionIsVisible: false
+							cardIsVisible: entry.isIntersecting,
+							descriptionIsVisible: entry.isIntersecting,
 						},
 						footer: {
 							interestedCardIsVisible: entry.isIntersecting
@@ -98,12 +100,14 @@ class Home extends React.Component<Props, State> {
 										</span>
 									</h1>
 									<div className="card-actions">
-										<button className="btn btn-outline text-white fade-in">
-										View Our Programs
-											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-												<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-											</svg>
-										</button>
+										<Link href="/programs" passHref>
+											<button className="btn btn-outline text-primary-content fade-in">
+												View Our Programs
+												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+													<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+												</svg>
+											</button>
+										</Link>
 									</div>
 								</div>
 							</div>
@@ -127,12 +131,14 @@ class Home extends React.Component<Props, State> {
 										</h2>
 										<div className="justify-end">
 											<div className="card-actions">
-												<button className="btn btn-outline text-white">
-														Learn More
-													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-														<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-													</svg>
-												</button>
+												<Link href="/programs/robotics" passHref>
+													<button className="btn btn-outline text-white">
+															Learn More
+														<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+															<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+														</svg>
+													</button>
+												</Link>
 											</div>
 										</div>
 									</div>
@@ -166,28 +172,28 @@ class Home extends React.Component<Props, State> {
 					<div>
 						<div className="hero h-full md:p-10 bg-primary">
 							<div className="hero-content flex-wrap md:grid md:grid-cols-3">
-								<div ref={this.ThreeDModeling as LegacyRef<HTMLDivElement>} className={`${this.state.threedmodeling.descriptionIsVisible ? "fade-in" : ""} card bg-transparent md:grid`}>
+								<div ref={this.ThreeDModelingDescriptionRef as LegacyRef<HTMLDivElement>} className={`${this.ThreeDModelingDescriptionRef ? "fade-in" : ""} card bg-transparent md:grid`}>
 									<div className="card-body h-full">
 										<h1 className="card-title text-4xl font-extrabold text-shadow">
-											<span className="text-neutral-content">
+											<span className="text-primary-content">
 												Want something?{" "}
 											</span>
 											<span className="bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
 												{" "}Make it.
 											</span>
-											<span className="text-neutral-content">
+											<span className="text-primary-content">
 												{" "}Come by and use our club{"'"}s 3D printer and make it a
 											</span>
 											<span className="bg-clip-text text-transparent bg-gradient-to-br from-insta1 to-insta3">
 												{" "}reality
 											</span>
-											<span className="text-neutral-content">
+											<span className="text-primary-content">
 												.
 											</span>
 										</h1>
 									</div>
 								</div>
-								<div className="md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600">
+								<div ref={this.ThreeDModelingCardRef as LegacyRef<HTMLDivElement>} className={`${this.state.threedmodeling.cardIsVisible ? "fade-in" : ""} md:grid-start-2 md:col-span-2 md:w-full card bg-gradient-to-tr from-pink-500 to-green-600`}>
 									<div className="card-body">
 										<h1 className="card-title">
 											<span className="text-5xl md:text-8xl font-extrabold text-white">
@@ -200,12 +206,14 @@ class Home extends React.Component<Props, State> {
 											</span>
 										</h2>
 										<div className="card-actions">
-											<button className="btn btn-outline text-primary-content">
+											<Link href="/programs/3d-modeling" passHref>
+												<button className="btn btn-outline text-primary-content">
 													Learn More
-												<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-													<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-												</svg>
-											</button>
+													<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+														<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+													</svg>
+												</button>
+											</Link>
 										</div>
 									</div>
 								</div>
@@ -222,12 +230,14 @@ class Home extends React.Component<Props, State> {
 									We pride ourselves in hosting the largest club of engineering-related fields. Check out our other programs and see if you{"'"}re interested?
 								</p>
 								<div className="pt-5">
-									<button className="btn btn-ghost text-info">
-										View Programs
-										<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-											<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-										</svg>
-									</button>
+									<Link href="/programs" passHref>
+										<button className="btn btn-ghost text-info">
+											View Programs
+											<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+												<path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+											</svg>
+										</button>
+									</Link>
 								</div>
 							</div>
 						</div>

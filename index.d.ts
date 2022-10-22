@@ -16,7 +16,7 @@ declare module "*.jpg" {
 declare module "*.avif" {
 	const value: any;
 	export default value;
-  }
+}
 
 declare module "theme-change"
 

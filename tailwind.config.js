@@ -1,20 +1,13 @@
 module.exports = {
-	purge: {
-		content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-		options: {
-			safelist: [
-				/data-theme$/,
-			]
-		},
-	},
-	darkMode: false, // or 'media' or 'class'
+	content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
 	theme: {
 		extend: {
-			backgroundImage: theme => ({
-				"topography": "url('../public/topography.svg')",
-				"robotics": "url('../public/roboticsbackground.jpg')",
-				"3dmodeling": "url('../public/3dbackground.jpg')",
-				"landscape": "url('../public/vvland.jpeg')"
+			backgroundImage: () => ({
+				"topography": "url('/topography.svg')",
+				"robotics": "url('/roboticsbackground.jpg')",
+				"3dmodeling": "url('/3dbackground.jpg')",
+				"landscape": "url('/vvland.jpeg')",
+				"floatingcogs": "url('/floating-cogs.svg')"
 			}),
 			colors: {
 				"blurple": "#5865F2",
@@ -26,20 +19,21 @@ module.exports = {
 		},
 		fontFamily: {
 			abril: ["Abril Fatface", "cursive"],
-			bebas: ["Bebas Neue", "cursive"]
+			bebas: ["Bebas Neue", "cursive"],
+			merriweather: ["Merriweather", "serif"],
 		},
 	},
 	plugins: [
+		require("@tailwindcss/typography"),
 		require("daisyui")
 	],
-	mode: "jit",
 	daisyui: {
 		themes: [
 			{
 				"lighttheme": {                          /* your theme name */
 					"primary" : "#ffffff",           /* Primary color */
-					"primary-focus" : "#3d4451",     /* Primary color - focused */
-					"primary-content" : "#ffffff",   /* Foreground content color to use on primary color */
+					"primary-focus" : "#cccccc",     /* Primary color - focused */
+					"primary-content" : "#000000",   /* Foreground content color to use on primary color */
 
 					"secondary" : "#f6d860",         /* Secondary color */
 					"secondary-focus" : "#f3cc30",   /* Secondary color - focused */
@@ -49,14 +43,14 @@ module.exports = {
 					"accent-focus" : "#2aa79b",      /* Accent color - focused */
 					"accent-content" : "#ffffff",    /* Foreground content color to use on accent color */
 
-					"neutral" : "#4d4d4d",           /* Neutral color */
+					"neutral" : "#111111",           /* Neutral color */
 					"neutral-focus" : "#3d4451",     /* Neutral color - focused */
-					"neutral-content" : "#000000",   /* Foreground content color to use on neutral color */
+					"neutral-content" : "#ffffff",   /* Foreground content color to use on neutral color */
 
-					"base-100" : "#ffffff",          /* Base color of page, used for blank backgrounds */
-					"base-200" : "#f9fafb",          /* Base color, a little darker */
-					"base-300" : "#d1d5db",          /* Base color, even more darker */
-					"base-content" : "#1f2937",      /* Foreground content color to use on base color */
+					"base-100" : "#eeeeee",          /* Base color of page, used for blank backgrounds */
+					"base-200" : "#cccccc",          /* Base color, a little darker */
+					"base-300" : "#aaaaaa",          /* Base color, even more darker */
+					"base-content" : "#333333",      /* Foreground content color to use on base color */
 
 					"info" : "#2094f3",              /* Info */
 					"success" : "#009485",           /* Success */
@@ -66,7 +60,7 @@ module.exports = {
 			}, {
 				"darktheme": {                          /* your theme name */
 					"primary" : "#000000",           /* Primary color */
-					"primary-focus" : "#3d4451",     /* Primary color - focused */
+					"primary-focus" : "#333333",     /* Primary color - focused */
 					"primary-content" : "#ffffff",   /* Foreground content color to use on primary color */
 
 					"secondary" : "#f6d860",         /* Secondary color */
@@ -77,14 +71,14 @@ module.exports = {
 					"accent-focus" : "#d1d5db",      /* Accent color - focused */
 					"accent-content" : "#ffffff",    /* Foreground content color to use on accent color */
 
-					"neutral" : "#000000",           /* Neutral color */
+					"neutral" : "#aaaaaa",           /* Neutral color */
 					"neutral-focus" : "#d1d5db",     /* Neutral color - focused */
 					"neutral-content" : "#ffffff",   /* Foreground content color to use on neutral color */
 
-					"base-100" : "#ffffff",          /* Base color of page, used for blank backgrounds */
-					"base-200" : "#f9fafb",          /* Base color, a little darker */
-					"base-300" : "#d1d5db",          /* Base color, even more darker */
-					"base-content" : "#1f2937",      /* Foreground content color to use on base color */
+					"base-100" : "#555555",          /* Base color of page, used for blank backgrounds */
+					"base-200" : "#333333",          /* Base color, a little darker */
+					"base-300" : "#111111",          /* Base color, even more darker */
+					"base-content" : "#cccccc",      /* Foreground content color to use on base color */
 
 					"info" : "#2094f3",              /* Info */
 					"success" : "#009485",           /* Success */

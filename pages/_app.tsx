@@ -2,13 +2,17 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
+import type { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
 
 import * as ga from "../lib/ga";
 
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
+import "@wojtekmaj/react-datetimerange-picker/dist/DateTimeRangePicker.css";
+import "react-calendar/dist/Calendar.css";
+import "react-clock/dist/Clock.css";
 
-function MyApp({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
 	const router = useRouter();
 
 	useEffect(() => {
@@ -26,6 +30,10 @@ function MyApp({ Component, pageProps }: AppProps) {
 		};
 	}, [router.events]);
 
-	return <Component {...pageProps} />;
+	return (
+		<SessionProvider>
+			<Component {...pageProps} />
+		</SessionProvider>
+	);
 }
-export default MyApp;
+export default App;

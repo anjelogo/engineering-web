@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-key */
 import React from "react";
-import Layout from "../../components/layout";
-import Alex from "../../public/alex.jpg";
-import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/program";
-import { faqConstructor, RepresentativeCard } from "../../components/utilities";
-import MeetingCard from "../../components/MeetingCard";
+import Layout from "../../components/base/layout";
+import { ProgramBodyElement, ProgramSidebarWrapper, ProgramWrapper } from "../../components/programs/program";
+import { faqConstructor } from "../../components/programs/utilities";
+import MeetingCard from "../../components/programs/MeetingCard";
+import UserCard from "../../components/user/userCard";
 
 const ModelingProgram = (): JSX.Element => {
 
@@ -54,16 +54,12 @@ const ModelingProgram = (): JSX.Element => {
 								top={true}
 								content={[
 									(
-										<div className="card shadow-xl">
-											<div className="text-center 2xl:text-left card-body">
-												<h4 className="text-primary-content text-md">
+										<h4 className="text-xl pt-5 text-primary-content text-md font-bold">
 												Explore engineering with 3D Modeling. Manipulate polygons and shapes to create a 3D Model and print them out using a 3D printer.
-													<br />
-													<br />
+											<br />
+											<br />
 												Students will learn to use various programs to construct 3D Models and print them out using 3D Models.
-												</h4> 
-											</div>
-										</div>
+										</h4> 
 									)
 								]}
 							/>
@@ -71,20 +67,16 @@ const ModelingProgram = (): JSX.Element => {
 						faqConstructor(faqs)
 					]
 				}
-				sidebar={<ProgramSidebarWrapper
-					title="Program Details"
-					content={[
-						(
-							<RepresentativeCard 
-								imageSrc={Alex}
-								alt="Alex"
-								name="Alexander Medina"
-							/>
-						), (
-							<MeetingCard program="3D-Modeling" />
-						)
-					]}
-				/>}
+				sidebar={
+					<ProgramSidebarWrapper>
+						<h2 className="font-extrabold text-3xl">Meeting Sign In</h2>
+						<div className="divider" />
+						<MeetingCard program="3D-Modeling" />
+						<h2 className="font-extrabold text-3xl">Representative</h2>
+						<div className="divider" />
+						<UserCard email="anjelonavalgo@gmail.com" options={{ navigable:	true }} />
+					</ProgramSidebarWrapper> 
+				}
 			/>
 		</Layout>
 	);

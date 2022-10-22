@@ -19,7 +19,7 @@
 	display: inline;
 }
 
-@responsive {
+@layer utilities {
 	.text-shadow {
 	  text-shadow: 0 2px 4px rgba(0,0,0,0.10);
 	}
@@ -38,7 +38,7 @@
   }
 
 .fade-in {
-	animation: fadeIn 3s;
+	animation: fadeIn 0.5s;
 }
 
 @keyframes fadeIn {
