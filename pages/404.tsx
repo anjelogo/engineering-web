@@ -1,7 +1,6 @@
 import * as React from "react";
 import Layout from "../components/base/layout";
 import Link from "next/link";
-import { signIn } from "next-auth/react";
 
 const NotFoundPage = (): JSX.Element => {
 	return (
