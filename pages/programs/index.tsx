@@ -165,22 +165,6 @@ export default function Programs(): JSX.Element {
 					</div>
 					<div className={smCardStyles}>
 						<div className="card-body">
-							<h3 className="card-title text-primary-content">Rube Goldberg</h3> 
-							<p className="text-primary-content text-md">
-								Create eccentric machines and compete against other schools in-state!
-								<br />
-							</p>
-							<div className="card-actions">
-								<Link href="/programs/rubegoldberg" passHref>
-									<button className="btn btn-disabled">
-										Learn More
-									</button>
-								</Link>
-							</div> 
-						</div>
-					</div>
-					<div className={smCardStyles}>
-						<div className="card-body">
 							<h3 className="card-title text-primary-content">Film</h3> 
 							<p className="text-primary-content text-md">
 									Create short films and showcase them	on the big screen!
