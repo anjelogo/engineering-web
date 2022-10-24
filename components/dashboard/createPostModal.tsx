@@ -35,6 +35,7 @@ class CreatePost extends React.Component<Props,	State> {
 		this.setState({
 			type: undefined,
 			title: "",
+			thumbnail: "",
 			body: ""
 		});
 	}
@@ -45,7 +46,7 @@ class CreatePost extends React.Component<Props,	State> {
 		});
 	}
 
-	changeImage(event: React.FormEvent<HTMLInputElement>): void {
+	changeThumbnail(event: React.FormEvent<HTMLInputElement>): void {
 		this.setState({
 			thumbnail: event.currentTarget.value
 		});
@@ -74,7 +75,7 @@ class CreatePost extends React.Component<Props,	State> {
 			tags: [],
 			timestamp: Date.now(),
 			content: {
-				thumbnail: "https://uschamber-co.imgix.net/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fco-assets%2Fassets%2Fimages%2Fsell-your-art.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=415&q=88&w=622&s=2937d9a2bfee5d25c2b8df2e64ef1ee0",
+				thumbnail: this.state.thumbnail,
 				title: this.state.title,
 				body: this.state.body
 			}
@@ -137,7 +138,7 @@ class CreatePost extends React.Component<Props,	State> {
 							}
 						</div>
 						<p className="text-lg text-primary-content font-extrabold">Blog Thumbnail</p>
-						<input type="text" placeholder="Blog Thumbnail" className="input input-bordered	input-primary w-full" onChange={(e) => this.changeImage.bind(this)(e)} />
+						<input type="text" placeholder="Blog Thumbnail" className="input input-bordered	input-primary w-full" onChange={(e) => this.changeThumbnail.bind(this)(e)} />
 						<p className="text-lg text-primary-content font-extrabold">Blog Title</p>
 						<input type="text" placeholder="Blog Title" className="input input-bordered	input-primary w-full" onChange={(e) => this.changeTitle.bind(this)(e)} />
 						<p className="text-lg text-primary-content font-extrabold">Blog Body</p>
