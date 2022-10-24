@@ -130,10 +130,9 @@ const RoboticsProgram = (): JSX.Element => {
 						<h2 className="font-extrabold text-3xl">Meeting Sign In</h2>
 						<div className="divider" />
 						<MeetingCard program="Robotics" />
-						<h2 className="font-extrabold text-3xl">Representatives</h2>
+						<h2 className="font-extrabold text-3xl">Representative</h2>
 						<div className="divider" />
-						<UserCard email="anjelonavalgo@gmail.com" options={{ navigable: true }} />
-						<UserCard email="anjelonavalgo@gmail.com" options={{ navigable: true }} />
+						<UserCard email="murilloa82305@vvstu.org" options={{ navigable: true }} />
 					</ProgramSidebarWrapper>
 				}
 			/>

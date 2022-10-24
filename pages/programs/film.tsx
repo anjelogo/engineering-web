@@ -67,7 +67,7 @@ const FilmProgram = (): JSX.Element => {
 						<MeetingCard program="3D-Modeling" />
 						<h2 className="font-extrabold text-3xl">Representative</h2>
 						<div className="divider" />
-						<UserCard email="anjelonavalgo@gmail.com" options={{ navigable:	true }} />
+						<UserCard email="ludegnaa78207@vvstu.org" options={{ navigable:	true }} />
 					</ProgramSidebarWrapper> 
 				}
 			/>
